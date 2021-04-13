@@ -4,7 +4,7 @@ const path = require('path');
 const logger = require('morgan');
 
 require('dotenv').config();
-require('./config/localDatabase');
+require('./config/database');
 
 const userRouter = require('./routes/users');
 const authRouter = require('./routes/auth');
