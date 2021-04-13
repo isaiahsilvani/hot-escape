@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import SearchForm from '../../components/SearchForm/SearchForm'
-import * as flightsAPI from '../../services/flights-api-service'
-//import * as puppyAPI from '../../services/puppies-api';
+import SearchPlace from '../../components/SearchPlace/SearchPlace'
+import * as flightsAPI from '../../services/flightService'
 
 class SearchFlights extends Component {
     state = { 
@@ -20,7 +20,8 @@ class SearchFlights extends Component {
     render() { 
         return ( 
             <>
-            <SearchForm handleFlightSearch={this.handleFlightSearch}/>
+                <SearchForm handleFlightSearch={this.handleFlightSearch}/>
+                <SearchPlace />
             </>
          );
     }
