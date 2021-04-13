@@ -5,6 +5,7 @@ import Signup from "../Signup/Signup";
 import Login from "../Login/Login";
 import Users from '../Users/Users'
 import authService from "../../services/authService"
+import FlightsList from '../FlightsList/FlightsList'
 import "./App.css";
 
 class App extends Component {
@@ -61,6 +62,10 @@ class App extends Component {
         render={({ history }) =>
             user ? <Users /> : <Redirect to="/login" />
 }       />
+        <Route
+          exact path='/search-flights'
+          render={()=> <FlightsList />}
+        />
       </>
     );
   }
