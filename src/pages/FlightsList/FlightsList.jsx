@@ -21,6 +21,9 @@ class SearchFlights extends Component {
         return ( 
             <>
                 <SearchForm handleFlightSearch={this.handleFlightSearch}/>
+                <label htmlFor="origin">Origin Place</label>
+                <SearchPlace />
+                <label htmlFor="destination">Destination Place</label>
                 <SearchPlace />
             </>
          );
