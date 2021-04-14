@@ -1,0 +1,12 @@
+.box {
+  background: #ccc;
+  max-width: 400px;
+  padding: 2rem;
+  margin: 1rem auto;
+  text-align: center;
+}
+
+.box h3 {
+  margin: 0 0 1rem 0;
+  text-align: center;
+}
