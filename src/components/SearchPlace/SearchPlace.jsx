@@ -25,6 +25,13 @@ class SearchPlace extends Component {
     this.setState({ formData })
   }
 
+  handlePlaceChange = e => {
+    console.log(e.target.value);
+    const formData = {
+      query: e.target.value
+    }
+    this.setState({ formData })
+  }
   render() { 
 
     return ( 
@@ -37,21 +44,23 @@ class SearchPlace extends Component {
             onChange={this.handleChange}
             />
         <button onClick={this.sendRequest}>Send</button>
-          {this.state.places.length ?
-            <select
-              size={this.state.places.length}
+        {this.state.places.length ?
+          <select
+            size={this.state.places.length}
+            name="placeList"
+            onChange={this.handlePlaceChange}
+          >
+          {this.state.places.map((place, idx) =>
+            <option 
+              key={idx}
+              onClick={() => this.props.selectPlace(place.PlaceId, place.PlaceName)}
             >
-            {this.state.places.map((place, idx) =>
-              <option 
-                key={idx}
-                onClick={() => this.props.selectPlace(place.PlaceId)}
-              >
-                {place.PlaceName}
-              </option>)}
-            </select>
-          :
-          ''
-          } 
+              {place.PlaceName}
+            </option>)}
+          </select>
+        :
+        ''
+        } 
       </div>
      );
   }

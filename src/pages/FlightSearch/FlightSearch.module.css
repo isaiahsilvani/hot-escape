@@ -1,4 +1,17 @@
 .box {
+  display: flex;
+  flex-wrap: wrap;
+}
 
-  
+.flightDate {
+  display: flex;
+  text-align: center;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.flightResults {
+  padding: 40px;
 }
