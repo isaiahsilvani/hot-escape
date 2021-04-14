@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import SearchForm from '../../components/SearchForm/SearchForm'
 import SearchPlace from '../../components/SearchPlace/SearchPlace'
 import * as flightsAPI from '../../services/flightService'
 
-class SearchFlights extends Component {
+class FlightsList extends Component {
     state = { 
         flights: []
      }
@@ -20,7 +19,6 @@ class SearchFlights extends Component {
     render() { 
         return ( 
             <>
-                <SearchForm handleFlightSearch={this.handleFlightSearch}/>
                 <label htmlFor="origin">Origin Place</label>
                 <SearchPlace />
                 <label htmlFor="destination">Destination Place</label>
@@ -30,4 +28,4 @@ class SearchFlights extends Component {
     }
 }
  
-export default SearchFlights;
+export default FlightsList;
