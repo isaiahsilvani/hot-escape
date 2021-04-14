@@ -8,9 +8,10 @@ class SearchPlace extends Component {
       query: '',
     }
   }
-
+  // purpose of this component is to take query in state  and return a selectable list
+  // of valid places to go to
   sendRequest = async () => {
-    const query = "Miami";
+    const query = this.state.formData.query;
     const results = await flightAPI.searchPlace(query);
     console.log(query, results.Places);
     this.setState({places: results.Places})
@@ -24,14 +25,24 @@ class SearchPlace extends Component {
   }
 
   render() { 
-    const { test } = this.state.formData
+
     return ( 
       <>
-        <div>{this.state.places.map((place, idx) =>
-          <p key={idx}>
-            {place.PlaceName}
-          </p>)}
-        </div>
+      {this.state.places.length ?
+        <select
+        size={this.state.places.length}
+      >
+        {this.state.places.map((place, idx) =>
+        <option key={idx}>
+          {place.PlaceName}
+        </option>)}
+      </select>
+
+      :
+      <></>
+    
+    }
+        
         <input 
             value={this.state.formData.query} 
             type="text" 
