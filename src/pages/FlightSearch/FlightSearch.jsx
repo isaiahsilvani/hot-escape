@@ -34,10 +34,16 @@ class FlightSearch extends Component {
               title="Origin Place" 
               selectPlace={this.setOriginPlace}
           />
-            <SearchPlace 
-              title="Destination Place" 
-              selectPlace={this.setDestinationPlace}
-            />
+          <SearchPlace 
+            title="Destination Place" 
+            selectPlace={this.setDestinationPlace}
+          />
+          { this.state.originCode && 
+            <p>Origin Code: {this.state.originCode}</p>
+          }
+          { this.state.destinationCode && 
+            <p>Destination Code: {this.state.destinationCode}</p>
+          }
         </div>
         );
     }
