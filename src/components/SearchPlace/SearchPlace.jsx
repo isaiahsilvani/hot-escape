@@ -16,15 +16,15 @@ class SearchPlace extends Component {
     this.setState({places: results.Places})
   }
 
-  handleChange = e => {
-    const formData = {...this.state.formData, [e.target.name]: e.target.value};
-    this.setState({
-      formData,
-      invalidForm: !this.formRef.current.checkValidity()
-    });
-  };
+  handleChange = (e) => {
+    const formData = {
+      ...this.state.formData, [e.target.name]: e.target.value
+    }
+    this.setState({ formData })
+  }
 
   render() { 
+    const { test } = this.state.formData
     return ( 
       <>
         <div>{this.state.places.map((place, idx) =>
@@ -32,6 +32,12 @@ class SearchPlace extends Component {
             {place.PlaceName}
           </p>)}
         </div>
+        <input 
+            value={this.state.formData.query} 
+            type="text" 
+            name="query"
+            onChange={this.handleChange}
+          />
         <button onClick={this.sendRequest}>Send</button>
       </>
      );
