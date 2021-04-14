@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import * as flightAPI from '../../services/flightService'
+import styles from './SearchPlace.module.css'
 
 class SearchPlace extends Component {
   state = { 
@@ -27,30 +28,31 @@ class SearchPlace extends Component {
   render() { 
 
     return ( 
-      <>
-      {this.state.places.length ?
-        <select
-        size={this.state.places.length}
-      >
-        {this.state.places.map((place, idx) =>
-        <option key={idx}>
-          {place.PlaceName}
-        </option>)}
-      </select>
-
-      :
-      <></>
-    
-    }
-        
+      <div className={styles.box}>
+        <h3>{this.props.title}</h3>
         <input 
             value={this.state.formData.query} 
             type="text" 
             name="query"
             onChange={this.handleChange}
-          />
+            />
         <button onClick={this.sendRequest}>Send</button>
-      </>
+          {this.state.places.length ?
+            <select
+              size={this.state.places.length}
+            >
+            {this.state.places.map((place, idx) =>
+              <option 
+                key={idx}
+                onClick={() => this.props.selectPlace(place.PlaceId)}
+              >
+                {place.PlaceName}
+              </option>)}
+            </select>
+          :
+          ''
+          } 
+      </div>
      );
   }
 }
