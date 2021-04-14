@@ -1,49 +1,83 @@
 import React, { Component } from 'react';
 import SearchPlace from '../../components/SearchPlace/SearchPlace'
 import * as flightsAPI from '../../services/flightService'
+import styles from './FlightSearch.module.css'
 
 class FlightSearch extends Component {
     state = { 
       flightResults: [],
-      originCode: '',
-      destinationCode: '',
+      originFlight: {
+        code: '',
+        place: '',
+      },
+      destinationFlight: {
+        code: '',
+        place: '',
+      },
       flightDate: '',
      }
 
-    setOriginPlace = (placeId) => {
-      this.setState({originCode: placeId})
+    setOriginPlace = (placeId, placeName) => {
+      const originFlight = {
+        code: placeId,
+        place: placeName,
+      }
+      this.setState({originFlight})
     }
 
-    setDestinationPlace = (placeId) => {
-      this.setState({destinationCode: placeId})
+    setDestinationPlace = (placeId, placeName) => {
+      const destinationFlight = {
+        code: placeId,
+        place: placeName,
+      }
+      this.setState({destinationFlight})
     }
-    // handleFlightSearch = async newFlightData => {
-    //     console.log('handleFlightSearch hit')
-    //     const flights = await flightsAPI.create(newFlightData)
-    //     console.log(flights)
-    //     this.setState(state => ({
-    //         flights: flights
-    //     }))
-    // }
+
+    handleChange = e => {
+      this.setState({flightDate: e.target.value})
+    }
+
 
     render() { 
+      const {flightResults, originFlight, destinationFlight} = this.state;
       return ( 
-        <div className="box">
+        <div className={styles.box}>
 
           <SearchPlace 
               title="Origin Place" 
               selectPlace={this.setOriginPlace}
           />
+          <div className={styles.flightDate}>
+            <label htmlFor="flightDate">Date of Departure</label><br />
+            <input 
+              type='date' 
+              name='flightDate' 
+              onChange={this.handleChange}
+            />
+          </div>
           <SearchPlace 
             title="Destination Place" 
             selectPlace={this.setDestinationPlace}
           />
-          { this.state.originCode && 
-            <p>Origin Code: {this.state.originCode}</p>
+          { originFlight.code && 
+            <p>
+              Origin Code: {originFlight.code}<br />
+              Origin Place: {originFlight.place}
+            </p>
           }
-          { this.state.destinationCode && 
-            <p>Destination Code: {this.state.destinationCode}</p>
+          { destinationFlight.code && 
+            <p>
+              Destination Code: {destinationFlight.code}<br />
+              Destination Place: {destinationFlight.place}
+            </p>
           }
+          <div className={styles.flightResults}>
+            <ul>
+              {flightResults.length ? 
+                'Map them' :
+                'No Results'}
+            </ul>
+          </div>
         </div>
         );
     }
