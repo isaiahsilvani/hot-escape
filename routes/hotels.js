@@ -11,7 +11,7 @@ router.get('/:id', checkAuth, hotelsCtrl.show);
 router.post('/', checkAuth, hotelsCtrl.create);
 router.put('/:id', checkAuth, hotelsCtrl.update);
 router.delete('/:id', checkAuth, hotelsCtrl.delete);
-router.post('/add', checkAuth, hotelsCtrl.addHotel)
+
 
 function checkAuth(req, res, next) {
   if (req.user) return next();

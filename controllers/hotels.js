@@ -2,10 +2,10 @@ const Hotel = require('../models/hotel')
 
 module.exports = {
   create,
-  //index,
-  //update,
-  //delete: deleteHotel,
-  //show
+  index,
+  update,
+  delete: deleteHotel,
+  show
 }
 
 function create(req, res) {
@@ -13,6 +13,22 @@ function create(req, res) {
   Hotel.create(req.body)
   .then(hotel => {res.json(hotel)})
   .catch(err => {res.json(err)})
+}
+
+function index(req,res) {
+
+}
+
+function show(req, res) {
+
+}
+
+function deleteHotel(req, res){
+
+}
+
+function update(req, res){
+
 }
 
 
