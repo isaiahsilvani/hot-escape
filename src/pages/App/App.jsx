@@ -7,6 +7,7 @@ import Users from '../Users/Users'
 import authService from "../../services/authService"
 import FlightSearch from '../FlightSearch/FlightSearch'
 import HotelSearch from '../HotelSearch/HotelSearch.jsx'
+import AttractionSearch from '../AttractionSearch/AttractionSearch'
 import "./App.css";
 
 export default function App (props) {
@@ -70,6 +71,10 @@ export default function App (props) {
       <Route
         exact path='/hotels'
         render={()=> <HotelSearch />}
+      />
+        <Route
+        exact path='/attractions'
+        render={()=> <AttractionSearch />}
       />
     </>
   );
