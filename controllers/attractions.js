@@ -2,10 +2,10 @@ const Attraction = require('../models/attraction')
 
 module.exports = {
   create,
-  //index,
-  //show,
-  //update
-  //delete: deleteAttraction
+  index,
+  show,
+  update,
+  delete: deleteAttraction
 }
 
 function create(req, res) {
@@ -13,4 +13,20 @@ function create(req, res) {
   Attraction.create(req.body)
   .then(attraction => {res.json(attraction)})
   .catch(err => {res.json(err)})
+}
+
+function index(req,res) {
+
+}
+
+function show(req, res) {
+
+}
+
+function update(req, res){
+
+}
+
+function deleteAttraction(req, res){
+
 }
