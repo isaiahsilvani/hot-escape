@@ -1,0 +1,55 @@
+{
+  Quotes: [
+    {
+      QuoteId: 1,
+      MinPrice: 34,
+      Direct: true,
+      OutboundLeg: [Object],
+      QuoteDateTime: '2021-04-16T16:29:00'
+    }
+  ],
+  Carriers: [ { CarrierId: 1065, Name: 'Frontier Airlines' } ],
+  Places: [
+    {
+      Name: 'New York Newark',
+      Type: 'Station',
+      PlaceId: 50290,
+      IataCode: 'EWR',
+      SkyscannerCode: 'EWR',
+      CityName: 'New York',
+      CityId: 'NYCA',
+      CountryName: 'United States'
+    },
+    {
+      Name: 'Miami International',
+      Type: 'Station',
+      PlaceId: 68033,
+      IataCode: 'MIA',
+      SkyscannerCode: 'MIA',
+      CityName: 'Miami',
+      CityId: 'MIAA',
+      CountryName: 'United States'
+    }
+  ],
+  Currencies: [
+    {
+      Code: 'USD',
+      Symbol: '$',
+      ThousandsSeparator: ',',
+      DecimalSeparator: '.',
+      SymbolOnLeft: true,
+      SpaceBetweenAmountAndSymbol: false,
+      RoundingCoefficient: 0,
+      DecimalDigits: 2
+    }
+  ],
+  Routes: [
+    {
+      QuoteDateTime: '2021-04-16T16:29:00',
+      Price: 34,
+      OriginId: 68033,
+      DestinationId: 50290,
+      QuoteIds: [Array]
+    }
+  ]
+}
