@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import "./Login.css";
+import './Login.css';
 import authService from '../../services/authService';
 import { useForm } from '../../hooks/useForm';
 
@@ -25,8 +25,9 @@ export default function LoginPage(props) {
   };
 
   return (
-    <main className="Login">
-      <h3>Log In</h3>
+    <main class="Login">
+      <h3>Spicy Adventures Await</h3>
+      <label htmlFor="email">Your Email</label>
       <form autoComplete="off" onSubmit={handleSubmit}>
         <input
           type="text"
@@ -37,7 +38,8 @@ export default function LoginPage(props) {
           onChange={handleChange}
           required
         />
-        <label htmlFor="email">Email</label>
+        <label htmlFor="password">Your Password</label>
+ 
         <input
           type="password"
           autoComplete="off"
@@ -47,12 +49,12 @@ export default function LoginPage(props) {
           onChange={handleChange}
           required
         />
-        <label htmlFor="password">Password</label>
+        
         <button className="btn green">Log In</button>
-        <Link className="btn red" to="/">
-          Cancel
-        </Link>
       </form>
+      <Link className="btn red" id='cancel' to="/">
+        Go Back
+      </Link>
     </main>
   );
 }
