@@ -17,9 +17,14 @@
   color: blue;
   display: flex;
   flex-direction: row;
+  align-content: center;
 }
 
-.flightList {
+.placeCard {
   display: flex;
   flex-direction: column-reverse;
+  background-color: whitesmoke;
+  border: 1px solid black;
+  padding: 5px;
+  margin: 5px;
 }

@@ -23,6 +23,10 @@ export default function FlightSearch(props) {
     setFlightResults(flightResults)
   }
 
+  const addFlight = () => {
+    console.log('add flight hit')
+  }
+
   return ( 
     <div className={styles.box}>
 
@@ -57,21 +61,29 @@ export default function FlightSearch(props) {
         </p>
       }
      <div className={styles.flightResults}>
-        <ul className={styles.flightList}>
+        <div className={styles.flightList}>
+          <div className={styles.flightPrice}>
+            {flightResults.Carriers?.length ?  
+            <>
+              <p>Flight Price: {flightResults.Quotes[0].MinPrice}</p>
+              <button onClick={addFlight}></button>
+            </> : 'No Flights Listed'}
+          </div>
           {flightResults.Carriers?.length &&
           // reverse order so origin and destination appear correctly
+
             flightResults.Places.reverse().map((place, idx) => 
-            <>
+            
               <div className={styles.placeCard}key={idx}>
-                <h3>Airport: {place.Name}</h3>
-                <h3>Type: {place.Type}</h3>
-                <h3>City: {place.CityName}</h3>
                 <h3>Country: {place.CountryName}</h3>
+                <h3>City: {place.CityName}</h3>
+                <h3>Type: {place.Type}</h3>
+                <h3>Airport: {place.Name}</h3>
               </div>
-              
-            </>
-            )}
-        </ul>
+            
+            )
+            }
+        </div>
       </div>
     </div>
     );
