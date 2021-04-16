@@ -4,6 +4,7 @@ const flightsCtrl = require('../controllers/flights');
 
 /*---------- Public Routes ----------*/
 router.post('/place', flightsCtrl.searchPlace)
+router.post('/search', flightsCtrl.searchFlights)
 
 /*---------- Protected Routes ----------*/
 // router.use(require("../config/auth"));

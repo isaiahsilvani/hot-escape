@@ -22,3 +22,15 @@ export function searchPlace(query) {
     .then(res => res.json())
 }
 
+export function searchFlights(flightsData) {
+    console.log('flights data', flightsData)
+    return fetch(BASE_URL + 'search', {
+        method: "POST",
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify({flightsData})
+    }, {mode: "cors"})
+    .then(res => res.json())
+}
+
