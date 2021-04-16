@@ -14,4 +14,12 @@
 
 .flightResults {
   padding: 40px;
+  color: blue;
+  display: flex;
+  flex-direction: row;
+}
+
+.flightList {
+  display: flex;
+  flex-direction: column-reverse;
 }

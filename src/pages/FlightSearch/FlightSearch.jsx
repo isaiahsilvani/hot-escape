@@ -56,9 +56,21 @@ export default function FlightSearch(props) {
           Destination Place: {destinationPlace.place}
         </p>
       }
-      <div className={styles.flightResults}>
-        <ul>
-          {flightResults.Carriers?.length ? 'Map them' : 'No Results'}
+     <div className={styles.flightResults}>
+        <ul className={styles.flightList}>
+          {flightResults.Carriers?.length &&
+          // reverse order so origin and destination appear correctly
+            flightResults.Places.reverse().map((place, idx) => 
+            <>
+              <div className={styles.placeCard}key={idx}>
+                <h3>Airport: {place.Name}</h3>
+                <h3>Type: {place.Type}</h3>
+                <h3>City: {place.CityName}</h3>
+                <h3>Country: {place.CountryName}</h3>
+              </div>
+              
+            </>
+            )}
         </ul>
       </div>
     </div>

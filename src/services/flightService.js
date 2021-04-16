@@ -11,7 +11,6 @@ export function create(flightsData) {
 }
 
 export function searchPlace(query) {
-    console.log("jfioeaphfei", query)
     return fetch(BASE_URL + 'place', {
         method: "POST",
         headers: {
@@ -23,7 +22,6 @@ export function searchPlace(query) {
 }
 
 export function searchFlights(flightsData) {
-    console.log('flights data', flightsData)
     return fetch(BASE_URL + 'search', {
         method: "POST",
         headers: {
