@@ -19,12 +19,13 @@ input {
   width: 30%;
   height: 2.1em;
   border-radius: 20px;
-  margin: 1em;
+  margin-top: 1em;
 }
 
 label {
   font-size: 1.8em;
   font-weight: 400;
+  margin-top: 1em;
   letter-spacing: 0.1em
 }
 
@@ -46,6 +47,18 @@ button:hover {
   font-size: 2em;
   color: black;
   text-decoration: none;
+}
+
+#signup {
+  font-size: 1.3em;
+  text-decoration: none;
+  margin-top: 0.5em;
+  margin-bottom: 1.3em;
+  color: black;
+}
+
+#signup:hover {
+  text-decoration: underline;
 }
 
 #cancel:hover {
