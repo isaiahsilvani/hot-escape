@@ -7,6 +7,7 @@ import Users from '../Users/Users'
 import authService from "../../services/authService"
 import FlightSearch from '../FlightSearch/FlightSearch'
 import "./App.css";
+import CreateItinerary from "../Itinerary/CreateItinerary/CreateItinerary";
 
 export default function App (props) {
   const [user, setUser] = useState(authService.getUser())
@@ -18,7 +19,6 @@ export default function App (props) {
 
   const handleLogout = () => {
     authService.logout();
-    // this.setState({ user: null });
     setUser(null);
     history.push("/");
   }
@@ -65,6 +65,10 @@ export default function App (props) {
       <Route
         exact path='/flights'
         render={()=> <FlightSearch />}
+      />
+      <Route
+        exact path='/itinerary/new'
+        render={()=> <CreateItinerary />}
       />
     </>
   );

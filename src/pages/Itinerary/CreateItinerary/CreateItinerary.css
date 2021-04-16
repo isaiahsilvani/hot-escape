@@ -1,0 +1,16 @@
+.itinerary-form form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.itinerary-form form > * {
+  margin: 1rem;
+}
+.itinerary-form form > label {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.6rem;
+}
