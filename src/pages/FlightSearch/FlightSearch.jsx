@@ -37,6 +37,11 @@ class FlightSearch extends Component {
       this.setState({flightDate: e.target.value})
     }
 
+    handleFlightsSearch = async () => {
+      const flightResults = await flightsAPI.searchFlights(this.state)
+      this.setState({flightResults})
+    }
+
 
     render() { 
       const {flightResults, originFlight, destinationFlight} = this.state;
@@ -59,6 +64,7 @@ class FlightSearch extends Component {
             title="Destination Place" 
             selectPlace={this.setDestinationPlace}
           />
+          <button onClick={this.handleFlightsSearch}>Search Flights</button>
           { originFlight.code && 
             <p>
               Origin Code: {originFlight.code}<br />
