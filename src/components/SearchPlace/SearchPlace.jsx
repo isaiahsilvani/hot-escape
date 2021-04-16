@@ -33,7 +33,7 @@ class SearchPlace extends Component {
     this.setState({ formData })
   }
   render() { 
-
+    const {places} = this.state;
     return ( 
       <div className={styles.box}>
         <h3>{this.props.title}</h3>
@@ -46,7 +46,7 @@ class SearchPlace extends Component {
         <button onClick={this.sendRequest}>Send</button>
         {this.state.places.length ?
           <select
-            size={this.state.places.length}
+            size={this.state.places.length > 6 ? 6 : places.length}
             name="placeList"
             onChange={this.handlePlaceChange}
           >
