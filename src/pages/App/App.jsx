@@ -29,6 +29,7 @@ export default function App (props) {
     setUser(authService.getUser());
   }
 
+
   return (
     <>
       <NavBar user={user} handleLogout={handleLogout} />
