@@ -11,7 +11,6 @@ export function create(flightsData) {
 }
 
 export function searchPlace(query) {
-    console.log("jfioeaphfei", query)
     return fetch(BASE_URL + 'place', {
         method: "POST",
         headers: {
@@ -23,7 +22,6 @@ export function searchPlace(query) {
 }
 
 export function searchFlights(flightsData) {
-    console.log('flights data', flightsData)
     return fetch(BASE_URL + 'search', {
         method: "POST",
         headers: {
@@ -32,5 +30,15 @@ export function searchFlights(flightsData) {
         body: JSON.stringify({flightsData})
     }, {mode: "cors"})
     .then(res => res.json())
+}
+
+export function addFlight(flightData) {
+    return fetch(BASE_URL + 'add', {
+        method: "POST",
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify({flightData})
+    }, {mode: "cors"})
 }
 

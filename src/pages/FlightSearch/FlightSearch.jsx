@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import SearchPlace from '../../components/SearchPlace/SearchPlace'
 import * as flightsAPI from '../../services/flightService'
 import styles from './FlightSearch.module.css'
@@ -21,6 +21,10 @@ export default function FlightSearch(props) {
     const flightData = {originPlace, destinationPlace, flightDate}
     const flightResults = await flightsAPI.searchFlights(flightData)
     setFlightResults(flightResults)
+  }
+
+  const addFlight = () => {
+    flightsAPI.addFlight(flightResults)
   }
 
   return ( 
@@ -56,10 +60,30 @@ export default function FlightSearch(props) {
           Destination Place: {destinationPlace.place}
         </p>
       }
-      <div className={styles.flightResults}>
-        <ul>
-          {flightResults.Carriers?.length ? 'Map them' : 'No Results'}
-        </ul>
+     <div className={styles.flightResults}>
+        <div className={styles.flightList}>
+          <div className={styles.flightPrice}>
+            {flightResults.Carriers?.length ?  
+            <>
+              <p>Min Flight Price: {flightResults.Quotes[0].MinPrice}</p>
+              <button onClick={addFlight}>Add Flight</button>
+            </> : 'No Flights Listed'}
+          </div>
+          {flightResults.Carriers?.length &&
+          // reverse order so origin and destination appear correctly
+
+            flightResults.Places.reverse().map((place, idx) => 
+            
+              <div className={styles.placeCard}key={idx}>
+                <h3>Country: {place.CountryName}</h3>
+                <h3>City: {place.CityName}</h3>
+                <h3>Type: {place.Type}</h3>
+                <h3>Airport: {place.Name}</h3>
+              </div>
+            
+            )
+            }
+        </div>
       </div>
     </div>
     );

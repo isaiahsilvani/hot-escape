@@ -6,6 +6,8 @@ import Login from "../Login/Login";
 import Users from '../Users/Users'
 import authService from "../../services/authService"
 import FlightSearch from '../FlightSearch/FlightSearch'
+import HotelSearch from '../HotelSearch/HotelSearch.jsx'
+import AttractionSearch from '../AttractionSearch/AttractionSearch'
 import "./App.css";
 import CreateItinerary from "../Itinerary/CreateItinerary/CreateItinerary";
 
@@ -69,6 +71,14 @@ export default function App (props) {
       <Route
         exact path='/itinerary/new'
         render={()=> <CreateItinerary />}
+      />
+      <Route
+        exact path='/hotels'
+        render={()=> <HotelSearch />}
+      />
+        <Route
+        exact path='/attractions'
+        render={()=> <AttractionSearch />}
       />
     </>
   );
