@@ -48,18 +48,6 @@ export default function FlightSearch(props) {
         selectPlace={setDestinationPlace}
       />
       <button onClick={handleFlightsSearch}>Search Flights</button>
-      { originPlace.code && 
-        <p>
-          Origin Code: {originPlace.code}<br />
-          Origin Place: {originPlace.place}
-        </p>
-      }
-      { destinationPlace.code && 
-        <p>
-          Destination Code: {destinationPlace.code}<br />
-          Destination Place: {destinationPlace.place}
-        </p>
-      }
      <div className={styles.flightResults}>
         <div className={styles.flightList}>
           <div className={styles.flightPrice}>
