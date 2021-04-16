@@ -5,7 +5,7 @@ import styles from './FlightSearch.module.css'
 
 class FlightSearch extends Component {
     state = { 
-      flightResults: [],
+      flightResults: {},
       originFlight: {
         code: '',
         place: '',
@@ -79,9 +79,7 @@ class FlightSearch extends Component {
           }
           <div className={styles.flightResults}>
             <ul>
-              {flightResults.length ? 
-                'Map them' :
-                'No Results'}
+              {this.state.flightResults.Carriers ? 'Map them' : 'No Results'}
             </ul>
           </div>
         </div>
