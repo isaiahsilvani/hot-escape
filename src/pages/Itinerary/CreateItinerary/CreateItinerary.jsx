@@ -14,13 +14,15 @@ export default function CreateItinerary(props){
     origin: '',
     destination: '',
   })
+  const [message, setMessage] = useState('');
 
   function getToday() {
     return new Date().toISOString().split('T')[0]
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    await itineraryAPI.create
 
   }
 
@@ -76,6 +78,7 @@ export default function CreateItinerary(props){
             disabled={invalidForm}>
           Create</button>
         </form>
+        <p>{message}</p>
       </div>
     </main>
   )
