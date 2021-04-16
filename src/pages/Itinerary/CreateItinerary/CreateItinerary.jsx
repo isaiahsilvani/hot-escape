@@ -22,7 +22,12 @@ export default function CreateItinerary(props){
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await itineraryAPI.create
+    try{
+      await itineraryAPI.addItinerary({formData})
+      history.push("/itineraries");
+    } catch (err) {
+      setMessage(err.message)
+    }
 
   }
 

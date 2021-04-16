@@ -15,26 +15,15 @@ const flightSchema = new Schema({
 });
 
 const itinerarySchema = new Schema({
-  startDate: {
-    type: Date,
-    required: true,
-  },
-  endDate:  {
-    type: Date,
-    required: true,
-  },
-  origin: {
-    type: String,
-    required: true,
-  },
-  destination: {
-    type: String,
-    required: true,
-  },
+  startDate: { type: Date, },
+  endDate:  { type: Date, },
+  origin: { type: String, },
+  destination: { type: String, },
 
   flights: [flightSchema],
   hotels: [],
   rentals: [],
+  attractions: [],
 
 }, {
   timestamps: true
