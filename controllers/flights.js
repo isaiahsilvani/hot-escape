@@ -10,8 +10,14 @@ module.exports = {
   // index,
   searchFlights,
   searchPlace,
+  addFlight
   // show,
   // delete: deleteFlight,
+}
+
+function addFlight(req, res) {
+  console.log('add flight hit')
+  console.log(req.body.flightData)
 }
 
 function searchFlights(req, res) {

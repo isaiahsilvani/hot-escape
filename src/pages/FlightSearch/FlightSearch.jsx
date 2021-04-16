@@ -24,7 +24,7 @@ export default function FlightSearch(props) {
   }
 
   const addFlight = () => {
-    console.log('add flight hit')
+    flightsAPI.addFlight(flightResults)
   }
 
   return ( 
@@ -65,8 +65,8 @@ export default function FlightSearch(props) {
           <div className={styles.flightPrice}>
             {flightResults.Carriers?.length ?  
             <>
-              <p>Flight Price: {flightResults.Quotes[0].MinPrice}</p>
-              <button onClick={addFlight}></button>
+              <p>Min Flight Price: {flightResults.Quotes[0].MinPrice}</p>
+              <button onClick={addFlight}>Add Flight</button>
             </> : 'No Flights Listed'}
           </div>
           {flightResults.Carriers?.length &&

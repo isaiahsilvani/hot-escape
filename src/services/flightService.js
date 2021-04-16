@@ -32,3 +32,13 @@ export function searchFlights(flightsData) {
     .then(res => res.json())
 }
 
+export function addFlight(flightData) {
+    return fetch(BASE_URL + 'add', {
+        method: "POST",
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify({flightData})
+    }, {mode: "cors"})
+}
+
