@@ -49,7 +49,7 @@ export default function LoginPage(props) {
           onChange={handleChange}
           required
         />
-          <Link id='signup' className="btn red" to="/">
+          <Link id='signup' className="btn red" to="/signup">
               Don't have an account? Sign up
           </Link>
         
