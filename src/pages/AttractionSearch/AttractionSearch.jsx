@@ -1,7 +1,10 @@
 import React, {Component, useState, useRef, useEffect } from 'react';
+import { useHistory } from 'react-router';
 import { useForm } from '../../hooks/useForm';
+import * as attractionAPI from '../../services/attractionService'
 
 export default function AddAttraction(props){
+  const history = useHistory();
   const [invalidForm, setValidForm] = useState(true);
   const [state, handleChange]       = useForm({
     name: '',
@@ -13,16 +16,21 @@ export default function AddAttraction(props){
   useEffect(() => {
     formRef.current.checkValidity() ? setValidForm(false) : setValidForm(true);
   });
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try{
+      console.log(state)
+      await attractionAPI.addAttraction(state)
+      history.push("/attractions");
+    } catch (err) {
+      console.log(err.message)
+    }
+  }
 
   return (
     <>
       <h1>Add Attraction</h1>
-      <form  autoComplete="off" ref={formRef} onSubmit={(e) => {
-        e.preventDefault()
-        console.log(state, ' this is state')
-        props.handleAddAttraction(state);
-
-      }}>
+      <form  autoComplete="off" ref={formRef} onSubmit={handleSubmit}>
         <div className="form-group">
           <label>Atrraction's Name</label>
           <input
