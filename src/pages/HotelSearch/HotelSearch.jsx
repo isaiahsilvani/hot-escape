@@ -2,8 +2,10 @@ import React, { useState, useEffect, useRef } from 'react'
 import styles from './HotelSearch.module.css'
 import { useHistory } from 'react-router-dom'
 import { useForm } from '../../hooks/useForm'
+import * as hotelAPI from '../../services/hotelService'
 
 export default function AddHotel(props) {
+    const history = useHistory();
 	const [invalidForm, setValidForm] = useState(true);
     const [state, handleChange] = useForm({
         name: '',
@@ -19,15 +21,20 @@ export default function AddHotel(props) {
         formRef.current.checkValidity() ? setValidForm(false) : setValidForm(true);
       });
 
+      const handleSubmit = async (e) => {
+          e.preventDefault();
+          try{
+              await hotelAPI.addHotel(state)
+              history.pushState("/hotels")
+          } catch (err) {
+              console.log(err.message)
+          }
+      }
+
     return (
 		<>
       <h1>Add Hotel</h1>
-      <form  autoComplete="off" ref={formRef} onSubmit={(e) => {
-        e.preventDefault()
-        console.log(state, ' this is state')
-        props.handleAddHotel(state);
-
-      }}>
+      <form  autoComplete="off" ref={formRef} onSubmit={handleSubmit}>
         <div className="form-group">
           <label>Hotel Name (required)</label>
           <input
