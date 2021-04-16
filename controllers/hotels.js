@@ -14,3 +14,4 @@ function create(req, res) {
   .then(hotel => {res.json(hotel)})
   .catch(err => {res.json(err)})
 }
+
