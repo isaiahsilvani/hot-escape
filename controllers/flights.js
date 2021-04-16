@@ -15,8 +15,8 @@ module.exports = {
 }
 
 function searchFlights(req, res) {
-  const originCode = req.body.flightsData.originFlight.code;
-  const destinationCode = req.body.flightsData.destinationFlight.code;
+  const originCode = req.body.flightsData.originPlace.code;
+  const destinationCode = req.body.flightsData.destinationPlace.code;
   const departureDate = req.body.flightsData.flightDate;
 
 
