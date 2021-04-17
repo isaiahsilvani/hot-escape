@@ -11,10 +11,12 @@ const ItineraryList = () => {
         console.log('useEffect ran')
     })
 
-    return ( 
-        <div>
-            <h3>Itinerary list page</h3>
-        </div>
+    return (
+        <main>
+            <div>
+                <h3>Itinerary list page</h3>
+            </div>
+        </main>
      );
 }
  
