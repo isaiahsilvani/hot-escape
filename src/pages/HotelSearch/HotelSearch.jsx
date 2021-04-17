@@ -8,10 +8,10 @@ export default function AddHotel(props) {
     const history = useHistory();
 	const [invalidForm, setValidForm] = useState(true);
     const [state, handleChange] = useForm({
-        name: '',
+        name: 'Name',
         room: '000',
         checkInDate: getToday(),
-        checkOutDate: getToday(),
+        checkOutDate: getTomorrow(),
         price: '$0.00'
     })
     
@@ -23,6 +23,12 @@ export default function AddHotel(props) {
 
       function getToday() {
         return new Date().toISOString().split('T')[0]
+      }
+
+      function getTomorrow() {
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1)
+        return tomorrow.toISOString().split('T')[0]
       }
 
       const handleSubmit = async (e) => {
