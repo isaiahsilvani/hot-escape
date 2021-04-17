@@ -12,9 +12,9 @@ export function addItinerary(itineraryData) {
   .then(res => res.json())
 }
 
-export function getAll() {
+export function getAll(userId) {
   console.log('get ')
-  return fetch(BASE_URL, {
+  return fetch(BASE_URL + userId, {
     headers: { Authorization: "Bearer " + tokenService.getToken() }
   })
   .then(res => res.json());

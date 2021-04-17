@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom'
 import * as itineraryAPI from '../../../services/itineraryService';
 
-const ItineraryList = () => {
+const ItineraryList = ({user}) => {
 
     const [itineraryList, setItineraryList] = useState([]);
     
     useEffect(() => {
         async function fetchData() {
           // You can await here
-          const itineraryList = await itineraryAPI.getAll();
+          const itineraryList = await itineraryAPI.getAll(user._id);
+          console.log(itineraryList)
           setItineraryList(itineraryList)
           // ...
         }
@@ -19,7 +21,14 @@ const ItineraryList = () => {
         <main>
             <div>
                 <h3>Itinerary list page</h3>
-                {itineraryList.length ? 'map' : 'no list :('}
+                {itineraryList.length ?
+                    
+                    itineraryList.map(itin => (
+                        <p>
+                            <Link to={'/itinerary/' + itin._id} >Link</Link>
+                        </p>
+                    ))
+                : 'no list :('}
             </div>
         </main>
      );

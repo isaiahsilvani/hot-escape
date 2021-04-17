@@ -36,6 +36,7 @@ const itinerarySchema = new Schema({
   endDate:  { type: Date, },
   origin: { type: String, },
   destination: { type: String, },
+  owner: {type: Schema.Types.ObjectId, ref: "User" },
 
   flights: [flightSchema],
   hotels: [hotelSchema],

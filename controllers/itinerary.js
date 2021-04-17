@@ -9,8 +9,8 @@ module.exports = {
 }
 
 function index(req, res) {
-  console.log('hiii')
-  Itinerary.find({})
+  console.log('hiii', req.user._id)
+  Itinerary.find({owner: req.user._id})
   .then((itineraries) => {
     res.json(itineraries)
   })
