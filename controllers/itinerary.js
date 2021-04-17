@@ -5,12 +5,15 @@ module.exports = {
   create,
   update,
   delete: deleteItinerary,
-  update,
   show,
 }
 
 function index(req, res) {
-
+  console.log('hiii')
+  Itinerary.find({})
+  .then((itineraries) => {
+    res.json(itineraries)
+  })
 }
 
 function create(req,res) {
@@ -33,9 +36,6 @@ function deleteItinerary(req,res) {
 
 }
 
-function update(req,res) {
-
-}
 
 function show(req,res) {
 
