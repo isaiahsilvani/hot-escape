@@ -7,9 +7,9 @@ const NavBar = ({ user, handleLogout }) => {
   return (
     <nav>
       <ul>
-        <li><NavLink to="/" onClick={handleLogout}><img src={logo} className="logo" /></NavLink></li>
-        <li><NavLink to="/itinerary" onClick={handleLogout}>My Vacations</NavLink></li>
-        <li><NavLink to="/itinerary/new" onClick={handleLogout}>New Vacation</NavLink></li>
+        <li><NavLink to="/"><img src={logo} className="logo" /></NavLink></li>
+        <li><NavLink to="/itinerary">My Vacations</NavLink></li>
+        <li><NavLink to="/itinerary/new">New Vacation</NavLink></li>
       </ul>
       {user ?
         <ul className="nav-login">
