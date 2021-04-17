@@ -7,8 +7,8 @@ const itineraryControl = require('../controllers/itinerary');
 
 /*---------- Protected Routes ----------*/
 router.use(require("../config/auth"));
-router.get("/", checkAuth, itineraryControl.index)
-router.get("/:id", checkAuth, itineraryControl.show)
+router.get("/:uid", checkAuth, itineraryControl.index)
+router.get("/show/:id", checkAuth, itineraryControl.show)
 router.post("/", checkAuth, itineraryControl.create)
 router.put("/", checkAuth, itineraryControl.update)
 router.delete("/:id", checkAuth, itineraryControl.delete)

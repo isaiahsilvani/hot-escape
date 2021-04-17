@@ -4,7 +4,7 @@ import { useForm } from '../../../hooks/useForm'
 import './CreateItinerary.css'
 import * as itineraryAPI from '../../../services/itineraryService'
 
-export default function CreateItinerary(props){
+export default function CreateItinerary({user}){
   const history = useHistory();
   const [invalidForm, setValidForm] = useState(true);
   const formRef = useRef();
@@ -13,6 +13,7 @@ export default function CreateItinerary(props){
     endDate: getToday(),
     origin: '',
     destination: '',
+    owner: user._id,
   })
   const [message, setMessage] = useState('');
 

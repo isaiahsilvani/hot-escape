@@ -73,11 +73,11 @@ export default function App (props) {
       />
       <Route
         exact path='/itinerary/new'
-        render={()=> <CreateItinerary />}
+        render={()=> <CreateItinerary user={user} />}
       />
       <Route
         exact path='/itinerary'
-        render={()=> <ItineraryList />}
+        render={()=> <ItineraryList user={user} />}
       />
       <Route
         path='/itinerary/:id'
