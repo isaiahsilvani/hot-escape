@@ -9,10 +9,10 @@ export default function AddHotel(props) {
 	const [invalidForm, setValidForm] = useState(true);
     const [state, handleChange] = useForm({
         name: '',
-        room: '',
-        checkInDate: '',
-        checkOutDate: '',
-        price: ''
+        room: '000',
+        checkInDate: getToday(),
+        checkOutDate: getToday(),
+        price: '$0.00'
     })
     
     const formRef = useRef();
@@ -20,6 +20,10 @@ export default function AddHotel(props) {
     useEffect(() => {
         formRef.current.checkValidity() ? setValidForm(false) : setValidForm(true);
       });
+
+      function getToday() {
+        return new Date().toISOString().split('T')[0]
+      }
 
       const handleSubmit = async (e) => {
           e.preventDefault();
@@ -34,8 +38,8 @@ export default function AddHotel(props) {
     return (
 		<>
       <h1>Add Hotel</h1>
-      <form  autoComplete="off" ref={formRef} onSubmit={handleSubmit}>
-        <div className="form-group">
+      <form autoComplete="off" ref={formRef} onSubmit={handleSubmit}>
+        <div className="hotel-form">
           <label>Hotel Name (required)</label>
           <input
             className="form-control"
