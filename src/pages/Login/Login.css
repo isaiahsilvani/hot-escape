@@ -1,4 +1,12 @@
+.login {
+  background: rgba(255,255,255,.9);
+  max-width: 60%;
+  margin: 0 auto;
+  padding: 2rem;
+  border-radius: 2rem;
+}
 .login h3 {
+  margin: 0 0 1rem 0;
   font-size: 5em;
   font-weight: 350;
 }
