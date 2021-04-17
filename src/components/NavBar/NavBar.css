@@ -33,3 +33,7 @@ nav li:hover {
   text-decoration: underline;
   background: #eee;
 }
+
+img.logo {
+  height: 2rem;
+}

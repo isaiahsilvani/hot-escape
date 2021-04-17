@@ -1,12 +1,13 @@
 import React from 'react';
 import './NavBar.css'
+import logo from '../../img/spicy-wings.png'
 import { NavLink } from "react-router-dom";
 
 const NavBar = ({ user, handleLogout }) => {
   return (
     <nav>
-      <ul>  
-        <li><NavLink to="/" onClick={handleLogout}>Home</NavLink></li>
+      <ul>
+        <li><NavLink to="/" onClick={handleLogout}><img src={logo} className="logo" /></NavLink></li>
         <li><NavLink to="/itinerary" onClick={handleLogout}>My Vacations</NavLink></li>
         <li><NavLink to="/itinerary/new" onClick={handleLogout}>New Vacation</NavLink></li>
       </ul>
