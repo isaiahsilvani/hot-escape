@@ -30,7 +30,7 @@ const ItineraryList = ({user}) => {
           dateString = dateString.replace('-', '/')
           return dateString
       }
-
+      // COMMENT HERE
     return (
         <main>
             <div>
