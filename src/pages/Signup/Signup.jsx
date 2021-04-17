@@ -1,7 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
+import './Signup.css'
 import authService from "../../services/authService";
 import { useForm } from '../../hooks/useForm'
+
 
 export default function SignupForm(props) {
   const history = useHistory();
@@ -35,10 +37,11 @@ export default function SignupForm(props) {
   };
 
   return (
-    <main>
+    <main class="login">
       <div>
         <h3>Sign Up</h3>
         <form autoComplete="off" ref={formRef} onSubmit={handleSubmit}>
+        <label htmlFor="name">Name</label>
           <input
             type="text"
             autoComplete="off"
@@ -48,7 +51,7 @@ export default function SignupForm(props) {
             onChange={handleChange}
             required
           />
-          <label htmlFor="name">Name</label>
+          <label htmlFor="email">Email</label>
           <input
             type="text"
             autoComplete="off"
@@ -58,7 +61,7 @@ export default function SignupForm(props) {
             onChange={handleChange}
             required
           />
-          <label htmlFor="email">Email</label>
+          <label htmlFor="password">Password</label>
           <input
             type="password"
             autoComplete="off"
@@ -68,7 +71,7 @@ export default function SignupForm(props) {
             onChange={handleChange}
             required
           />
-          <label htmlFor="password">Password</label>
+          <label htmlFor="confirm">Confirm Password</label>
           <input
             type="password"
             autoComplete="off"
@@ -78,9 +81,13 @@ export default function SignupForm(props) {
             onChange={handleChange}
             required
           />
-          <label htmlFor="confirm">Confirm Password</label>
+          <Link id='signup' className="btn red" to="/login">
+            Already have an account? Log in
+          </Link>
           <button disabled={invalidForm}>Sign Up</button>
-          <Link to="/">Cancel</Link>
+                <Link className="btn red" id='cancel' to="/">
+        Go Back
+      </Link>
         </form>
       </div>
       <p>{message}</p>
