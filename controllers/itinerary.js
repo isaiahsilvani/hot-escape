@@ -21,7 +21,7 @@ function create(req,res) {
   try {
     Itinerary.create(req.body.formData)
     .then(itinerary => {
-      res.json({itinerary})
+      res.json(itinerary)
     })
   } catch (err) {
   res.status(400).send({'err': err.errmsg});

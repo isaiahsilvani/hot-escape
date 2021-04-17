@@ -42,7 +42,7 @@ export default function AddHotel(props) {
       }
 
     return (
-		<>
+		<main className="hotel-search">
       <h1>Add Hotel</h1>
       <form autoComplete="off" ref={formRef} onSubmit={handleSubmit}>
         <div className="hotel-form">
@@ -100,7 +100,7 @@ export default function AddHotel(props) {
           ADD HOTEL
         </button>
       </form>
-      </>
+    </main>
 	)
 }
 

@@ -25,7 +25,7 @@ export default function LoginPage(props) {
   };
 
   return (
-    <main class="login">
+    <main className="login">
       <h3>Spicy Adventures Await</h3>
       <label htmlFor="email">Your Email</label>
       <form autoComplete="off" onSubmit={handleSubmit}>
