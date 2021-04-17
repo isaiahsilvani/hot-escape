@@ -10,7 +10,8 @@ import HotelSearch from '../HotelSearch/HotelSearch.jsx'
 import AttractionSearch from '../AttractionSearch/AttractionSearch'
 import "./App.css";
 import CreateItinerary from "../Itinerary/CreateItinerary/CreateItinerary";
-import ItineraryList from '../Itinerary/ItineraryList/ItineraryList'
+import ItineraryList from '../Itinerary/ItineraryList/ItineraryList';
+import ItineraryView from '../Itinerary/ItineraryView/ItineraryView';
 
 export default function App (props) {
   const [user, setUser] = useState(authService.getUser())
@@ -77,6 +78,10 @@ export default function App (props) {
       <Route
         exact path='/itinerary'
         render={()=> <ItineraryList />}
+      />
+      <Route
+        path='/itinerary/:id'
+        render={()=> <ItineraryView />}
       />
       <Route
         exact path='/hotels'
