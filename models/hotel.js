@@ -6,7 +6,7 @@ const hotelSchema = new Schema({
     room:{type: String},
     checkInDate: {type:Number},
     checkOutDate:{type:Number},
-    Price:{type: Number},
+    price:{type: Number},
     
     }, {
       timestamps: true
