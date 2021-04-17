@@ -1,35 +1,30 @@
-h3 {
+.login h3 {
   font-size: 5em;
   font-weight: 350;
 }
 
-body {
-  margin: 0;
-  padding: 0;
-}
-
-form {
+.login form {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column
+  flex-direction: column;
 }
 
-input {
+.login input {
   width: 30%;
   height: 2.1em;
   border-radius: 20px;
   margin-top: 1em;
 }
 
-label {
+.login label {
   font-size: 1.8em;
   font-weight: 400;
   margin-top: 1em;
-  letter-spacing: 0.1em
+  letter-spacing: 0.1em;
 }
 
-button {
+.login button {
   width: 6em;
   height: 2em;
   font-size: 1.8em;
@@ -39,8 +34,8 @@ button {
   margin-bottom: 2em;
 }
 
-button:hover {
-  background-color: lightblue
+.login button:hover {
+  background-color: lightblue;
 }
 
 #cancel {
@@ -62,5 +57,5 @@ button:hover {
 }
 
 #cancel:hover {
-  font-style: italic
+  font-style: italic;
 }
