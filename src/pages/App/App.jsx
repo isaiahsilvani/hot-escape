@@ -46,28 +46,27 @@ export default function App (props) {
               <Signup handleSignupOrLogin={handleSignupOrLogin} />
             )}
           />
-          <Route path="/login"
+          <Route exact path="/login"
             render={() => (
               <Login handleSignupOrLogin={handleSignupOrLogin} />
             )}
           />
-          <Route path='/users' 
-          render={() =>
-              user ? <Users /> : <Redirect to="/login" /> }       
-          />
-          <Route path='/flights'
-            render={()=> <FlightSearch />}
-          />
-          <Route path='/itinerary/new'
-            render={()=> <CreateItinerary user={user} />}
-          />
+
+          <ProtectedRoute path='/itinerary/new'>
+            <CreateItinerary />
+          </ProtectedRoute>
+          
+          <ProtectedRoute path='/itinerary/:id'>
+            <ItineraryView />
+          </ProtectedRoute>
 
           <ProtectedRoute path='/itinerary'>
             <ItineraryList />
           </ProtectedRoute>
  
-          <Route path='/itinerary/:id'
-            render={()=> <ItineraryView />}
+
+          <Route path='/flights'
+            render={()=> <FlightSearch />}
           />
           <Route path='/hotels'
             render={()=> <HotelSearch />}
@@ -75,10 +74,12 @@ export default function App (props) {
           <Route path='/attractions'
             render={()=> <AttractionSearch />}
           />
+
           <Route exact path="/"
             render={() => (
               <main>
-                <h1>Welcome. This is an authorization template.</h1>
+                <h1>Welcome to Hot Escape.</h1>
+                <p>Plan your next Escape</p>
               </main>
             )}
           />
