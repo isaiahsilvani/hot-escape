@@ -26,6 +26,8 @@ const ItineraryList = ({user}) => {
                   break;
               }
           }
+          dateString = dateString.replace('-', '/')
+          dateString = dateString.replace('-', '/')
           return dateString
       }
 
