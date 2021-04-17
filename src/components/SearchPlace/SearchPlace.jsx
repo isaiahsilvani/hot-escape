@@ -9,9 +9,11 @@ export default function SearchPlace(props){
   // purpose of this component is to take query in state  and return a selectable list
   // of valid places to go to
   const sendRequest = async () => {
-    const results = await flightAPI.searchPlace(query);
-    // console.log(query, results.Places);
-    setPlaces(results.Places)
+    if (query !== "") {
+      const results = await flightAPI.searchPlace(query);
+      // console.log(query, results.Places);
+      setPlaces(results.Places)
+    }
   }
 
   return ( 
