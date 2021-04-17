@@ -17,15 +17,30 @@ const ItineraryList = ({user}) => {
         fetchData();
       }, []); // Or [] if effect doesn't need props or state
 
+      function parseDate(date) {
+          let dateString = ''
+          for (let i = 0; i < date.length; i++) {
+              if (date[i] !== 'T') {
+                dateString += date[i]
+              } else {
+                  break;
+              }
+          }
+          dateString = dateString.replace('-', '/')
+          dateString = dateString.replace('-', '/')
+          return dateString
+      }
+
     return (
         <main>
             <div>
-                <h3>Itinerary list page</h3>
+                <h3>Itinerary List Page</h3>
                 {itineraryList.length ?
                     
                     itineraryList.map(itin => (
                         <p>
-                            <Link to={'/itinerary/' + itin._id} >Link</Link>
+                            <Link to={'/itinerary/' + itin._id} >From {itin.origin} to {itin.destination}</Link><br />
+                            <p>{parseDate(itin.startDate)} - {parseDate(itin.endDate)}</p>
                         </p>
                     ))
                 : 'no list :('}
