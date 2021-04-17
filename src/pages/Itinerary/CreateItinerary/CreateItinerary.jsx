@@ -26,7 +26,7 @@ export default function CreateItinerary({user}){
     e.preventDefault();
     try{
       await itineraryAPI.addItinerary({formData})
-      history.push("/itineraries");
+      history.push("/itinerary");
     } catch (err) {
       setMessage(err.message)
     }

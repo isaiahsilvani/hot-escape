@@ -9,6 +9,7 @@ module.exports = {
 }
 
 function create(req, res) {
+  
   req.body.addedBy = req.user._id
   Hotel.create(req.body)
   .then(hotel => {res.json(hotel)})
