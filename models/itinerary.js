@@ -14,6 +14,16 @@ const flightSchema = new Schema({
     timestamps: true
 });
 
+const hotelSchema = new Schema({
+  name: { type: String },
+  room: { type: String },
+  checkInDate: { type: Number },
+  checkOutDate: { type: Number },
+  price: { type: Number },
+}, {
+    timestamps: true
+});
+
 const itinerarySchema = new Schema({
   startDate: { type: Date, },
   endDate:  { type: Date, },
@@ -21,7 +31,7 @@ const itinerarySchema = new Schema({
   destination: { type: String, },
 
   flights: [flightSchema],
-  hotels: [],
+  hotels: [hotelSchema],
   rentals: [],
   attractions: [],
 
