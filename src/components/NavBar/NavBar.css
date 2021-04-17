@@ -1,12 +1,35 @@
 nav {
   background: #fff;
-  padding: 0.5rem 0;
   margin: 0 0 2rem 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 nav ul {
+  margin: 0;
+  width: auto;
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+nav ul.nav-login {
+  width: 30%;
+  justify-content: flex-end;
 }
 nav li {
   display: inline-block;
+  height: 100%;
+  padding: 1.5rem 1.5rem;
+}
+
+nav li a {
+  font-size: 1.6rem;
+  color: #333;
+  text-decoration: none;
+}
+
+nav li:hover {
+  text-decoration: underline;
+  background: #eee;
 }
