@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'
+import { UserContext } from '../../../components/UserContext'
 import * as itineraryAPI from '../../../services/itineraryService';
 
-const ItineraryList = ({user}) => {
-
+const ItineraryList = (props) => {
     const [itineraryList, setItineraryList] = useState([]);
-    
+    const user = useContext(UserContext);
+
     useEffect(() => {
         async function fetchData() {
           // You can await here
