@@ -11,3 +11,8 @@ export function addItinerary(itineraryData) {
   },{mode: "cors" })
   .then(res => res.json())
 }
+
+export function getAll() {
+  return fetch(BASE_URL)
+  .then(res => res.json());
+}
