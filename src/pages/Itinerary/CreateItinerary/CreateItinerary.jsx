@@ -1,10 +1,12 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useContext, useState, useRef, useEffect } from 'react';
 import { useHistory } from 'react-router';
 import { useForm } from '../../../hooks/useForm'
 import './CreateItinerary.css'
 import * as itineraryAPI from '../../../services/itineraryService'
+import { UserContext } from '../../../components/UserContext'
 
-export default function CreateItinerary({user}){
+export default function CreateItinerary(props){
+  const user = useContext(UserContext)
   const history = useHistory();
   const [invalidForm, setValidForm] = useState(true);
   const formRef = useRef();

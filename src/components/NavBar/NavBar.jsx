@@ -1,9 +1,12 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import './NavBar.css'
 import logo from '../../img/spicy-wings.png'
 import { NavLink } from "react-router-dom";
+import { UserContext } from '../../components/UserContext'
 
-const NavBar = ({ user, handleLogout }) => {
+const NavBar = ({ handleLogout }) => {
+  const user = useContext(UserContext);
+
   return (
     <nav>
       <ul>
