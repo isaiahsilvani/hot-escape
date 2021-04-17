@@ -1,5 +1,5 @@
 const unirest = require('unirest');
-const Flight = require('../models/flight')
+const Itinerary = require('../models/itinerary.js')
 const options = {
   'x-rapidapi-key': process.env.FLIGHT_KEY,
   "x-rapidapi-host": "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com",
@@ -29,6 +29,7 @@ function addFlight(req, res) {
   req.body.lowestPrice = flightData.Quotes[0].MinPrice
   req.body.currency = flightData.Currencies[0].Code
   delete req.body.flightData
+  
   
   console.log(req.body)
 }
