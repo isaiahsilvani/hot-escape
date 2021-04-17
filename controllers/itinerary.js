@@ -38,5 +38,11 @@ function deleteItinerary(req,res) {
 
 
 function show(req,res) {
-
+  Itinerary.findById(req.params.id)
+  .then(itinerary => {
+    res.json(itinerary)
+  })
+  .catch(err => {
+    res.status(400).send({'err': err.errmsg});
+  })
 }

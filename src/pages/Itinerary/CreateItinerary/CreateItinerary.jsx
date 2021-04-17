@@ -28,7 +28,7 @@ export default function CreateItinerary(props){
     e.preventDefault();
     try{
       await itineraryAPI.addItinerary({formData})
-      history.push("/itineraries");
+      history.push("/itinerary");
     } catch (err) {
       setMessage(err.message)
     }

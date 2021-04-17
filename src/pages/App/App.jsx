@@ -1,5 +1,7 @@
-import React, { useState } from "react";
 import { Switch, Route, Redirect, useHistory } from "react-router-dom";
+
+import React, { useState, createContext } from "react";
+
 import NavBar from "../../components/NavBar/NavBar";
 import Signup from "../Signup/Signup";
 import Login from "../Login/Login";
