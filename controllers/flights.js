@@ -17,19 +17,21 @@ module.exports = {
 
 function addFlight(req, res) {
   console.log('add flight hit')
+  const flightData = req.body.flightData
   // format data to match mongoose model
-  formatFlightData(req, res)
-  // Add to database using model
-  Flight.create(req.body)
-  .then(flight => {res.json(flight)})
-  .catch(err => {res.json(err)})
-  // Send json response
-
+  req.body.originCity = flightData.Places[1].CityName
+  req.body.originStation = flightData.Places[1].Name + ' - ' + flightData.Places[1].IataCode
+  req.body.destinationCity = flightData.Places[0].CityName
+  req.body.destinationStation = flightData.Places[0].Name + ' - ' + flightData.Places[0].IataCode
+  req.body.airline = flightData.Carriers[0].Name
+  req.body.direct = flightData.Quotes[0].Direct
+  req.body.stops = null
+  req.body.lowestPrice = flightData.Quotes[0].MinPrice
+  req.body.currency = flightData.Currencies[0].Code
+  delete req.body.flightData
   
   console.log(req.body)
 }
-
-
 
 // originCity: {type:String},
 // originStation:{type: String},
@@ -68,20 +70,4 @@ function searchPlace(req, res) {
 
     res.json(response.body)
   })
-}
-
-// HELPER FUNCTIONS
-
-function formatFlightData(req, res) {
-  const flightData = req.body.flightData
-  req.body.originCity = flightData.Places[1].CityName
-  req.body.originStation = flightData.Places[1].Name + ' - ' + flightData.Places[1].IataCode
-  req.body.destinationCity = flightData.Places[0].CityName
-  req.body.destinationStation = flightData.Places[0].Name + ' - ' + flightData.Places[0].IataCode
-  req.body.airline = flightData.Carriers[0].Name
-  req.body.direct = flightData.Quotes[0].Direct
-  req.body.stops = null
-  req.body.lowestPrice = flightData.Quotes[0].MinPrice
-  req.body.currency = flightData.Currencies[0].Code
-  delete req.body.flightData
 }
