@@ -13,7 +13,7 @@ const NavBar = ({ handleLogout }) => {
         <li><NavLink to="/"><img src={logo} className="logo" /></NavLink></li>
         <li><NavLink to="/itinerary">My Vacations</NavLink></li>
         <li><NavLink to="/itinerary/new">New Vacation</NavLink></li>
-        <li><NavLink to="/chatroom">Chatroom</NavLink></li>
+        <li><NavLink to="/join">Chatroom</NavLink></li>
       </ul>
       {user ?
         <ul className="nav-login">
