@@ -20,6 +20,10 @@ export default function ItineraryView({user}) {
     fetchData();
   }, []);
 
+  function setFlight(flights) {
+    setItineraryData({...itineraryData, flights})
+  }
+
   const displaySwitch = () => {
     switch(display) {
       case 'hotels':
@@ -36,7 +40,7 @@ export default function ItineraryView({user}) {
         )
       case 'flights':
       default:
-        return <FlightSection flights={itineraryData.flights} />
+        return <FlightSection setFlight={setFlight} flights={itineraryData.flights} />
     }
   }
 

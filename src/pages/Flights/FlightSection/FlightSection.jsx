@@ -13,12 +13,12 @@ export default function FlightSection(props) {
   const displaySwitch = () => {
     switch(display) {
       case 'search':
-        return <FlightSearch />
+        return <FlightSearch {...props}/>
       case 'view':
         return <h1>Flight #{flightId}</h1>
       case 'list':
       default:
-        return <FlightList />
+        return <FlightList {...props}/>
     }
   }
 
