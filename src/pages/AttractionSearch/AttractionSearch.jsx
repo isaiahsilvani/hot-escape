@@ -3,7 +3,7 @@ import { useHistory } from 'react-router';
 import { useForm } from '../../hooks/useForm';
 import * as attractionAPI from '../../services/attractionService'
 
-export default function AddAttraction(props){
+export default function AddAttraction({itinID}){
   const history = useHistory();
   const [invalidForm, setValidForm] = useState(true);
   const [state, handleChange]       = useForm({
@@ -19,9 +19,8 @@ export default function AddAttraction(props){
   const handleSubmit = async (e) => {
     e.preventDefault();
     try{
-      console.log(state)
-      await attractionAPI.addAttraction(state)
-      history.push("/attractions");
+      const attractionData = {...state, itinID}
+      await attractionAPI.addAttraction(attractionData)
     } catch (err) {
       console.log(err.message)
     }
