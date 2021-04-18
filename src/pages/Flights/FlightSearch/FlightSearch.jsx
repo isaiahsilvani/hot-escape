@@ -25,9 +25,10 @@ export default function FlightSearch(props) {
     setFlightResults(flightResults)
   }
 
-  const addFlight = () => {
+  const addFlight = async () => {
     flightResults.itinID = id
-    flightsAPI.addFlight(flightResults)
+    const flightData = await flightsAPI.addFlight(flightResults)
+    props.setFlight(flightData)
   }
 
   return ( 

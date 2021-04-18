@@ -40,6 +40,7 @@ export function addFlight(flightData) {
         },
         body: JSON.stringify({flightData})
     }, {mode: "cors"})
+    .then(res => res.json())
 }
 
 export function getAll(query) {
