@@ -8,8 +8,9 @@ import Login from "../Login/Login";
 import Users from '../Users/Users'
 import authService from "../../services/authService"
 import FlightSearch from '../Flights/FlightSearch/FlightSearch'
-import HotelSearch from '../HotelSearch/HotelSearch.jsx'
+import HotelSearch from '../../pages/Hotels/HotelSearch/HotelSearch'
 import AttractionSearch from '../../pages/Attractions/AttractionSearch/AttractionSearch'
+
 import "./App.css";
 import CreateItinerary from "../Itinerary/CreateItinerary/CreateItinerary";
 import ItineraryList from '../Itinerary/ItineraryList/ItineraryList';

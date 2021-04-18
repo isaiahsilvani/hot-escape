@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react'
 import styles from './HotelSearch.module.css'
 import { useHistory } from 'react-router-dom'
-import { useForm } from '../../hooks/useForm'
-import * as hotelAPI from '../../services/hotelService'
+import { useForm } from '../../../hooks/useForm'
+import * as hotelAPI from '../../../services/hotelService'
 
 export default function AddHotel({itinID}) {
     const history = useHistory();

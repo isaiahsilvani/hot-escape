@@ -31,7 +31,9 @@ function show(req, res) {
 }
 
 function deleteHotel(req, res){
-
+    Movie.findByIdAndDelete(req.params.id)
+    .then(movie => {res.json(movie)})
+    .catch(err => {res.json(err)})
 }
 
 function update(req, res){
