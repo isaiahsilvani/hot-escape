@@ -44,11 +44,25 @@ export default function ItineraryView({user}) {
     }
   }
 
+  function parseDate(date) {
+    let dateString = "";
+    for (let i = 0; i < date.length; i++) {
+      if (date[i] !== "T") {
+        dateString += date[i];
+      } else {
+        break;
+      }
+    }
+    dateString = dateString.replace("-", "/");
+    dateString = dateString.replace("-", "/");
+    return dateString;
+  }
+
   return (
     <>
     <main>
       <h1>Escape from {itineraryData.origin} to {itineraryData.destination}</h1>
-      <p>{id}<br/>
+      <p>{parseDate(itineraryData.startDate)} - {parseDate(itineraryData.endDate)}<br/>
       Origin: {itineraryData.origin} <br />
       Destination: {itineraryData.destination}</p>
     </main>
