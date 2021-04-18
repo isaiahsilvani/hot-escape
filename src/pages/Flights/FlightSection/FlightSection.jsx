@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import FlightSearch from '../FlightSearch/FlightSearch'
 import FlightList from '../FlightList/FlightList'
+import { useParams } from 'react-router-dom'
 
 import './FlightSection.css'
 
 export default function FlightSection(props) {
+  const {id} = useParams();
   const [display, setDisplay] = useState('view');
   const [flightId, setFlightId] = useState(123);
 

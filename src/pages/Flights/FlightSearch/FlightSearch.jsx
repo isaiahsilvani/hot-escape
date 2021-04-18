@@ -2,8 +2,10 @@ import React, { useState } from 'react'
 import SearchPlace from '../../../components/SearchPlace/SearchPlace'
 import * as flightsAPI from '../../../services/flightService'
 import styles from './FlightSearch.module.css'
+import { useParams } from 'react-router-dom'
 
 export default function FlightSearch(props) {
+  const {id} = useParams();
   let today = new Date;
   today = today.toISOString().split('T')[0];
   const [flightResults, setFlightResults] = useState({});
@@ -24,12 +26,12 @@ export default function FlightSearch(props) {
   }
 
   const addFlight = () => {
+    flightResults.itinID = id
     flightsAPI.addFlight(flightResults)
   }
 
   return ( 
     <div className={styles.box}>
-
       <SearchPlace 
           title="Origin Place" 
           selectPlace={setOriginPlace}

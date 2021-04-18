@@ -16,10 +16,10 @@ module.exports = {
 }
 
 function addFlight(req, res) {
-  console.log('add flight hit')
   const flightData = req.body.flightData
   // format data to match mongoose model
   req.body.originCity = flightData.Places[1].CityName
+  req.body.itinID = flightData.itinID
   req.body.originStation = flightData.Places[1].Name + ' - ' + flightData.Places[1].IataCode
   req.body.destinationCity = flightData.Places[0].CityName
   req.body.destinationStation = flightData.Places[0].Name + ' - ' + flightData.Places[0].IataCode
@@ -30,9 +30,28 @@ function addFlight(req, res) {
   req.body.currency = flightData.Currencies[0].Code
   delete req.body.flightData
   
-  
+  console.log('------ after data format -----')
   console.log(req.body)
+  // find itinerary by itinID matching req.body.itinID, and push this flight data to itinerary embedded
+  Itinerary.find({_id: req.body.itinID})
+  .then((itinerary) => {
+    console.log(itinerary)
+    itinerary[0].flights.push(req.body)
+    itinerary[0].save()
+    .then(() => {
+      res.json(req.body)
+    })
+  })
 }
+
+// .then((game) => {
+//   game.reviews.push(req.body)
+//   game.save()
+//   .then(() => {
+//       res.redirect(`/games/${game.slug}`)
+//   })
+// })
+// }
 
 // originCity: {type:String},
 // originStation:{type: String},
