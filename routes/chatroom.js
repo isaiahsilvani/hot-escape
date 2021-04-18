@@ -5,11 +5,9 @@ const chatCtrl = require('../controllers/chats')
 // Public Routes
 
 // Protected Routes
-router.use(require("../config/auth"));
 console.log('router hit')
-router.get('/', (req, res) => {
-  console.log('chatroom router active')
-});
+router.use(require("../config/auth"));
+router.get('/', checkAuth, chatCtrl.index);
 
 function checkAuth(req, res, next) {
     if (req.user) return next();

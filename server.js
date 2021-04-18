@@ -20,6 +20,7 @@ const flightRouter = require('./routes/flights');
 const itineraryRouter = require('./routes/itinerary');
 const hotelsRouter = require('./routes/hotels');
 const attractionsRouter = require('./routes/attractions')
+const chatRouter = require('./routes/chatroom')
 
 const cors = require('cors')
 
@@ -43,5 +44,17 @@ app.get('/*', function(req, res) {
 
 const port = process.env.PORT || 3001;
 
+//IO connection must be below io.on
+io.on('connection', (socket) => {
+  console.log('We have a new connection!!!')
+
+  //We are managing this specific socket that just connected, disconnect special function
+  socket.on('disconnect', () => {
+    console.log('User has left!!')
+  })
+})
+
+app.use(chatRouter)
+
 // IO server listener
-server.listen(port, () => console.log(`server has started listening on port ${port}`))
+server.listen(port, () => console.log(`Socket.IO server has started listening on port ${port}`))
