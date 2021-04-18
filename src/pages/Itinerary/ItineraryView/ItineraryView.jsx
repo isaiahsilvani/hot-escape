@@ -3,8 +3,9 @@ import { useParams } from 'react-router-dom'
 import * as itineraryAPI from '../../../services/itineraryService';
 import FlightSection from '../../Flights/FlightSection/FlightSection';
 import ItineraryNav from '../../../components/ItineraryNav/ItineraryNav'
-import HotelSearch from '../../HotelSearch/HotelSearch'
+import HotelSearch from '../../Hotels/HotelSearch/HotelSearch'
 import AttractionSearch from '../../AttractionSearch/AttractionSearch'
+import HotelList from '../../Hotels/HotelList/HotelList'
 
 export default function ItineraryView({user}) {
   const {id} = useParams();
@@ -32,6 +33,7 @@ export default function ItineraryView({user}) {
           <main>
             <h1>Hotels</h1>
             <HotelSearch itinID={id} />
+            <HotelList hotels={itineraryData.hotels} />
           </main>)
       case 'attractions':
         return (
@@ -56,6 +58,7 @@ export default function ItineraryView({user}) {
     </main>
     <ItineraryNav switchDisplay={setDisplay} display={display} />
     {displaySwitch()}
+    
     </>
   )
 };
