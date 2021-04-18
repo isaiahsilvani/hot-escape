@@ -17,9 +17,9 @@ const flightSchema = new Schema({
 const hotelSchema = new Schema({
   name: { type: String },
   room: { type: String },
-  checkInDate: { type: Number },
-  checkOutDate: { type: Number },
-  price: { type: Number },
+  checkInDate: { type: Date },
+  checkOutDate: { type: Date },
+  price: { type: String },
 }, {
     timestamps: true
 });
