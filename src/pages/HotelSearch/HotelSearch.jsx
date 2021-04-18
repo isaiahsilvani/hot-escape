@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom'
 import { useForm } from '../../hooks/useForm'
 import * as hotelAPI from '../../services/hotelService'
 
-export default function AddHotel(props) {
+export default function AddHotel({itinID}) {
     const history = useHistory();
 	const [invalidForm, setValidForm] = useState(true);
     const [state, handleChange] = useForm({
@@ -34,8 +34,9 @@ export default function AddHotel(props) {
       const handleSubmit = async (e) => {
           e.preventDefault();
           try{
-              await hotelAPI.addHotel(state)
-              history.pushState("/hotels")
+              const hotelData = {...state, itinID}
+              await hotelAPI.addHotel(hotelData)
+              // history.pushState("/hotels")
           } catch (err) {
               console.log(err.message)
           }

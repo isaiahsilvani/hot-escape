@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom'
 import * as itineraryAPI from '../../../services/itineraryService';
 import FlightSection from '../../Flights/FlightSection/FlightSection';
 import ItineraryNav from '../../../components/ItineraryNav/ItineraryNav'
+import HotelSearch from '../../HotelSearch/HotelSearch'
+
 export default function ItineraryView({user}) {
   const {id} = useParams();
   const [itineraryData, setItineraryData] = useState({})
@@ -24,6 +26,7 @@ export default function ItineraryView({user}) {
         return (
           <main>
             <h1>Hotels</h1>
+            <HotelSearch itinID={id} />
           </main>)
       case 'attractions':
         return (
