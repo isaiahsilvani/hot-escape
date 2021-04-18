@@ -1,4 +1,5 @@
 const Attraction = require('../models/attraction')
+const Itinerary = require('../models/itinerary')
 
 module.exports = {
   create,
@@ -9,9 +10,16 @@ module.exports = {
 }
 
 function create(req, res) {
-  req.body.addedBy = req.user._id
-  Attraction.create(req.body)
-  .then(attraction => {res.json(attraction)})
+  Itinerary.findById(req.body.itinID)
+  .then(itinerary => {
+    console.log(itinerary)
+    console.log(req.body)
+    itinerary.attractions.push(req.body)
+    itinerary.save()
+    console.log(itinerary)
+    .then(()=> {res.json(itinerary)
+    })
+  })
   .catch(err => {res.json(err)})
 }
 
