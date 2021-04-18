@@ -3,6 +3,7 @@ import { UserContext } from '../../../components/UserContext'
 import * as hotelsAPI from '../../../services/hotelService'
 
 export default function HotelList({hotels}) {
+  
 
   return (
     hotels.map(hotel => (
