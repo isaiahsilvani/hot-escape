@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom'
 import * as itineraryAPI from '../../../services/itineraryService';
 import FlightSection from '../../Flights/FlightSection/FlightSection';
-
+import ItineraryNav from '../../../components/ItineraryNav/ItineraryNav'
 export default function ItineraryView({user}) {
   const {id} = useParams();
   const [itineraryData, setItineraryData] = useState({})
+  const [display, setDisplay] = useState('flights');
 
   useEffect(() => {
     async function fetchData() {
@@ -17,14 +18,35 @@ export default function ItineraryView({user}) {
     fetchData();
   }, []);
 
+  const displaySwitch = () => {
+    switch(display) {
+      case 'hotels':
+        return (
+          <main>
+            <h1>Hotels</h1>
+          </main>)
+      case 'attractions':
+        return (
+          <main>
+            <h1>Attractions</h1>
+          </main>
+        )
+      case 'flights':
+      default:
+        return <FlightSection flights={itineraryData.flights} />
+    }
+  }
+
   return (
     <>
     <main>
-      <h1>{id}</h1>
-      <p>Origin: {itineraryData.origin}</p>
-      <p>Destination: {itineraryData.destination}</p>
+      <h1>Escape to {itineraryData.destination}</h1>
+      <p>{id}<br/>
+      Origin: {itineraryData.origin} <br />
+      Destination: {itineraryData.destination}</p>
     </main>
-    <FlightSection flights={itineraryData.flights} />
+    <ItineraryNav switchDisplay={setDisplay} />
+    {displaySwitch()}
     </>
   )
 };

@@ -1,0 +1,29 @@
+.itineraryNav {
+  color: #fff;
+  margin: 0 auto 1rem auto;
+  border-radius: 1rem;
+  font-size: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  width: fit-content;
+}
+
+.itineraryNav > div {
+  padding: 1rem 1rem;
+  background: rgba(227,147,177,.9);
+}
+
+.itineraryNav > div:first-of-type {
+  border-radius: 0.5rem 0 0 0.5rem;
+}
+
+.itineraryNav > div:last-of-type {
+  border-radius: 0 0.5rem 0.5rem 0;
+}
+
+
+.itineraryNav > div:hover {
+  background: rgba(235,179,200,0.9);
+  cursor: pointer;
+}
