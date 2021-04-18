@@ -1,0 +1,11 @@
+const express = require('express')
+const socketio = require('socket.io')
+const http = require('http')
+
+const PORT = process.env.port || 3002
+
+const app = express()
+const server = http.createServer(app)
+const io = socketio(server)
+
+server.listen(PORT, () => console.log(`server has started on ${PORT}`))

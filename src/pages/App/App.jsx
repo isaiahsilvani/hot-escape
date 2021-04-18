@@ -56,11 +56,11 @@ export default function App (props) {
             )}
           />
 
-          <ProtectedRoute path='/join'>
+          <ProtectedRoute exact path='/join'>
             <Join />
           </ProtectedRoute>
 
-          <ProtectedRoute path='/chatroom'>
+          <ProtectedRoute exact path='/chatroom'>
             <Chatroom />
           </ProtectedRoute>
 
