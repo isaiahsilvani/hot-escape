@@ -40,12 +40,12 @@ export default function ItineraryView({user}) {
   return (
     <>
     <main>
-      <h1>Escape to {itineraryData.destination}</h1>
+      <h1>Escape from {itineraryData.origin} to {itineraryData.destination}</h1>
       <p>{id}<br/>
       Origin: {itineraryData.origin} <br />
       Destination: {itineraryData.destination}</p>
     </main>
-    <ItineraryNav switchDisplay={setDisplay} />
+    <ItineraryNav switchDisplay={setDisplay} display={display} />
     {displaySwitch()}
     </>
   )
