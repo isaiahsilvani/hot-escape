@@ -15,6 +15,7 @@ export default function AddHotel({itinID}) {
         price: '$0.00'
     })
     
+    const [hotels, setHotels] = useState([])
     const formRef = useRef();
 
     useEffect(() => {
@@ -36,6 +37,7 @@ export default function AddHotel({itinID}) {
           try{
               const hotelData = {...state, itinID}
               await hotelAPI.addHotel(hotelData)
+              setHotels(hotelData)
               // history.pushState("/hotels")
           } catch (err) {
               console.log(err.message)
