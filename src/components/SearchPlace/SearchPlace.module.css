@@ -1,12 +1,24 @@
 .box {
-  background: #ccc;
-  max-width: 400px;
-  padding: 2rem;
-  margin: 1rem auto;
-  text-align: center;
+  text-align: left;
+  max-width: 40%;
+  min-width: 20%;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.box input {
+  width: 60%;
+}
+.box button {
+  padding: 0;
+}
+
+.box select {
+  width: 90%
 }
 
 .box h3 {
-  margin: 0 0 1rem 0;
+  margin: 0;
   text-align: center;
 }

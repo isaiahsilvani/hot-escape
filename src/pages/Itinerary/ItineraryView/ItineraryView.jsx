@@ -3,10 +3,8 @@ import { useParams } from 'react-router-dom'
 import * as itineraryAPI from '../../../services/itineraryService';
 import FlightSection from '../../Flights/FlightSection/FlightSection';
 import ItineraryNav from '../../../components/ItineraryNav/ItineraryNav'
-
 import HotelSearch from '../../Hotels/HotelSearch/HotelSearch'
 import HotelList from '../../Hotels/HotelList/HotelList'
-
 import AttractionSearch from '../../Attractions/AttractionSearch/AttractionSearch'
 import AttractionList from '../../Attractions/AttractionList/AttractionList'
 
@@ -17,9 +15,8 @@ export default function ItineraryView({user}) {
 
   useEffect(() => {
     async function fetchData() {
-      // You can await here
+      // get itinerary data based on ID parameter
       const itineraryData = await itineraryAPI.getOne(id);
-      console.log(itineraryData)
       setItineraryData(itineraryData)
     }
     fetchData();
@@ -42,17 +39,16 @@ export default function ItineraryView({user}) {
         return (
           <main>
             <h1>Attractions</h1>
-            <AttractionSearch itinID={id} />
-            <AttractionList attractions={itineraryData.attractions} />
+            <AttractionSearch setItineraryData={setItineraryData} itinID={id} />
+            <AttractionList itinData={itineraryData} />
           </main>
         )
       case 'flights':
       default:
-        return <FlightSection setFlight={setFlight} flights={itineraryData.flights} />
+        return <FlightSection itinID={id} setFlight={setFlight} itinData={itineraryData} />
     }
   }
-    
-    
+      
   return (
     <>
     <main>

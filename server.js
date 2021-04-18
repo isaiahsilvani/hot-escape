@@ -1,7 +1,15 @@
+// modify socketio server
 const express = require('express');
-const app = express();
+const socketio = require('socket.io')
+const http = require('http')
+const app = express()
+const server = http.createServer(app)
+const io = socketio(server)
+
 const path = require('path');
 const logger = require('morgan');
+// socket code
+
 
 require('dotenv').config();
 require('./config/database');
@@ -35,6 +43,5 @@ app.get('/*', function(req, res) {
 
 const port = process.env.PORT || 3001;
 
-app.listen(port, ()=> {
-  console.log(`Express is listening on port ${port}.`)
-});
+// IO server listener
+server.listen(port, () => console.log(`server has started listening on port ${port}`))

@@ -6,7 +6,6 @@ import { useParams } from 'react-router-dom'
 import './FlightSection.css'
 
 export default function FlightSection(props) {
-  const {id} = useParams();
   const [display, setDisplay] = useState('view');
   const [flightId, setFlightId] = useState(123);
 
@@ -18,7 +17,7 @@ export default function FlightSection(props) {
         return <h1>Flight #{flightId}</h1>
       case 'list':
       default:
-        return <FlightList {...props}/>
+        return <FlightList flights={props.itinData.flights} {...props} />
     }
   }
 
