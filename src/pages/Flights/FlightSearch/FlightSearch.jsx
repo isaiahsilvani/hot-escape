@@ -2,18 +2,23 @@ import React, { useState } from 'react'
 import SearchPlace from '../../../components/SearchPlace/SearchPlace'
 import * as flightsAPI from '../../../services/flightService'
 import styles from './FlightSearch.module.css'
+import FlightList from '../FlightList/FlightList'
+
 import { useParams } from 'react-router-dom'
 
 export default function FlightSearch(props) {
-  const {id} = useParams();
-  let today = new Date;
-  today = today.toISOString().split('T')[0];
   const [flightResults, setFlightResults] = useState({});
   const [originPlace, setOriginPlace] = 
     useState({ code: '', place: '' })
   const [destinationPlace, setDestinationPlace] = 
     useState({ code: '', place: '' })
-  const [flightDate, setFlightDate] = useState(today)
+  const [flightDate, setFlightDate] = useState(props.itinData.startDate.split('T')[0])
+  const [message, setMessage] = useState('')
+
+  function getToday() {
+    const today = new Date;
+    return today.toISOString().split('T')[0];
+  }
 
   const handleFlightsSearch = async () => {
     const flightData = {originPlace, destinationPlace, flightDate}
@@ -41,69 +46,36 @@ export default function FlightSearch(props) {
   }
 
   const addFlight = async () => {
-    flightResults.itinID = id
+    flightResults.itinID = props.itinID
     const flightData = await flightsAPI.addFlight(flightResults)
     props.setFlight(flightData)
   }
 
-  return ( 
-    <div className={styles.box}>
-      <SearchPlace 
-          title="Origin Place" 
-          selectPlace={setOriginPlace}
-      />
-      <div className={styles.flightDate}>
-        <label htmlFor="flightDate">Date of Departure</label><br />
-        <input 
-          type='date' 
-          name='flightDate'
-          value={flightDate}
-          onChange={(e)=>setFlightDate(e.target.value)}
+  return (
+    <>
+      <div className={styles.searchInputs}>
+        <SearchPlace {...props}
+            title="Origin" 
+            selectPlace={setOriginPlace}
+        />
+        <div className={styles.flightDate}>
+          <label htmlFor="flightDate">Date of Departure
+          <input 
+            type='date' 
+            name='flightDate'
+            value={flightDate}
+            onChange={(e)=>setFlightDate(e.target.value)}
+          /></label>
+          <button onClick={handleFlightsSearch}>Search Flights</button>
+          {message && <p>{message}</p>}
+        </div>
+        <SearchPlace {...props}
+          title="Destination" 
+          selectPlace={setDestinationPlace}
         />
       </div>
-      <SearchPlace 
-        title="Destination Place" 
-        selectPlace={setDestinationPlace}
-      />
-      <button onClick={handleFlightsSearch}>Search Flights</button>
-      { originPlace.code && 
-        <p>
-          Origin Code: {originPlace.code}<br />
-          Origin Place: {originPlace.place}
-        </p>
-      }
-      { destinationPlace.code && 
-        <p>
-          Destination Code: {destinationPlace.code}<br />
-          Destination Place: {destinationPlace.place}
-        </p>
-      }
-     <div className={styles.flightResults}>
-        <div className={styles.flightList}>
-          <div className={styles.flightPrice}>
-            {flightResults.Carriers?.length ?  
-            <>
-              <p>Min Flight Price: {flightResults.Quotes[0].MinPrice}</p>
-              <button onClick={addFlight}>Add Flight</button>
-            </> : 'No Flights Listed'}
-          </div>
-          {flightResults.Carriers?.length &&
-          // reverse order so origin and destination appear correctly
-
-            flightResults.Places.reverse().map((place, idx) => 
-            
-              <div className={styles.placeCard}key={idx}>
-                <h3>Country: {place.CountryName}</h3>
-                <h3>City: {place.CityName}</h3>
-                <h3>Type: {place.Type}</h3>
-                <h3>Airport: {place.Name}</h3>
-              </div>
-            
-            )
-            }
-        </div>
-      </div>
-    </div>
-    );
+      <FlightList {...props} flights={flightResults} />
+    </>
+  );
 }
  

@@ -19,13 +19,14 @@ export default function SearchPlace(props){
   return ( 
     <div className={styles.box}>
       <h3>{props.title}</h3>
+      <label htmlFor="query">
       <input 
           value={query} 
           type="text" 
           name="query"
           onChange={(e)=> setQuery(e.target.value)}
           />
-      <button onClick={sendRequest}>Search</button>
+      <button onClick={sendRequest}>Search</button></label>
       {places.length ?
         <select
           size={places.length > 5 ? 5 : places.length}
