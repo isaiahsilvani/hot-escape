@@ -1,19 +1,18 @@
-import React, { useState } from 'react';
-import * as chatAPI from '../../services/chatroomService'
+import React, { useState, useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
+import queryString from 'query-string'
 
-const Chatroom = () => {
+const Chat = ({ props }) => {
 
-    const test = async () => {
-        console.log('test function hit')
-        const result = await chatAPI.test()
-    }
+    const params = useLocation()
 
+    useEffect(() => {
+        const { name, room } = queryString.parse(params.search)
+        console.log(name, room)
+    })
     return ( 
-        <main>
-            <h3>Chatroom</h3>
-            <button onClick={test} >Test</button>
-        </main>
+        <h1>Chat</h1>
      );
 }
  
-export default Chatroom
+export default Chat;
