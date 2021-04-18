@@ -13,7 +13,6 @@ export function addItinerary(itineraryData) {
 }
 
 export function getAll(userId) {
-  console.log('get ')
   return fetch(BASE_URL + userId, {
     headers: { Authorization: "Bearer " + tokenService.getToken() }
   })
