@@ -3,14 +3,14 @@ import { useHistory } from 'react-router';
 import { useForm } from '../../../hooks/useForm';
 import * as attractionAPI from '../../../services/attractionService'
 
-export default function AddAttraction({itinID}){
+export default function AddAttraction({itinID, setItineraryData}){
   const history = useHistory();
   const [invalidForm, setValidForm] = useState(true);
   const [state, handleChange]       = useForm({
     name: '',
     location: '',
   })
-  const [attractions,setAttraction] = useState([])
+  
   const formRef = useRef();
 
   useEffect(() => {
@@ -20,8 +20,9 @@ export default function AddAttraction({itinID}){
     e.preventDefault();
     try{
       const attractionData = {...state, itinID}
-      await attractionAPI.addAttraction(attractionData)
-      setAttraction(attractionData)
+      const newItin = await attractionAPI.addAttraction(attractionData)
+      console.log("newItin", newItin)
+      setItineraryData(newItin)
     } catch (err) {
       console.log(err.message)
     }
