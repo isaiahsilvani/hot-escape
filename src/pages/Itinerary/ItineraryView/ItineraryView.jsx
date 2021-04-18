@@ -15,9 +15,8 @@ export default function ItineraryView({user}) {
 
   useEffect(() => {
     async function fetchData() {
-      // You can await here
+      // get itinerary data based on ID parameter
       const itineraryData = await itineraryAPI.getOne(id);
-      console.log(itineraryData)
       setItineraryData(itineraryData)
     }
     fetchData();
@@ -46,7 +45,7 @@ export default function ItineraryView({user}) {
         )
       case 'flights':
       default:
-        return <FlightSection setFlight={setFlight} flights={itineraryData.flights} />
+        return <FlightSection itinID={id} setFlight={setFlight} itinData={itineraryData} />
     }
   }
       
