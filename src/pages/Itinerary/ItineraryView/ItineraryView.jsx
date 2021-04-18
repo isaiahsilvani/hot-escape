@@ -47,8 +47,7 @@ export default function ItineraryView({user}) {
         return <FlightSection setFlight={setFlight} flights={itineraryData.flights} />
     }
   }
-    
-    
+      
   return (
     <>
     <main>
