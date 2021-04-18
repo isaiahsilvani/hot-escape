@@ -1,7 +1,7 @@
 import React, {Component, useState, useRef, useEffect } from 'react';
 import { useHistory } from 'react-router';
-import { useForm } from '../../hooks/useForm';
-import * as attractionAPI from '../../services/attractionService'
+import { useForm } from '../../../hooks/useForm';
+import * as attractionAPI from '../../../services/attractionService'
 
 export default function AddAttraction({itinID}){
   const history = useHistory();
