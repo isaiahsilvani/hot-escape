@@ -47,14 +47,17 @@ export default function ItineraryView({user}) {
         return <FlightSection setFlight={setFlight} flights={itineraryData.flights} />
     }
   }
-
-  
-
+    
+    
   return (
     <>
     <main>
-      <h1>Escape from {itineraryData.origin} to {itineraryData.destination}</h1>
-      <p>{parseDate(itineraryData.startDate)} - {parseDate(itineraryData.endDate)}<br/>
+      <h1>
+        Escape from {itineraryData.origin} to {itineraryData.destination}
+      </h1>
+      <p>
+        {itineraryData.startDate?.split('T')[0].replaceAll('-','/')} to {itineraryData.endDate?.split('T')[0].replaceAll('-','/')}
+        <br/>
       Origin: {itineraryData.origin} <br />
       Destination: {itineraryData.destination}</p>
     </main>

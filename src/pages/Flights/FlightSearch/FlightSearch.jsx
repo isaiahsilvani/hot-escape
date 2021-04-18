@@ -9,19 +9,34 @@ export default function FlightSearch(props) {
   let today = new Date;
   today = today.toISOString().split('T')[0];
   const [flightResults, setFlightResults] = useState({});
-  const [originPlace, setOriginPlace] = useState({
-    code: '',
-    place: '',
-  })
-  const [destinationPlace, setDestinationPlace] = useState({
-    code: '',
-    place: '',
-  })
+  const [originPlace, setOriginPlace] = 
+    useState({ code: '', place: '' })
+  const [destinationPlace, setDestinationPlace] = 
+    useState({ code: '', place: '' })
   const [flightDate, setFlightDate] = useState(today)
 
   const handleFlightsSearch = async () => {
     const flightData = {originPlace, destinationPlace, flightDate}
-    const flightResults = await flightsAPI.searchFlights(flightData)
+    const results = await flightsAPI.searchFlights(flightData)
+    console.log(results)
+    const flightResults = results.Quotes.map(quote => {
+      return {
+        lowestPrice: quote.MinPrice,
+        direct: quote.Direct,
+        airline: results.Carriers.find(carrier => 
+        carrier.CarrierId === quote.OutboundLeg.CarrierIds[0]).Name,
+        originStation: results.Places.find(place => 
+          place.PlaceId === quote.OutboundLeg.OriginId).Name,
+        originCity: results.Places.find(place => 
+          place.PlaceId === quote.OutboundLeg.OriginId).CityName,
+        destinationStation: results.Places.find(place => 
+        place.PlaceId === quote.OutboundLeg.DestinationId).Name,
+        destinationCity: results.Places.find(place => 
+          place.PlaceId === quote.OutboundLeg.DestinationId).CityName,
+        currency: results.Currencies[0].Code,
+        flightDateTime: quote.QuoteDateTime,
+      }
+    })
     setFlightResults(flightResults)
   }
 
