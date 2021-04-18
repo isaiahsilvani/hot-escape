@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import SearchPlace from '../../components/SearchPlace/SearchPlace'
-import * as flightsAPI from '../../services/flightService'
+import SearchPlace from '../../../components/SearchPlace/SearchPlace'
+import * as flightsAPI from '../../../services/flightService'
 import styles from './FlightSearch.module.css'
 
 export default function FlightSearch(props) {
