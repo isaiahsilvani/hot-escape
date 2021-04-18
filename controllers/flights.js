@@ -33,13 +33,13 @@ function addFlight(req, res) {
   console.log('------ after data format -----')
   console.log(req.body)
   // find itinerary by itinID matching req.body.itinID, and push this flight data to itinerary embedded
-  Itinerary.find({_id: req.body.itinID})
+  Itinerary.findById(req.body.itinID)
   .then((itinerary) => {
     console.log(itinerary)
-    itinerary[0].flights.push(req.body)
-    itinerary[0].save()
+    itinerary.flights.push(req.body)
+    itinerary.save()
     .then(() => {
-      res.json(req.body)
+      res.json(itinerary)
     })
   })
 }
