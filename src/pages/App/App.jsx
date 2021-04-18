@@ -10,7 +10,9 @@ import authService from "../../services/authService"
 import FlightSearch from '../Flights/FlightSearch/FlightSearch'
 import HotelSearch from '../../pages/Hotels/HotelSearch/HotelSearch'
 import AttractionSearch from '../../pages/Attractions/AttractionSearch/AttractionSearch'
+
 import Join from '../../components/Join/Join'
+import Chatroom from '../Chatroom/Chatroom'
 
 import "./App.css";
 import CreateItinerary from "../Itinerary/CreateItinerary/CreateItinerary";
@@ -56,6 +58,10 @@ export default function App (props) {
 
           <ProtectedRoute path='/join'>
             <Join />
+          </ProtectedRoute>
+
+          <ProtectedRoute path='/chatroom'>
+            <Chatroom />
           </ProtectedRoute>
 
           <ProtectedRoute path='/itinerary/new'>
