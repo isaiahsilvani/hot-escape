@@ -29,6 +29,9 @@ body {
   background-size: cover;
   background-position: top center;
 
+  --light-pink: #e393b1;
+  --dark-pink: #ad7199;
+
 }
 
 code {
@@ -41,8 +44,8 @@ main {
   min-width: 80%;
   max-width: 90%;
   margin: 0 auto 1rem auto;
-  padding: 2rem;
-  border-radius: 1rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
   font-size: 1.4rem;
 }
 
