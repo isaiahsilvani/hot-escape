@@ -42,3 +42,14 @@ export function addFlight(flightData) {
     }, {mode: "cors"})
 }
 
+export function getAll(query) {
+    console.log('get all flight service hit')
+    return fetch(BASE_URL + query, {
+        method: "GET",
+        headers: {
+            'content-type': 'application/json',
+            Authorization: "Bearer " + tokenService.getToken()
+        }
+    }, {mode: "cors"})
+    .then(res => res.json())
+}

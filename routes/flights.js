@@ -6,10 +6,10 @@ const flightsCtrl = require('../controllers/flights');
 router.post('/place', flightsCtrl.searchPlace)
 router.post('/search', flightsCtrl.searchFlights)
 router.post('/add', flightsCtrl.addFlight)
+router.get('/:id', flightsCtrl.index);
 
 /*---------- Protected Routes ----------*/
 // router.use(require("../config/auth"));
-// router.get('/', checkAuth, flightsCtrl.index);
 // router.get('/:id', checkAuth, flightsCtrl.show);
 // router.get("/search", checkAuth, flightsCtrl.searchFlight);
 // router.post('/', checkAuth, flightsCtrl.create);

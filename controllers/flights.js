@@ -7,12 +7,22 @@ const options = {
 
 module.exports = {
   // create,
-  // index,
+  index,
   searchFlights,
   searchPlace,
   addFlight
   // show,
   // delete: deleteFlight,
+}
+
+function index(req, res) {
+  console.log('index function hit')
+  console.log(req.params.id)
+  Itinerary.findOne({owner: req.params.id})
+  .then((itinerary) => {
+    console.log(itinerary.flights)
+    res.json(itinerary.flights)
+  })
 }
 
 function addFlight(req, res) {
