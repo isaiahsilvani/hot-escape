@@ -10,7 +10,7 @@ export default function AddAttraction({itinID}){
     name: '',
     location: '',
   })
-
+  const [attractions,setAttraction] = useState([])
   const formRef = useRef();
 
   useEffect(() => {
@@ -21,6 +21,7 @@ export default function AddAttraction({itinID}){
     try{
       const attractionData = {...state, itinID}
       await attractionAPI.addAttraction(attractionData)
+      setAttraction(attractionData)
     } catch (err) {
       console.log(err.message)
     }
