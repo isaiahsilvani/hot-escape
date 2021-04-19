@@ -18,16 +18,18 @@ export default function AttractionList ({itinData, attractions, itinID, setItine
     return (
       <>
         <h1>Attraction List</h1>
-        {attractions.length ?
+        {itinData.attractions.length ?
           <table>
             <thead>
               <tr>
                 <th>Name</th>
                 <th>Location</th>
+                <th>Delete</th>
+                <th>Edit</th>
               </tr>
             </thead>
             <tbody>
-              {attractions.map(attraction => (
+              {itinData.attractions.map((attraction, idx) => (
                 <tr>
                   <td>{attraction.name}</td>
                   <td>{attraction.location}</td>
