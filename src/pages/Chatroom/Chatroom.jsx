@@ -41,6 +41,10 @@ const Chat = ({ props }) => {
         return () => {
             // emit disconnect to backend
             socket.emit('disconnect-alt')
+            // clear state
+            setID("")
+            setName("")
+            setRoom("")
             // turn socket off on unmount
             socket.off()
         }
@@ -49,10 +53,10 @@ const Chat = ({ props }) => {
 
     // socket listener for setting a message data payload from server to state
     
-    socket.on('message', (text) => {
-        console.log('message recieved from server: ', text)
+    socket.on('message', ({text, user}) => {
+        console.log('message recieved from server: ', text, 'from ', user)
            //setting a new message
-           setMessage(text)
+           setMessages([...messages, text])
       })
 
       // function for sending messages
