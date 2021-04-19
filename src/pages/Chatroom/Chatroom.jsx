@@ -69,8 +69,7 @@ const Chat = ({ props }) => {
         if(message) {
           console.log('client message emit - input message: ', message, 'id: ', id)
           socket = io(ENDPOINT)
-          socket.emit('sendMessage', ({ message, id , }), () => setMessage(''));
-          setMessages([...messages, {name, message}])
+          setMessages([...messages, {user: name, text: message}])
           setMessage("")
         }
       }
