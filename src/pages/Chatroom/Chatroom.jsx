@@ -4,6 +4,7 @@ import queryString from 'query-string'
 //socketio clientside listener
 import io from 'socket.io-client'
 import InfoBar from '../../components/InfoBar/InfoBar'
+import Input from '../../components/Input/Input'
 
 //define socket and endpoint outside of component
 let socket;
@@ -77,11 +78,7 @@ const Chat = ({ props }) => {
         <div className="outerContainer">
           <div className="container">
             <InfoBar room={room}/>
-                <input
-                  value={message} 
-                  onChange={(e) => setMessage(e.target.value)}
-                  onKeyPress={e => e.key === 'Enter' ? sendMessage(e) : null}
-              />
+                <Input message={message} setMessage={setMessage} sendMessage={sendMessage}/>
               <button onClick={(e) => sendMessage(e)}>Send</button>
           </div>
         </div>
