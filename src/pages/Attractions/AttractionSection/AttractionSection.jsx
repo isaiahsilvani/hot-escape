@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import AttractionSearch from '../AttractionSearch/AttractionSearch'
 import AttractionList from '../AttractionList/AttractionList'
-import HotelEdit from '../AttractionEdit/AttractionEdit'
+import AttractionEdit from '../AttractionEdit/AttractionEdit'
 import { useParams } from 'react-router-dom'
 
 import './AttractionSection.css'
