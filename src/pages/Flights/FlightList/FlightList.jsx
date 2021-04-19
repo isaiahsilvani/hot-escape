@@ -70,7 +70,7 @@ export default function FlightList
                 <td>{flight.originStation}</td>
                 <td>{flight.destinationCity}</td>
                 <td>{flight.destinationStation}</td>
-                <td>{flight.flightDateTime}</td>
+                <td>{flight.flightDateTime.split('T')[1].slice(0,5)}</td>
                 <td>{flight.direct ? 'Yes' : 'No'}</td>
                 <td>{flight.lowestPrice}</td>
                 <td>{flight.currency}</td>

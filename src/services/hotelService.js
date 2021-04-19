@@ -20,3 +20,14 @@ export function deleteOne(itinID, hotelID) {
     },{mode: "cors"})
     .then(res => res.json());
   }
+
+export function updateHotel(hotelData) {
+  console.log("service data", hotelData)
+  return fetch(BASE_URL + hotelData.hotelId, {
+    headers: { 'content-type': 'application/json',
+      Authorization: "Bearer " + tokenService.getToken() },
+    method: 'PUT',
+    body: JSON.stringify(hotelData)
+  },{mode: "cors" })
+  .then(res => res.json())
+}

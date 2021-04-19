@@ -1,23 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import HotelSearch from '../HotelSearch/HotelSearch'
 import HotelList from '../HotelList/HotelList'
+import HotelEdit from '../HotelEdit/HotelEdit'
 import { useParams } from 'react-router-dom'
 
 import './HotelSection.css'
 
 export default function HotelSection(props) {
-  const [display, setDisplay] = useState('view');
-  const [hotelId] = useState();
+  const [display, setDisplay] = useState('list');
+  const [hotelId, setHotelId] = useState(0);
 
   const displaySwitch = () => {
     switch(display) {
       case 'search':
-        return <HotelSearch {...props}/>
+        return <HotelSearch setDisplay={setDisplay} {...props}/>
       case 'view':
-        return <h1>{hotelId}</h1>
+        return <HotelEdit setDisplay={setDisplay} hotelId={hotelId} {...props} />
       case 'list':
       default:
-        return <HotelList hotels={props.itinData.hotels} {...props} />
+        return <HotelList setDisplay={setDisplay} setHotelId={setHotelId} {...props} />
     }
   }
 
