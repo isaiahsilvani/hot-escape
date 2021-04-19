@@ -29,10 +29,10 @@ export default function FlightSection(props) {
           My Flights</div>
         <div onClick={()=>setDisplay('search')}>
           Search Flights</div>
-        <div onClick={()=> {
+        {/* <div onClick={()=> {
           setDisplay('view');
           setFlightId(666)}}>
-          Flight Details</div>
+          Flight Details</div> */}
       </div>
       {displaySwitch(flightId)}
     </main>

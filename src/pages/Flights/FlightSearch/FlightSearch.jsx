@@ -7,7 +7,7 @@ import FlightList from '../FlightList/FlightList'
 import { useParams } from 'react-router-dom'
 
 export default function FlightSearch(props) {
-  const [flightResults, setFlightResults] = useState({});
+  const [flightResults, setFlightResults] = useState([]);
   const [originPlace, setOriginPlace] = 
     useState({ code: '', place: '' })
   const [destinationPlace, setDestinationPlace] = 
@@ -22,33 +22,34 @@ export default function FlightSearch(props) {
 
   const handleFlightsSearch = async () => {
     const flightData = {originPlace, destinationPlace, flightDate}
-    const results = await flightsAPI.searchFlights(flightData)
-    console.log(results)
-    const flightResults = results.Quotes.map(quote => {
-      return {
-        lowestPrice: quote.MinPrice,
-        direct: quote.Direct,
-        airline: results.Carriers.find(carrier => 
-        carrier.CarrierId === quote.OutboundLeg.CarrierIds[0]).Name,
-        originStation: results.Places.find(place => 
-          place.PlaceId === quote.OutboundLeg.OriginId).Name,
-        originCity: results.Places.find(place => 
-          place.PlaceId === quote.OutboundLeg.OriginId).CityName,
-        destinationStation: results.Places.find(place => 
-        place.PlaceId === quote.OutboundLeg.DestinationId).Name,
-        destinationCity: results.Places.find(place => 
-          place.PlaceId === quote.OutboundLeg.DestinationId).CityName,
-        currency: results.Currencies[0].Code,
-        flightDateTime: quote.QuoteDateTime,
-      }
-    })
-    setFlightResults(flightResults)
-  }
-
-  const addFlight = async () => {
-    flightResults.itinID = props.itinID
-    const flightData = await flightsAPI.addFlight(flightResults)
-    props.setFlight(flightData)
+    if (!originPlace.code || ! destinationPlace.code) {
+      return setMessage('Please search for and select your origin and destination')
+    }
+    try {
+      const results = await flightsAPI.searchFlights(flightData)
+      const flightResults = results.Quotes?.map(quote => {
+        return {
+          lowestPrice: quote.MinPrice,
+          direct: quote.Direct,
+          airline: results.Carriers.find(carrier => 
+          carrier.CarrierId === quote.OutboundLeg.CarrierIds[0]).Name,
+          originStation: results.Places.find(place => 
+            place.PlaceId === quote.OutboundLeg.OriginId).Name,
+          originCity: results.Places.find(place => 
+            place.PlaceId === quote.OutboundLeg.OriginId).CityName,
+          destinationStation: results.Places.find(place => 
+          place.PlaceId === quote.OutboundLeg.DestinationId).Name,
+          destinationCity: results.Places.find(place => 
+            place.PlaceId === quote.OutboundLeg.DestinationId).CityName,
+          currency: results.Currencies[0].Code,
+          flightDateTime: quote.QuoteDateTime,
+        }
+      })
+      if (flightResults) { 
+        setFlightResults(flightResults) 
+        setMessage('')
+      } else setMessage('No results found, please try again')
+    } catch (error) { console.log(error)}
   }
 
   return (
@@ -57,6 +58,7 @@ export default function FlightSearch(props) {
         <SearchPlace {...props}
             title="Origin" 
             selectPlace={setOriginPlace}
+            value={props.itinData.origin}
         />
         <div className={styles.flightDate}>
           <label htmlFor="flightDate">Date of Departure
@@ -72,9 +74,11 @@ export default function FlightSearch(props) {
         <SearchPlace {...props}
           title="Destination" 
           selectPlace={setDestinationPlace}
+          value={props.itinData.destination}
         />
       </div>
-      <FlightList {...props} flights={flightResults} />
+      {flightResults.length > 0 &&
+      <FlightList {...props} flights={flightResults} />}
     </>
   );
 }

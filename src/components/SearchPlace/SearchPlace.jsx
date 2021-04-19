@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import * as flightAPI from '../../services/flightService'
 import styles from './SearchPlace.module.css'
 
-export default function SearchPlace(props){
+export default function SearchPlace({title, value, selectPlace}){
   const [places, setPlaces] = useState([])
-  const [query, setQuery] = useState('')
+  const [query, setQuery] = useState(value)
 
   // purpose of this component is to take query in state  and return a selectable list
   // of valid places to go to
@@ -18,15 +18,16 @@ export default function SearchPlace(props){
 
   return ( 
     <div className={styles.box}>
-      <h3>{props.title}</h3>
+      <h3>{title}</h3>
       <label htmlFor="query">
-      <input 
+        <input 
           value={query} 
           type="text" 
           name="query"
           onChange={(e)=> setQuery(e.target.value)}
-          />
-      <button onClick={sendRequest}>Search</button></label>
+        />
+        <button onClick={sendRequest}>Search</button>
+      </label>
       {places.length ?
         <select
           size={places.length > 5 ? 5 : places.length}
@@ -37,7 +38,7 @@ export default function SearchPlace(props){
             key={idx}
             onClick={(e) => {
               setQuery(place.PlaceName);
-              props.selectPlace({code: place.PlaceId, place: place.PlaceName});
+              selectPlace({code: place.PlaceId, place: place.PlaceName});
             }}
           >
             {place.PlaceName}

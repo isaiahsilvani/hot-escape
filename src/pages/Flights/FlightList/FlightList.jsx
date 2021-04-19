@@ -11,7 +11,7 @@ export default function FlightList ({flights, itinID}) {
   return (
     <>
       <h1>Flight List</h1>
-      {flights.length ?
+      {flights?.length ?
         <table>
           <thead>
             <tr>
