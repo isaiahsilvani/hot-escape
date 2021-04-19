@@ -14,7 +14,7 @@ export default function HotelSection(props) {
       case 'search':
         return <HotelSearch {...props}/>
       case 'view':
-        return <h1>Hotel{hotelId}</h1>
+        return <h1>{hotelId}</h1>
       case 'list':
       default:
         return <HotelList hotels={props.itinData.hotels} {...props} />
@@ -23,7 +23,6 @@ export default function HotelSection(props) {
 
   return (
     <>
-      <h1>Hotels</h1>
       <div className='section-nav'>
         <div onClick={()=>setDisplay('list')}>
           My Hotels</div>
