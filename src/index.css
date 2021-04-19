@@ -24,6 +24,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
+  color: #333;
 
   background-image: url('./img/wing_bg.jpg');
   background-size: cover;
@@ -50,7 +51,8 @@ main {
 }
 
 h1 {
+  color: #333;
   font-size: 2rem;
   padding: 0;
-  margin: 1rem 0;
+  margin: 0 0 1rem 0;
 }

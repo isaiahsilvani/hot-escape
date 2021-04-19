@@ -1,21 +1,24 @@
 .box {
   text-align: left;
-  max-width: 40%;
-  min-width: 20%;
+  max-width: 33%;
   border-radius: 0.5rem;
   display: flex;
   flex-direction: column;
 }
 
+.box label {
+  width: 100%;
+  display: flex;
+}
 .box input {
-  width: 60%;
+  width: 100%;
 }
 .box button {
   padding: 0;
 }
 
 .box select {
-  width: 90%
+  width: 100%
 }
 
 .box h3 {
