@@ -11,3 +11,12 @@ export function addAttraction(attractionData) {
     },{mode: "cors" })
     .then(res => res.json())
 }
+
+export function deleteOne(itinID, attractionID) {
+  return fetch(`${BASE_URL}/${itinID}/${attractionID}`, {
+    headers: { 'content-type': 'application/json',
+      Authorization: "Bearer " + tokenService.getToken() },
+    method: 'DELETE'
+  },{mode: "cors"})
+  .then(res => res.json());
+}
