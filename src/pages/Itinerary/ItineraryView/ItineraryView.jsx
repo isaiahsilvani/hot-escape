@@ -32,8 +32,8 @@ export default function ItineraryView({user}) {
         return (
           <main>
             <h1>Hotels</h1>
-            <HotelSearch itinID={id} />
-            <HotelList hotels={itineraryData.hotels} />
+            <HotelSearch setItineraryData={setItineraryData} itinID={id} />
+            <HotelList itinData={itineraryData} />
           </main>)
       case 'attractions':
         return (
