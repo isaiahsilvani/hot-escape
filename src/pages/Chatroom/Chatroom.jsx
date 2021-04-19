@@ -18,11 +18,12 @@ const Chat = ({ props }) => {
     const [messages, setMessages] = useState([]) 
 
     const query = useLocation()
+    socket = io(ENDPOINT)
     //Everytime component loads, connect  new client (user) to server
     useEffect(() => {
         const { name, room } = queryString.parse(query.search)
         // set socket connection
-        socket = io(ENDPOINT)
+        
         console.log(socket)
         console.log(name, room)
         socket.on('setID', (id) => {
@@ -31,6 +32,7 @@ const Chat = ({ props }) => {
         })
         setName(name)
         setRoom(room)
+        
         // In order to send an event to everyone, Socket.IO gives us io.emit
         socket.emit('join', ({ name, room }), () => {
             // alert(error)
@@ -45,33 +47,26 @@ const Chat = ({ props }) => {
     }, [ENDPOINT, query]
     )
 
-    // set socket.id in state since it's always changing on backend
-    useEffect(() => {
-      
-    })
-
-    // socket listener for sending a message
-    useEffect(() => {
-      console.log('listening for messages...')
-        socket.on('message', (message) => {
-            //setting a new message
-            setMessages([...messages], message)
-        })
-    }, [messages])
+    // socket listener for setting a message data payload from server to state
+    
+    socket.on('message', (text) => {
+        console.log('message recieved from server: ', text)
+           //setting a new message
+           setMessage(text)
+      })
 
       // function for sending messages
       const sendMessage = (event) => {
         event.preventDefault();
     
         if(message) {
-          console.log('input message: ', message)
-          console.log(id)
+          console.log('client message emit - input message: ', message, 'id: ', id)
           socket = io(ENDPOINT)
-          socket.emit('sendMessage', { message, id }, () => setMessage(''));
+          socket.emit('sendMessage', ({ message, id , }), () => setMessage(''));
+          setMessages([...messages, {name, message}])
+          setMessage("")
         }
       }
-
-    console.log(message, messages)
 
       return (
         <div className="outerContainer">
@@ -81,6 +76,7 @@ const Chat = ({ props }) => {
                 onChange={(e) => setMessage(e.target.value)}
                 onKeyPress={e => e.key === 'Enter' ? sendMessage(e) : null}
             />
+            <button onClick={(e) => sendMessage(e)}>Send</button>
           </div>
         </div>
       )

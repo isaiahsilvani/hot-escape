@@ -67,15 +67,14 @@ io.on('connection', (socket) => {
     callback();
   });
 
-  socket.on('sendMessage', (message, callback) => {
-    console.log('recieved message on backend', message)
-    console.log('-------')
-    const user = getUser(socket_id);
-    console.log(user, socket_id)
+  socket.on('sendMessage', ({ message, id, }) => {
+    const user = getUser(id)
+    console.log('recieved message on backend', message, ' by ', user.name)
+    console.log(user)
 
-    io.to(user.room).emit('message', { user: user.name, text: message });
-
-    callback();
+    // this is failing
+    io.to(user.room).emit('message', { user: user.name, text: message})
+    // io.to(user.room).emit('message', { user: user.name, text: message });
   });
 
   //We are managing this specific socket that just connected, disconnect special function
