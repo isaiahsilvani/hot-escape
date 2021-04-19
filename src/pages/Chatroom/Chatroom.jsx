@@ -11,6 +11,7 @@ let socket;
 const Chat = ({ props }) => {
     const [name, setName] = useState('')
     const [room, setRoom] = useState('')
+    const [id, setID] = useState('')
     const ENDPOINT = 'localhost:3000'
     // Set state for setting a message and sending a message
     const [message, setMessage] = useState('')
@@ -24,10 +25,14 @@ const Chat = ({ props }) => {
         socket = io(ENDPOINT)
         console.log(socket)
         console.log(name, room)
+        socket.on('setID', (id) => {
+          console.log('set ID on listener active on clientside')
+          setID(id)
+        })
         setName(name)
         setRoom(room)
         // In order to send an event to everyone, Socket.IO gives us io.emit
-        socket.emit('join', { name, room }, ({ error }) => {
+        socket.emit('join', ({ name, room }), () => {
             // alert(error)
         })
         // Deal with unmounting and detect when client disconnects
@@ -40,23 +45,31 @@ const Chat = ({ props }) => {
     }, [ENDPOINT, query]
     )
 
-    // function for sendin messages
+    // set socket.id in state since it's always changing on backend
+    useEffect(() => {
+      
+    })
 
     // socket listener for sending a message
     useEffect(() => {
+      console.log('listening for messages...')
         socket.on('message', (message) => {
-            //setting a new message 
+            //setting a new message
             setMessages([...messages], message)
         })
     }, [messages])
 
-    const sendMessage = (event) => {
+      // function for sending messages
+      const sendMessage = (event) => {
         event.preventDefault();
     
         if(message) {
-          socket.emit('sendMessage', message, () => setMessage(''));
-            }
-    }
+          console.log('input message: ', message)
+          console.log(id)
+          socket = io(ENDPOINT)
+          socket.emit('sendMessage', { message, id }, () => setMessage(''));
+        }
+      }
 
     console.log(message, messages)
 

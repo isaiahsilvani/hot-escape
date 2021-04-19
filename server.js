@@ -47,25 +47,32 @@ const port = process.env.PORT || 3001;
 const {addUser, removeUser, getUser, getUsersInRoom} = require('./users')
 //IO connection must be below io.on
 io.on('connection', (socket) => {
+  const socket_id = socket.id
   //Listening for join emit from client side (See ChatRoom.jsx)
-  socket.on('join', ({name, room}) => {
-    console.log('we have a new connection!!')
-    console.log(name, room)
-    const { error, user } = addUser({ id: socket.id, name, room })
+  socket.on('join', ({ name, room }, callback) => {
+    console.log('join backend listner: ', name, room)
+    const { error, user } = addUser({ id: socket_id, name, room });
+    console.log('user: ', user)
+    // set socketID in state
 
-    socket.emit('message', { user: 'admit', text: `${user.name}, welcome to the room ${user.room}`})
-    //broadcast sends an emit to everyone BUT the client socket
-    socket.broadcast.to(user.room).emit('message', { user: 'admin', text: `${user.name}, has joined` })
+    if(error) return callback(error);
 
-    socket.join(user.room)
-    console.log(name, room)
-    //imediately trigger response after emit. Error handling
-  })
+    socket.join(user.room);
+    socket.emit('setID', (user.id))
+
+    socket.emit('message', ({ user: 'admin', text: `${user.name}, welcome to room ${user.room}.`}));
+
+    socket.broadcast.to(user.room).emit('message', ({ user: 'admin', text: `${user.name} has joined!` }));
+
+    callback();
+  });
 
   socket.on('sendMessage', (message, callback) => {
-    // get User by unique socket.id
-    const user = getUser(socket.id);
-    // 
+    console.log('recieved message on backend', message)
+    console.log('-------')
+    const user = getUser(socket_id);
+    console.log(user, socket_id)
+
     io.to(user.room).emit('message', { user: user.name, text: message });
 
     callback();
