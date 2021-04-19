@@ -62,7 +62,7 @@ export default function AddHotel({itinID, setItineraryData}) {
           <input
             className="form-control"
             name="room"
-            value={ state.room}
+            value={state.room}
             onChange={handleChange}
             required
           />
@@ -72,7 +72,7 @@ export default function AddHotel({itinID, setItineraryData}) {
           <input
             className="form-control"
             name="checkInDate"
-            value={ state.checkInDate}
+            value={state.checkInDate}
             onChange={handleChange}
           />
         </div>
@@ -81,7 +81,7 @@ export default function AddHotel({itinID, setItineraryData}) {
           <input
             className="form-control"
             name="checkOutDate"
-            value={ state.checkOutDate}
+            value={state.checkOutDate}
             onChange={handleChange}
           />
         </div>
@@ -90,7 +90,7 @@ export default function AddHotel({itinID, setItineraryData}) {
           <input
             className="form-control"
             name="price"
-            value={ state.price}
+            value={state.price}
             onChange={handleChange}
           />
         </div>
