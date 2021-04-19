@@ -18,12 +18,11 @@ const Chat = ({ props }) => {
         // set socket connection
         socket = io(ENDPOINT)
         console.log(socket)
-
         console.log(name, room)
         setName(name)
         setRoom(room)
-
-        
+        // In order to send an event to everyone, Socket.IO gives us io.emit
+        socket.emit('join', { name, room })
     }, [query]
     )
 

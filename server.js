@@ -47,6 +47,10 @@ const port = process.env.PORT || 3001;
 //IO connection must be below io.on
 io.on('connection', (socket) => {
   console.log('We have a new user connection!!!')
+  //Listening for join emit from client side (See ChatRoom.jsx)
+  socket.on('join', ({name, room}) => {
+    console.log(name, room)
+  })
 
   //We are managing this specific socket that just connected, disconnect special function
   socket.on('disconnect', () => {
