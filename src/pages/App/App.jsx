@@ -11,6 +11,9 @@ import FlightSearch from '../Flights/FlightSearch/FlightSearch'
 import HotelSearch from '../../pages/Hotels/HotelSearch/HotelSearch'
 import AttractionSearch from '../../pages/Attractions/AttractionSearch/AttractionSearch'
 
+import Join from '../../components/Join/Join'
+import Chatroom from '../Chatroom/Chatroom'
+
 import "./App.css";
 import CreateItinerary from "../Itinerary/CreateItinerary/CreateItinerary";
 import ItineraryList from '../Itinerary/ItineraryList/ItineraryList';
@@ -53,6 +56,14 @@ export default function App (props) {
             )}
           />
 
+          <ProtectedRoute exact path='/join'>
+            <Join />
+          </ProtectedRoute>
+
+          <ProtectedRoute exact path='/chatroom'>
+            <Chatroom />
+          </ProtectedRoute>
+
           <ProtectedRoute path='/itinerary/new'>
             <CreateItinerary />
           </ProtectedRoute>
@@ -65,6 +76,8 @@ export default function App (props) {
             <ItineraryList />
           </ProtectedRoute>
  
+          
+          
 
           <Route path='/flights'
             render={()=> <FlightSearch />}

@@ -1,7 +1,15 @@
+// modify socketio server
 const express = require('express');
-const app = express();
+const socketio = require('socket.io')
+const http = require('http')
+const app = express()
+const server = http.createServer(app)
+const io = socketio(server)
+
 const path = require('path');
 const logger = require('morgan');
+// socket code
+
 
 require('dotenv').config();
 require('./config/database');
@@ -12,6 +20,7 @@ const flightRouter = require('./routes/flights');
 const itineraryRouter = require('./routes/itinerary');
 const hotelsRouter = require('./routes/hotels');
 const attractionsRouter = require('./routes/attractions')
+const chatRouter = require('./routes/chatroom')
 
 const cors = require('cors')
 
@@ -35,6 +44,45 @@ app.get('/*', function(req, res) {
 
 const port = process.env.PORT || 3001;
 
-app.listen(port, ()=> {
-  console.log(`Express is listening on port ${port}.`)
-});
+const {addUser, removeUser, getUser, getUsersInRoom} = require('./users')
+//IO connection must be below io.on
+io.on('connection', (socket) => {
+  const socket_id = socket.id
+  //Listening for join emit from client side (See ChatRoom.jsx)
+  socket.on('join', ({ name, room }, callback) => {
+    console.log('join backend listner: ', name, room)
+    const { error, user } = addUser({ id: socket_id, name, room });
+    console.log('user: ', user)
+    // set socketID in state
+
+    if(error) return callback(error);
+
+    socket.join(user.room);
+    socket.emit('setID', (user.id))
+    socket.emit('message', ({ user: 'admin', text: `${user.name}, welcome to room ${user.room}.`}));
+
+    socket.broadcast.to(user.room).emit('message', ({ user: 'admin', text: `${user.name} has joined!` }));
+
+    callback();
+  });
+
+  socket.on('sendMessage', ({ message, id, }) => {
+    const user = getUser(id)
+    console.log('recieved message on backend', message, ' by ', user.name)
+    console.log(user)
+
+    // this is failing
+    io.to(user.room).emit('message', { user: user.name, text: message})
+    // io.to(user.room).emit('message', { user: user.name, text: message });
+  });
+
+  //We are managing this specific socket that just connected, disconnect special function
+  socket.on('disconnect-alt', () => {
+    console.log('User has left!!')
+  })
+})
+
+app.use(chatRouter)
+
+// IO server listener
+server.listen(port, () => console.log(`Socket.IO server has started listening on port ${port}`))
