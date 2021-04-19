@@ -22,7 +22,9 @@ const Chat = ({ props }) => {
         setName(name)
         setRoom(room)
         // In order to send an event to everyone, Socket.IO gives us io.emit
-        socket.emit('join', { name, room })
+        socket.emit('join', { name, room }, ({ error }) => {
+            alert(error)
+        })
     }, [query]
     )
 

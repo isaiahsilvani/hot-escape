@@ -48,8 +48,15 @@ const port = process.env.PORT || 3001;
 io.on('connection', (socket) => {
   console.log('We have a new user connection!!!')
   //Listening for join emit from client side (See ChatRoom.jsx)
-  socket.on('join', ({name, room}) => {
+  socket.on('join', ({name, room}, callback) => {
     console.log(name, room)
+
+
+    //imediately trigger response after emit. Error handling
+    const error = true
+    if(error) {
+      callback({ error: 'error'})
+    }
   })
 
   //We are managing this specific socket that just connected, disconnect special function
