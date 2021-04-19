@@ -5,6 +5,7 @@ import queryString from 'query-string'
 import io from 'socket.io-client'
 import InfoBar from '../../components/InfoBar/InfoBar'
 import Input from '../../components/Input/Input'
+import Messages from '../../components/Messages/Messages'
 
 //define socket and endpoint outside of component
 let socket;
@@ -58,7 +59,7 @@ const Chat = ({ props }) => {
     socket.on('message', ({text, user}) => {
         console.log('message recieved from server: ', text, 'from ', user)
            //setting a new message
-           setMessages([...messages, text])
+           setMessages([...messages, {text, user}])
       })
 
       // function for sending messages
@@ -75,13 +76,15 @@ const Chat = ({ props }) => {
       }
 
       return (
-        <div className="outerContainer">
-          <div className="container">
-            <InfoBar room={room}/>
-                <Input message={message} setMessage={setMessage} sendMessage={sendMessage}/>
-              <button onClick={(e) => sendMessage(e)}>Send</button>
+        <main>
+          <div className="outerContainer">
+            <div className="container">
+              <InfoBar room={room}/>
+              <Input message={message} setMessage={setMessage} sendMessage={sendMessage}/>
+              <Messages messages={messages} name={name}/>
+            </div>
           </div>
-        </div>
+        </main>
       )
 }
  
