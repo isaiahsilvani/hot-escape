@@ -4,9 +4,9 @@ import { useHistory } from 'react-router-dom'
 import { useForm } from '../../../hooks/useForm'
 import * as hotelAPI from '../../../services/hotelService'
 
-export default function AddHotel({itinID}) {
+export default function AddHotel({itinID, setItineraryData}) {
     const history = useHistory();
-	const [invalidForm, setValidForm] = useState(true);
+	  const [invalidForm, setValidForm] = useState(true);
     const [state, handleChange] = useForm({
         name: 'Name',
         room: '000',
@@ -15,7 +15,6 @@ export default function AddHotel({itinID}) {
         price: '$0.00'
     })
     
-    const [hotels, setHotels] = useState([])
     const formRef = useRef();
 
     useEffect(() => {
@@ -35,14 +34,14 @@ export default function AddHotel({itinID}) {
       const handleSubmit = async (e) => {
           e.preventDefault();
           try{
-              const hotelData = {...state, itinID}
-              await hotelAPI.addHotel(hotelData)
-              setHotels(hotelData)
-              // history.pushState("/hotels")
+            const hotelData = {...state, itinID}
+            const newItin = await hotelAPI.addHotel(hotelData)
+            console.log("newItin", newItin)
+            setItineraryData(newItin)
           } catch (err) {
-              console.log(err.message)
+            console.log(err.message)
           }
-      }
+        }
 
     return (
 		<main className="hotel-search">
