@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom'
 import { useForm } from '../../../hooks/useForm'
 import * as hotelAPI from '../../../services/hotelService'
 
-export default function AddHotel({itinID, setItineraryData}) {
+export default function AddHotel({itinID, setItineraryData, setDisplay}) {
     const history = useHistory();
 	  const [invalidForm, setValidForm] = useState(true);
     const [state, handleChange] = useForm({
@@ -38,13 +38,14 @@ export default function AddHotel({itinID, setItineraryData}) {
             const newItin = await hotelAPI.addHotel(hotelData)
             console.log("newItin", newItin)
             setItineraryData(newItin)
+            setDisplay('list')
           } catch (err) {
             console.log(err.message)
           }
         }
 
     return (
-		<main className="hotel-search">
+    <>
       <h1>Add Hotel</h1>
       <form autoComplete="off" ref={formRef} onSubmit={handleSubmit}>
         <div className="hotel-form">
@@ -102,7 +103,7 @@ export default function AddHotel({itinID, setItineraryData}) {
           ADD HOTEL
         </button>
       </form>
-    </main>
+    </>
 	)
 }
 

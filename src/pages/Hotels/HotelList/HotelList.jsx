@@ -3,7 +3,7 @@ import { UserContext } from '../../../components/UserContext'
 import * as hotelsAPI from '../../../services/hotelService'
 
 
-export default function HotelList ({hotels, itinID, setItineraryData}) {
+export default function HotelList ({itinData, hotels, itinID, setItineraryData, setHotelId, setDisplay}) {
   const user = useContext(UserContext);
 
   const deleteHotel = async (hotelID) => {
@@ -11,10 +11,15 @@ export default function HotelList ({hotels, itinID, setItineraryData}) {
     const result = await hotelsAPI.deleteOne(itinID, hotelID);
     setItineraryData(result);
   }
+
+  const editHotel = (i) => {
+    setDisplay('view');
+    setHotelId(i)
+  }
   return (
     <>
       <h1>Hotel List</h1>
-      {hotels.length ?
+      {itinData.hotels.length ?
         <table>
           <thead>
             <tr>
@@ -24,10 +29,11 @@ export default function HotelList ({hotels, itinID, setItineraryData}) {
               <th>Check-out Date</th>
               <th>Price</th>
               <th>Delete</th>
+              <th>Edit</th>
             </tr>
           </thead>
           <tbody>
-            {hotels.map(hotel => (
+            {itinData.hotels.map((hotel, idx) => (
               <tr>
                 <td>{hotel.name}</td>
                 <td>{hotel.room}</td>
@@ -35,6 +41,7 @@ export default function HotelList ({hotels, itinID, setItineraryData}) {
                 <td>{hotel.checkOutDate.split('T')[0]}</td>
                 <td>{hotel.price}</td>
                 <td><button onClick={()=>deleteHotel(hotel._id)} >Delete</button></td>
+                <td onClick={()=> editHotel(idx)}>Edit</td>
               </tr>
             ))}
           </tbody>

@@ -10,7 +10,8 @@ const flightSchema = new Schema({
   direct: { type: Boolean, },
   lowestPrice: { type: Number, },
   currency: { type: String, },
-  flightID: { type: Number }
+  flightID: { type: Number },
+  flightDateTime: { type: Date }
 }, {
     timestamps: true
 });
