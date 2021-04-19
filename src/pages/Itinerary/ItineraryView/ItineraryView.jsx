@@ -4,8 +4,7 @@ import * as itineraryAPI from '../../../services/itineraryService';
 import FlightSection from '../../Flights/FlightSection/FlightSection';
 import ItineraryNav from '../../../components/ItineraryNav/ItineraryNav'
 import HotelSection from '../../Hotels/HotelSection/HotelSection'
-import AttractionSearch from '../../Attractions/AttractionSearch/AttractionSearch'
-import AttractionList from '../../Attractions/AttractionList/AttractionList'
+import AttractionSection from '../../Attractions/AttractionSection/AttractionSection'
 
 export default function ItineraryView({user}) {
   const {id} = useParams();
@@ -37,8 +36,7 @@ export default function ItineraryView({user}) {
         return (
           <main>
             <h1>Attractions</h1>
-            <AttractionSearch setItineraryData={setItineraryData} itinID={id} />
-            <AttractionList itinData={itineraryData} />
+            <AttractionSection setItineraryData={setItineraryData} itinID={id} itinData={itineraryData} />
           </main>
         )
       case 'flights':
