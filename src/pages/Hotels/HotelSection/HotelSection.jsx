@@ -22,7 +22,7 @@ export default function HotelSection(props) {
   }
 
   return (
-    <main>
+    <>
       <h1>Hotels</h1>
       <div className='section-nav'>
         <div onClick={()=>setDisplay('list')}>
@@ -31,6 +31,6 @@ export default function HotelSection(props) {
           Add Hotels</div>
       </div>
       {displaySwitch(hotelId)}
-    </main>
+    </>
   )
 }

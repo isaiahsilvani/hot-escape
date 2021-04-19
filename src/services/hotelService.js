@@ -12,8 +12,11 @@ export function addHotel(hotelData) {
     .then(res => res.json())
   }
 
-// export function deleteOne(id) {
-//     return fetch(`${BASE_URL}/${id}`, {
-//       method: 'DELETE'
-//     }).then(res => res.json());
-//   }
+export function deleteOne(itinID, hotelID) {
+    return fetch(`${BASE_URL}/${itinID}/${hotelID}`, {
+      headers: { 'content-type': 'application/json',
+        Authorization: "Bearer " + tokenService.getToken() },
+      method: 'DELETE'
+    },{mode: "cors"})
+    .then(res => res.json());
+  }

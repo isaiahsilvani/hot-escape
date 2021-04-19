@@ -3,20 +3,14 @@ import { UserContext } from '../../../components/UserContext'
 import * as hotelsAPI from '../../../services/hotelService'
 
 
-// export default function HotelList({itinData}) {
-//   return (
-//     <>
-//         <h1>Hotel List</h1>
-//         {itinData.hotels?.map(hotel => (
-//           <h1>{hotel.name}</h1>
-//         ))}
-//       </>
-//     )
-// }
-
-export default function HotelList ({hotels}) {
+export default function HotelList ({hotels, itinID, setItineraryData}) {
   const user = useContext(UserContext);
-    
+
+  const deleteHotel = async (hotelID) => {
+    // console.log("hotelID", hotelID, "idinID", itinID);
+    const result = await hotelsAPI.deleteOne(itinID, hotelID);
+    setItineraryData(result);
+  }
   return (
     <>
       <h1>Hotel List</h1>
@@ -24,25 +18,23 @@ export default function HotelList ({hotels}) {
         <table>
           <thead>
             <tr>
-              <th>Select</th>
               <th>Name</th>
               <th>Room #</th>
               <th>Check-in Date</th>
               <th>Check-out Date</th>
               <th>Price</th>
+              <th>Delete</th>
             </tr>
           </thead>
           <tbody>
             {hotels.map(hotel => (
               <tr>
-                <td><input type="checkbox" /></td>
                 <td>{hotel.name}</td>
                 <td>{hotel.room}</td>
-                <td>{hotel.checkInDate}</td>
-                <td>{hotel.checkOutDate}</td>
+                <td>{hotel.checkInDate.split('T')[0]}</td>
+                <td>{hotel.checkOutDate.split('T')[0]}</td>
                 <td>{hotel.price}</td>
-                {/* <button className="delete-btn">
-          delete</button> */}
+                <td><button onClick={()=>deleteHotel(hotel._id)} >Delete</button></td>
               </tr>
             ))}
           </tbody>
