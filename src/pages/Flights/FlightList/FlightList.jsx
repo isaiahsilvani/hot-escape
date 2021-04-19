@@ -1,17 +1,50 @@
+import { PromiseProvider } from 'mongoose';
 import React, {useState, useContext, useEffect} from 'react';
 import { useParams } from 'react-router-dom'
 import { UserContext } from '../../../components/UserContext'
 import * as flightsAPI from '../../../services/flightService'
 import './FlightList.css'
 
-export default function FlightList ({flights, itinID}) {
+export default function FlightList 
+  ({flights, itinID, setMessage, setItineraryData, setDisplay, controls}) {
+
   const user = useContext(UserContext);
-  const [selectedFlights, setSelectedFlights] = useState('')
-  console.log("flightslist", flights);
+  const [selectedFlights, setSelectedFlights] = useState([])
+
+  const toggleFlight = (i) => {
+    const selected = (selectedFlights.some(flight => 
+      flight.flightID === flights[i].flightID)) ?
+      selectedFlights.filter(flight => 
+        flight.flightID !== flights[i].flightID) :
+      [...selectedFlights, flights[i]];
+    setSelectedFlights(selected)
+  }
+
+  const addFlights = async () => {
+    try {
+      const result = await flightsAPI.addFlights(itinID, selectedFlights)
+      setItineraryData(result)
+      setDisplay('list')
+    } catch (error) {
+      setMessage(error.message)
+    }
+  } 
   
+  const deleteFlights = async () => {
+    try {
+      const result = await flightsAPI.deleteFlights(itinID, selectedFlights)
+      setItineraryData(result)
+      setDisplay('list')
+    } catch (error) {
+      setMessage(error.message)
+    }
+  }
+
   return (
     <>
       <h1>Flight List</h1>
+      {controls === 'add' && <button onClick={addFlights}>Add Selected</button>}
+      {controls === 'del' && <button onClick={deleteFlights}>Remove Selected</button>}
       {flights?.length ?
         <table>
           <thead>
@@ -29,9 +62,9 @@ export default function FlightList ({flights, itinID}) {
             </tr>
           </thead>
           <tbody>
-            {flights.map(flight => (
-              <tr>
-                <td><input type="checkbox" /></td>
+            {flights.map((flight, idx) => (
+              <tr key={idx}>
+                <td><input type="checkbox" onClick={()=> toggleFlight(idx)}/></td>
                 <td>{flight.airline}</td>
                 <td>{flight.originCity}</td>
                 <td>{flight.originStation}</td>

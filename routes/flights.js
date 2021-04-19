@@ -5,15 +5,13 @@ const flightsCtrl = require('../controllers/flights');
 /*---------- Public Routes ----------*/
 router.post('/place', flightsCtrl.searchPlace)
 router.post('/search', flightsCtrl.searchFlights)
-router.post('/add', flightsCtrl.addFlight)
-router.get('/:id', flightsCtrl.index);
 
 /*---------- Protected Routes ----------*/
-// router.use(require("../config/auth"));
-// router.get('/:id', checkAuth, flightsCtrl.show);
-// router.get("/search", checkAuth, flightsCtrl.searchFlight);
-// router.post('/', checkAuth, flightsCtrl.create);
-// router.delete('/:id', checkAuth, flightsCtrl.delete);
+router.use(require("../config/auth"));
+// router.post('/place', checkAuth, flightsCtrl.searchPlace)
+// router.post('/search', checkAuth, flightsCtrl.searchFlights)
+router.post('/:itinid', checkAuth, flightsCtrl.addFlights)
+router.delete('/:itinid', checkAuth, flightsCtrl.deleteFlights)
 
 function checkAuth(req, res, next) {
   if (req.user) return next();

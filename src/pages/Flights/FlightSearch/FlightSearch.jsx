@@ -43,6 +43,7 @@ export default function FlightSearch(props) {
             place.PlaceId === quote.OutboundLeg.DestinationId).CityName,
           currency: results.Currencies[0].Code,
           flightDateTime: quote.QuoteDateTime,
+          flightID: quote.MinPrice * quote.OutboundLeg.DestinationId * quote.OutboundLeg.OriginId
         }
       })
       if (flightResults) { 
@@ -78,7 +79,7 @@ export default function FlightSearch(props) {
         />
       </div>
       {flightResults.length > 0 &&
-      <FlightList {...props} flights={flightResults} />}
+      <FlightList {...props} flights={flightResults} controls='add' setMessage={setMessage} />}
     </>
   );
 }
