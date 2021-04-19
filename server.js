@@ -46,7 +46,7 @@ const port = process.env.PORT || 3001;
 
 //IO connection must be below io.on
 io.on('connection', (socket) => {
-  console.log('We have a new connection!!!')
+  console.log('We have a new user connection!!!')
 
   //We are managing this specific socket that just connected, disconnect special function
   socket.on('disconnect', () => {
