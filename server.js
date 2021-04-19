@@ -44,23 +44,35 @@ app.get('/*', function(req, res) {
 
 const port = process.env.PORT || 3001;
 
+const {addUser, removeUser, getUser, getUsersInRoom} = require('./users')
 //IO connection must be below io.on
 io.on('connection', (socket) => {
-  console.log('We have a new user connection!!!')
   //Listening for join emit from client side (See ChatRoom.jsx)
-  socket.on('join', ({name, room}, callback) => {
+  socket.on('join', ({name, room}) => {
+    console.log('we have a new connection!!')
     console.log(name, room)
+    const { error, user } = addUser({ id: socket.id, name, room })
 
+    socket.emit('message', { user: 'admit', text: `${user.name}, welcome to the room ${user.room}`})
+    //broadcast sends an emit to everyone BUT the client socket
+    socket.broadcast.to(user.room).emit('message', { user: 'admin', text: `${user.name}, has joined` })
 
+    socket.join(user.room)
+    console.log(name, room)
     //imediately trigger response after emit. Error handling
-    const error = true
-    if(error) {
-      callback({ error: 'error'})
-    }
   })
 
+  socket.on('sendMessage', (message, callback) => {
+    // get User by unique socket.id
+    const user = getUser(socket.id);
+    // 
+    io.to(user.room).emit('message', { user: user.name, text: message });
+
+    callback();
+  });
+
   //We are managing this specific socket that just connected, disconnect special function
-  socket.on('disconnect', () => {
+  socket.on('disconnect-alt', () => {
     console.log('User has left!!')
   })
 })
