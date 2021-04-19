@@ -7,17 +7,15 @@ import './FlightSection.css'
 
 export default function FlightSection(props) {
   const [display, setDisplay] = useState('list');
-  const [flightId, setFlightId] = useState(123);
+  const [message, setMessage] = useState('');
 
   const displaySwitch = () => {
     switch(display) {
       case 'search':
-        return <FlightSearch {...props}/>
-      case 'view':
-        return <h1>Flight #{flightId}</h1>
+        return <FlightSearch setDisplay={setDisplay} {...props}/>
       case 'list':
       default:
-        return <FlightList flights={props.itinData.flights} {...props} />
+        return <FlightList flights={props.itinData.flights} setMessage={setMessage} controls='del' setDisplay={setDisplay} {...props} />
     }
   }
 
@@ -34,7 +32,8 @@ export default function FlightSection(props) {
           setFlightId(666)}}>
           Flight Details</div> */}
       </div>
-      {displaySwitch(flightId)}
+      <p>{message}</p>
+      {displaySwitch()}
     </main>
   )
 }

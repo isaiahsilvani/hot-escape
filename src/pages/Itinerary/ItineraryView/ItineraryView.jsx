@@ -41,7 +41,7 @@ export default function ItineraryView({user}) {
         )
       case 'flights':
       default:
-        return <FlightSection itinID={id} setFlight={setFlight} itinData={itineraryData} />
+        return <FlightSection itinID={id} setItineraryData={setItineraryData} itinData={itineraryData} />
     }
   }
       
