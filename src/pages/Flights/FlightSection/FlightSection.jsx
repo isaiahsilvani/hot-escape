@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom'
 import './FlightSection.css'
 
 export default function FlightSection(props) {
-  const [display, setDisplay] = useState('view');
+  const [display, setDisplay] = useState('list');
   const [flightId, setFlightId] = useState(123);
 
   const displaySwitch = () => {

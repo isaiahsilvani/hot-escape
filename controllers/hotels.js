@@ -31,9 +31,18 @@ function show(req, res) {
 }
 
 function deleteHotel(req, res){
-    Movie.findByIdAndDelete(req.params.id)
-    .then(movie => {res.json(movie)})
-    .catch(err => {res.json(err)})
+  Itinerary.findOne({_id: req.params.itinid, owner: req.user._id})  
+  .then(itinerary => {
+    // console.log("found itinerary", itinerary)
+    const index = itinerary.hotels.findIndex(hotel => hotel._id.equals(req.params.id))
+    // console.log('found index', index)
+    itinerary.hotels.splice(index, 1)
+    // console.log("new hotels array", itinerary.hotels)
+    itinerary.save()
+    .then((itinerary) => {
+      res.json(itinerary)
+    })
+  })
 }
 
 function update(req, res){

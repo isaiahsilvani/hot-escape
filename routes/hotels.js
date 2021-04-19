@@ -10,7 +10,7 @@ router.get('/', checkAuth, hotelsCtrl.index);
 router.get('/:id', checkAuth, hotelsCtrl.show);
 router.post('/', checkAuth, hotelsCtrl.create);
 router.put('/:id', checkAuth, hotelsCtrl.update);
-router.delete('/:id', checkAuth, hotelsCtrl.delete);
+router.delete('/:itinid/:id', checkAuth, hotelsCtrl.delete);
 
 
 function checkAuth(req, res, next) {

@@ -6,6 +6,7 @@ import './FlightList.css'
 
 export default function FlightList ({flights, itinID}) {
   const user = useContext(UserContext);
+  const [selectedFlights, setSelectedFlights] = useState('')
   console.log("flightslist", flights);
   
   return (
