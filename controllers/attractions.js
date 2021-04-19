@@ -35,5 +35,13 @@ function update(req, res){
 }
 
 function deleteAttraction(req, res){
-
+  Itinerary.findOne({_id: req.params.itinid, owner: req.user._id})  
+  .then(itinerary => {
+    const index = itinerary.attractions.findIndex(attraction => attraction._id.equals(req.params.id))
+    itinerary.attractions.splice(index, 1)
+    itinerary.save()
+    .then((itinerary) => {
+      res.json(itinerary)
+    })
+  })
 }

@@ -23,7 +23,6 @@ export default function AttractionSection(props) {
   
     return (
       <main>
-        <h1>Attractions</h1>
         <div className='section-nav'>
           <div onClick={()=>setDisplay('list')}>
             My Attractions</div>
