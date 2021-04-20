@@ -3,6 +3,12 @@
   padding: 1rem;
   border: solid 1px #ccc;
   margin-right: 1rem;
+  cursor: pointer;
+  border-radius: 0.5rem;
+}
+
+.section-nav > div:hover {
+  background: #eee;
 }
 
 .section-nav {
