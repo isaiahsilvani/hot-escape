@@ -9,7 +9,6 @@ import './AttractionSection.css'
 export default function AttractionSection(props) {
     const [display, setDisplay] = useState('list');
 
-    const [attractionId] = useState();
     const [attractionId, setAttractionId] = useState(0);
 
   
