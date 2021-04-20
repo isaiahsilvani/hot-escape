@@ -7,6 +7,8 @@
   flex-wrap: wrap;
   align-items: center;
   width: fit-content;
+  font-family: 'Raleway';
+  font-weight: 400;
 }
 
 .itineraryNav > div {
@@ -15,11 +17,11 @@
 }
 
 .itineraryNav > div:first-of-type {
-  border-radius: 0.5rem 0 0 0.5rem;
+  border-radius: 0 0 0 0.5rem;
 }
 
 .itineraryNav > div:last-of-type {
-  border-radius: 0 0.5rem 0.5rem 0;
+  border-radius: 0 0rem 0.5rem 0;
 }
 
 
