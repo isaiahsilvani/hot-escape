@@ -14,7 +14,6 @@ let socket;
 
 const Chat = ({ props }) => {
     const user = useContext(UserContext)
-    console.log(user)
 
     const [name, setName] = useState('')
     const [room, setRoom] = useState('')
@@ -31,8 +30,6 @@ const Chat = ({ props }) => {
         const { name, room } = queryString.parse(query.search)
         // set socket connection
         
-        console.log(socket)
-        console.log(name, room)
         setName(name)
         setRoom(room)
         
@@ -78,7 +75,6 @@ const Chat = ({ props }) => {
         event.preventDefault();
     
         if(message) {
-          console.log('client message emit - input message: ', message, 'id: ', id)
           socket = io(ENDPOINT)
           socket.emit('sendMessage', {message, id })
           console.log('send message hit ', message, id)
