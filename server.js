@@ -26,6 +26,7 @@ const itineraryRouter = require('./routes/itinerary');
 const hotelsRouter = require('./routes/hotels');
 const attractionsRouter = require('./routes/attractions')
 const chatRouter = require('./routes/chatroom')
+const messagesRouter = require('./routes/messages')
 
 const cors = require('cors')
 
@@ -37,6 +38,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, 'build')));
 
 app.use('/chatroom', chatRouter)
+app.use('/messages', messagesRouter)
 
 app.use('/api/users', userRouter);
 app.use('/api/auth', authRouter);
@@ -58,9 +60,7 @@ const {addUser, removeUser, getUser, getUsersInRoom} = require('./users')
 io.on('connection', (socket) => {
   //Listening for join emit from client side (See ChatRoom.jsx)
   socket.on('join', ({ name, room, id }, callback) => {
-    console.log('join backend listner: ', name, room)
     const { error, user } = addUser({ id, name, room });
-    console.log('user: ', user)
     // set socketID in state
 
     if(error) return callback(error);

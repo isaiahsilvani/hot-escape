@@ -13,7 +13,6 @@ const addUser = ({ id, name, room }) => {
     // if if statements not hit, create user object. Then push to users array to keep track
   const user = { id, name, room };
   users.push(user);
-  console.log('user added to:', users)
 
   return { user };
 }
@@ -27,7 +26,6 @@ const removeUser = (id) => {
 
 // Get user from array by ID
 const getUser = (id) => {
-  console.log(users)
   return users.find((user) => user.id === id)
 };
 
