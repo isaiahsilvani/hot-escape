@@ -1,7 +1,25 @@
-.Signup {
+.signup {
   display: flex;
-  flex-flow: column nowrap;
+  flex-flow: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 50px;
+}
+
+.signup form {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-direction: column;
+  max-width: 70%;
+}
+
+
+.signup label {
+  font-size: 1.8rem;
+  margin: 0.5rem 0;
+  display: flex;
+}
+
+.signup label > input {
+  margin-left: 0.5rem;
 }

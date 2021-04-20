@@ -1,69 +1,23 @@
 .login {
-  background: rgba(255,255,255,.9);
-  max-width: 60%;
-  margin: 0 auto;
-  padding: 2rem;
-  border-radius: 2rem;
-}
-.login h3 {
-  margin: 0 0 1rem 0;
-  font-size: 5em;
-  font-weight: 350;
-}
-
-.login form {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
-
-.login input {
-  width: 30%;
-  height: 2.1em;
-  border-radius: 20px;
-  margin-top: 1em;
+.login form {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-direction: column;
+  max-width: 70%;
 }
 
 .login label {
-  font-size: 1.8em;
-  font-weight: 400;
-  margin-top: 1em;
-  letter-spacing: 0.1em;
+  font-size: 1.8rem;
+  margin: 0.5rem 0;
+  display: flex;
 }
 
-.login button {
-  width: 6em;
-  height: 2em;
-  font-size: 1.8em;
-  font-weight: 500;
-  border-radius: 10px;
-  background-color: pink;
-  margin-bottom: 2em;
-}
-
-.login button:hover {
-  background-color: lightblue;
-}
-
-#cancel {
-  font-size: 2em;
-  color: black;
-  text-decoration: none;
-}
-
-#signup {
-  font-size: 1.3em;
-  text-decoration: none;
-  margin-top: 0.5em;
-  margin-bottom: 1.3em;
-  color: black;
-}
-
-#signup:hover {
-  text-decoration: underline;
-}
-
-#cancel:hover {
-  font-style: italic;
+.login label > input {
+  margin-left: 0.5rem;
 }
