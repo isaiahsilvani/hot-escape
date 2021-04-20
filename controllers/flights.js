@@ -12,17 +12,18 @@ module.exports = {
   addFlights,
   // show,
   deleteFlights,
+  index
 }
 
-// function index(req, res) {
-//   console.log('index function hit')
-//   console.log(req.params.id)
-//   Itinerary.findOne({owner: req.params.id})
-//   .then((itinerary) => {
-//     console.log(itinerary.flights)
-//     res.json(itinerary.flights)
-//   })
-// }
+function index(req, res) {
+  console.log('index function hit')
+  console.log(req.params.id)
+  Itinerary.findOne({owner: req.params.id})
+  .then((itinerary) => {
+    console.log(itinerary.flights)
+    res.json(itinerary.flights)
+  })
+}
 
 function addFlights(req, res) {
   Itinerary.findOne({_id: req.params.itinid, owner: req.user._id}) 

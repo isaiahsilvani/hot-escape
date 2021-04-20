@@ -36,12 +36,16 @@ app.use(express.json());
 
 app.use(express.static(path.join(__dirname, 'build')));
 
+app.use('/chatroom', chatRouter)
+
 app.use('/api/users', userRouter);
 app.use('/api/auth', authRouter);
 app.use('/api/flights', flightRouter);
 app.use('/api/itinerary', itineraryRouter);
 app.use('/api/hotels', hotelsRouter)
 app.use('/api/attractions', attractionsRouter)
+
+
 
 app.get('/*', function(req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
@@ -86,8 +90,6 @@ io.on('connection', (socket) => {
     console.log('User has left!!')
   })
 })
-
-app.use(chatRouter)
 
 // IO server listener
 httpServer.listen(port, () => console.log(`Socket.IO server has started listening on port ${port}`))

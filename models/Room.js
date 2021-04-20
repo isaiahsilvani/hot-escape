@@ -6,10 +6,16 @@ const messageSchema = new Schema({
     userid: String
 })
 
+const userSchema = new Schema({
+    name: String,
+    id: String
+})
+
 const roomSchema = new Schema({
     roomName: { type: String },
-    owner: {type: Schema.Types.ObjectId, ref: "User" },
-    users: [{type: Schema.Types.ObjectId, ref: "User" }],
-    messages: [messageSchema],
-    url: {type: String}
+    owner: { type: String},
+    users: [userSchema],
+    messages: [messageSchema]
 })
+
+module.exports = mongoose.model('Room', roomSchema);

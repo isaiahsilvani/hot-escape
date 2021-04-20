@@ -82,6 +82,7 @@ const Chat = ({ props }) => {
           console.log('client message emit - input message: ', message, 'id: ', id)
           socket = io(ENDPOINT)
           socket.emit('sendMessage', {message, id })
+          setMessage('')
         }
       }
 
