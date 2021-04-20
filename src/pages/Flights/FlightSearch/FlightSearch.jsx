@@ -23,7 +23,7 @@ export default function FlightSearch(props) {
   const handleFlightsSearch = async () => {
     const flightData = {originPlace, destinationPlace, flightDate}
     if (!originPlace.code || ! destinationPlace.code) {
-      return setMessage('Please search for and select your origin and destination')
+      return setMessage('Please select your origin and destination')
     }
     try {
       const results = await flightsAPI.searchFlights(flightData)

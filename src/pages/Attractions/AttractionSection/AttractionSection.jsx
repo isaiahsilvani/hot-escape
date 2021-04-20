@@ -6,15 +6,13 @@ import { useParams } from 'react-router-dom'
 import './AttractionSection.css'
 
 export default function AttractionSection(props) {
-    const [display, setDisplay] = useState('view');
+    const [display, setDisplay] = useState('list');
     const [attractionId] = useState();
   
     const displaySwitch = () => {
       switch(display) {
         case 'search':
           return <AttractionSearch {...props}/>
-        case 'view':
-          return <h1>Attraction{attractionId}</h1>
         case 'list':
         default:
           return <AttractionList attractions={props.itinData.attractions} {...props} />
@@ -22,7 +20,7 @@ export default function AttractionSection(props) {
     }
   
     return (
-      <main>
+      <>
         <div className='section-nav'>
           <div onClick={()=>setDisplay('list')}>
             My Attractions</div>
@@ -30,6 +28,6 @@ export default function AttractionSection(props) {
             Add Attractions</div>
         </div>
         {displaySwitch(attractionId)}
-      </main>
+      </>
     )
   }

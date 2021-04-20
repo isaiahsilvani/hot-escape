@@ -64,7 +64,7 @@ export default function FlightList
           <tbody>
             {flights.map((flight, idx) => (
               <tr key={idx}>
-                <td><input type="checkbox" onClick={()=> toggleFlight(idx)}/></td>
+                <td><input type="checkbox" autoComplete='off' onClick={()=> toggleFlight(idx)}/></td>
                 <td>{flight.airline}</td>
                 <td>{flight.originCity}</td>
                 <td>{flight.originStation}</td>

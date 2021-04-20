@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import * as flightAPI from '../../services/flightService'
 import styles from './SearchPlace.module.css'
 
@@ -16,6 +16,11 @@ export default function SearchPlace({title, value, selectPlace}){
     }
   }
 
+  useEffect(()=> {
+    sendRequest();
+  },[])
+
+
   return ( 
     <div className={styles.box}>
       <h3>{title}</h3>
@@ -30,7 +35,7 @@ export default function SearchPlace({title, value, selectPlace}){
       </label>
       {places.length ?
         <select
-          size={places.length > 5 ? 5 : places.length}
+          size={places?.length > 5 ? 5 : places?.length}
           name="placeList"
         >
         {places.map((place, idx) =>
