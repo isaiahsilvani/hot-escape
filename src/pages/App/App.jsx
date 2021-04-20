@@ -93,7 +93,9 @@ export default function App (props) {
             render={() => (
               <main>
                 <h1>Welcome to Hot Escape.</h1>
-                <p>Plan your next Escape</p>
+                <h4>Your next vacation is waiting for you, all you've got to do it plan it.</h4>
+                <p> Use Hot Escape to plan your next vacation. You can create an itinerary for each of your vacation plans. You fill your itinerary with the flights that you search for and add in your hotels and attractions.  You can also use Hot Escape to chat with other travelers about their vacations. </p> <br/>
+                <h2>Safe Travels!</h2>
               </main>
             )}
           />
