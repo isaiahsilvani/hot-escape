@@ -11,15 +11,11 @@ function index(req, res) {
 }
 
 function createRoom(req, res) {
-    console.log('create room function hit')
-    console.log(req.body)
     var query = {},
     update = { expire: new Date() },
     options = { upsert: true, new: true, setDefaultsOnInsert: true };
 
 // Check if the document exists. If it does, do nothing but send 200 status. Else, create
-
-    console.log(req.body.room)
     Room.findOne({roomName: req.body.room},function(err, room){
         console.log(room, req.body.room)
          if (room) {

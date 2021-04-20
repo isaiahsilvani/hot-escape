@@ -5,7 +5,6 @@ import './Messages.css'
 
 
 const Messages = ({ messages, name }) => {
-    console.log('from message component', messages, name)
     return ( 
         <ScrollToBottom className='messages'>
             {messages.map((message, idx) => 

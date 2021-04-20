@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react'
 import { useLocation } from 'react-router-dom'
 import { UserContext } from '../../components/UserContext'
 import queryString from 'query-string'
+import * as messagesAPI from '../../services/messagesService'
 //socketio clientside listener
 import io from 'socket.io-client'
 import InfoBar from '../../components/InfoBar/InfoBar'
@@ -14,11 +15,10 @@ let socket;
 
 const Chat = ({ props }) => {
     const user = useContext(UserContext)
-    console.log(user)
 
     const [name, setName] = useState('')
     const [room, setRoom] = useState('')
-    const [id, setID] = useState(user._id)
+    const [id, setID] = useState('')
     const ENDPOINT = 'localhost:3001'
     // Set state for setting a message and sending a message
     const [message, setMessage] = useState('')
@@ -30,9 +30,7 @@ const Chat = ({ props }) => {
     useEffect(() => {
         const { name, room } = queryString.parse(query.search)
         // set socket connection
-        
-        console.log(socket)
-        console.log(name, room)
+        setID(user._id)
         setName(name)
         setRoom(room)
         
@@ -40,14 +38,6 @@ const Chat = ({ props }) => {
         socket.emit('join', ({ name, room, id }), () => {
             // alert(error)
         })
-
-        // socket.on('message', ({text, user}) => {
-        //   console.log('message recieved from server: ', text, 'from ', user)
-        //      //setting a new message
-        //      console.log(text, user)
-        //      setMessages([...messages, {text, user}])
-        // })
-        // Deal with unmounting and detect when client disconnects
         return () => {
             // emit disconnect to backend
             socket.emit('disconnect-alt')
@@ -78,12 +68,17 @@ const Chat = ({ props }) => {
         event.preventDefault();
     
         if(message) {
-          console.log('client message emit - input message: ', message, 'id: ', id)
+          // store message in database
           socket = io(ENDPOINT)
           socket.emit('sendMessage', {message, id })
-          console.log('send message hit ', message, id)
+          console.log('send message hit ', message, id, name)
+          storeMsg(message)
           setMessage('')
         }
+      }
+
+      const storeMsg = async (message) => {
+        await messagesAPI.storeMsg({message, name, id, room})
       }
 
       return (
