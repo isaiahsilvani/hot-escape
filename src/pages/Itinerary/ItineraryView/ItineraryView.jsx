@@ -5,6 +5,7 @@ import FlightSection from '../../Flights/FlightSection/FlightSection';
 import ItineraryNav from '../../../components/ItineraryNav/ItineraryNav'
 import HotelSection from '../../Hotels/HotelSection/HotelSection'
 import AttractionSection from '../../Attractions/AttractionSection/AttractionSection'
+import './ItineraryView.css'
 
 export default function ItineraryView({user}) {
   const {id} = useParams();

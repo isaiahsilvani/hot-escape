@@ -32,7 +32,7 @@ export default function FlightSection(props) {
           setFlightId(666)}}>
           Flight Details</div> */}
       </div>
-      <p>{message}</p>
+      {message && <p>{message}</p>}
       {displaySwitch()}
     </main>
   )
