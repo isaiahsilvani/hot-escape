@@ -26,34 +26,32 @@ export default function LoginPage(props) {
 
   return (
     <main className="login">
-      <h3>Spicy Adventures Await</h3>
-      <label htmlFor="email">Your Email</label>
+      <h1>Login</h1>
       <form autoComplete="off" onSubmit={handleSubmit}>
+        
+        <label htmlFor="email">Email: 
         <input
           type="text"
           autoComplete="off"
-          id="email"
           value={loginData.email}
           name="email"
           onChange={handleChange}
           required
-        />
-        <label htmlFor="password">Your Password</label>
- 
+        /></label>
+        <label htmlFor="password">Password: 
         <input
           type="password"
           autoComplete="off"
-          id="password"
           value={loginData.pw}
           name="pw"
           onChange={handleChange}
           required
-        />
-          <Link id='signup' className="btn red" to="/signup">
+        /></label>
+          <Link to="/signup">
               Don't have an account? Sign up
           </Link>
         
-        <button className="btn green">Log In</button>
+        <button type="submit" className="btn green">Log In</button>
       </form>
       <Link className="btn red" id='cancel' to="/">
         Go Back

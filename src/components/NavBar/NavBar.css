@@ -4,6 +4,8 @@ nav {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  font-family: 'Raleway';
+  font-weight: 300;
 }
 nav ul {
   margin: 0;
@@ -25,13 +27,13 @@ nav li {
 }
 
 nav li a {
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   color: #333;
   text-decoration: none;
 }
 
 nav li:hover {
-  text-decoration: underline;
+  /* text-decoration: underline; */
   background: #eee;
 }
 

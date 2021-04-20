@@ -37,11 +37,10 @@ export default function SignupForm(props) {
   };
 
   return (
-    <main class="login">
-      <div>
+    <main class="signup">
         <h3>Sign Up</h3>
         <form autoComplete="off" ref={formRef} onSubmit={handleSubmit}>
-        <label htmlFor="name">Name</label>
+        <label htmlFor="name">Name
           <input
             type="text"
             autoComplete="off"
@@ -50,8 +49,8 @@ export default function SignupForm(props) {
             name="name"
             onChange={handleChange}
             required
-          />
-          <label htmlFor="email">Email</label>
+          /></label>
+          <label htmlFor="email">Email
           <input
             type="text"
             autoComplete="off"
@@ -60,8 +59,8 @@ export default function SignupForm(props) {
             name="email"
             onChange={handleChange}
             required
-          />
-          <label htmlFor="password">Password</label>
+          /></label>
+          <label htmlFor="password">Password
           <input
             type="password"
             autoComplete="off"
@@ -70,8 +69,8 @@ export default function SignupForm(props) {
             name="password"
             onChange={handleChange}
             required
-          />
-          <label htmlFor="confirm">Confirm Password</label>
+          /></label>
+          <label htmlFor="confirm">Confirm Password
           <input
             type="password"
             autoComplete="off"
@@ -80,7 +79,7 @@ export default function SignupForm(props) {
             name="passwordConf"
             onChange={handleChange}
             required
-          />
+          /></label>
           <Link id='signup' className="btn red" to="/login">
             Already have an account? Log in
           </Link>
@@ -89,7 +88,6 @@ export default function SignupForm(props) {
         Go Back
       </Link>
         </form>
-      </div>
       <p>{message}</p>
     </main>
   );
