@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { useLocation } from 'react-router-dom'
 import queryString from 'query-string'
 //socketio clientside listener
@@ -12,6 +12,7 @@ let socket;
 
 
 const Chat = ({ props }) => {
+
     const [name, setName] = useState('')
     const [room, setRoom] = useState('')
     const [id, setID] = useState('')
