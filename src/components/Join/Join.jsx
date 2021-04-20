@@ -5,7 +5,6 @@ import * as chatAPI from '../../services/chatroomService'
 
 const Join = () => {
     const user = useContext(UserContext)
-    console.log(user)
     const [name, setName] = useState(user.name)
     const [room, setRoom] = useState('')
 

@@ -18,8 +18,10 @@ const Chat = ({ props }) => {
 
     const [name, setName] = useState('')
     const [room, setRoom] = useState('')
-    const [id, setID] = useState('')
-    const ENDPOINT = 'localhost:3001'
+
+    const [id, setID] = useState(user._id)
+    const ENDPOINT = 'https://hot-escapes.herokuapp.com/'
+
     // Set state for setting a message and sending a message
     const [message, setMessage] = useState('')
     const [messages, setMessages] = useState([]) 
@@ -30,7 +32,9 @@ const Chat = ({ props }) => {
     useEffect(() => {
         const { name, room } = queryString.parse(query.search)
         // set socket connection
+
         setID(user._id)
+
         setName(name)
         setRoom(room)
         
@@ -68,7 +72,7 @@ const Chat = ({ props }) => {
         event.preventDefault();
     
         if(message) {
-          // store message in database
+
           socket = io(ENDPOINT)
           socket.emit('sendMessage', {message, id })
           console.log('send message hit ', message, id, name)

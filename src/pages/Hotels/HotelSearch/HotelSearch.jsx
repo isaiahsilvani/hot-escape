@@ -47,62 +47,51 @@ export default function AddHotel({itinID, setItineraryData, setDisplay}) {
     return (
     <>
       <h1>Add Hotel</h1>
+      <div className="userForm">
       <form autoComplete="off" ref={formRef} onSubmit={handleSubmit}>
-        <div className="hotel-form">
-          <label>Hotel Name (required)</label>
-          <input
-            className="form-control"
-            name="name"
-            value={state.name}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label>Hotel Room (required)</label>
-          <input
-            className="form-control"
-            name="room"
-            value={state.room}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label>Check-in Date</label>
-          <input
-            className="form-control"
-            name="checkInDate"
-            value={state.checkInDate}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="form-group">
-          <label>Check-out Date</label>
-          <input
-            className="form-control"
-            name="checkOutDate"
-            value={state.checkOutDate}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="form-group">
-          <label>Price</label>
-          <input
-            className="form-control"
-            name="price"
-            value={state.price}
-            onChange={handleChange}
-          />
-        </div>
+        <label>Hotel Name (required)
+        <input
+          className="form-control"
+          name="name"
+          value={state.name}
+          onChange={handleChange}
+          required
+        /></label>
+        <label>Hotel Room (required)
+        <input
+          name="room"
+          value={state.room}
+          onChange={handleChange}
+          required
+        /></label>
+        <label>Check-in Date
+        <input
+          type="date"
+          name="checkInDate"
+          value={state.checkInDate}
+          onChange={handleChange}
+        /></label>
+        <label>Check-out Date
+        <input
+          type="date"
+          name="checkOutDate"
+          value={state.checkOutDate}
+          onChange={handleChange}
+        /></label>
+        <label>Price
+        <input
+          name="price"
+          value={state.price}
+          onChange={handleChange}
+        /></label>
         <button
           type="submit"
-          className="btn"
           disabled={invalidForm}
         >
           ADD HOTEL
         </button>
       </form>
+    </div>
     </>
 	)
 }
