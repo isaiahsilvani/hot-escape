@@ -37,9 +37,11 @@ export default function SignupForm(props) {
   };
 
   return (
-    <main class="signup">
-        <h3>Sign Up</h3>
+    <main>
+      <div className="userForm">
+        <h1>Sign Up</h1>
         <form autoComplete="off" ref={formRef} onSubmit={handleSubmit}>
+        {message && <p>{message}</p>}
         <label htmlFor="name">Name
           <input
             type="text"
@@ -80,15 +82,15 @@ export default function SignupForm(props) {
             onChange={handleChange}
             required
           /></label>
+          <button disabled={invalidForm}>Sign Up</button>
           <Link id='signup' className="btn red" to="/login">
             Already have an account? Log in
           </Link>
-          <button disabled={invalidForm}>Sign Up</button>
-                <Link className="btn red" id='cancel' to="/">
-        Go Back
-      </Link>
+          <Link className="btn red" id='cancel' to="/">
+            Go Back
+          </Link>
         </form>
-      <p>{message}</p>
+      </div>
     </main>
   );
 }

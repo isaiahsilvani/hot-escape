@@ -42,7 +42,6 @@ export default function FlightList
 
   return (
     <>
-      <h1>Flight List</h1>
       {controls === 'add' && <button onClick={addFlights}>Add Selected</button>}
       {controls === 'del' && <button onClick={deleteFlights}>Remove Selected</button>}
       {flights?.length ?

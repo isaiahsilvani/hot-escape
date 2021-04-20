@@ -41,13 +41,14 @@ export default function CreateItinerary(props){
 
   return (
     <main>
-      <div className="itinerary-form">
-        <h1>Create New Itinerary</h1>
+      <h1>Create New Itinerary</h1>
+      <div className="userForm">
         <form 
           autoComplete="off"
           ref={formRef}
           onSubmit={handleSubmit}
         >
+          {message && <p>{message}</p>}
           <label htmlFor="origin">Origin 
           <input
             type="text"
@@ -87,7 +88,6 @@ export default function CreateItinerary(props){
             disabled={invalidForm}>
           Create</button>
         </form>
-        <p>{message}</p>
       </div>
     </main>
   )
