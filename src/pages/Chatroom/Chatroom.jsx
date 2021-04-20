@@ -41,12 +41,12 @@ const Chat = ({ props }) => {
             // alert(error)
         })
 
-        socket.on('message', ({text, user}) => {
-          console.log('message recieved from server: ', text, 'from ', user)
-             //setting a new message
-             console.log(text, user)
-             setMessages([...messages, {text, user}])
-        })
+        // socket.on('message', ({text, user}) => {
+        //   console.log('message recieved from server: ', text, 'from ', user)
+        //      //setting a new message
+        //      console.log(text, user)
+        //      setMessages([...messages, {text, user}])
+        // })
         // Deal with unmounting and detect when client disconnects
         return () => {
             // emit disconnect to backend
@@ -58,12 +58,20 @@ const Chat = ({ props }) => {
             // turn socket off on unmount
             socket.off()
         }
-    }, [ENDPOINT, query]
-    )
+    }, [ENDPOINT, query])
 
-    // socket listener for setting a message data payload from server to state
-    
+    useEffect(() => {
+      socket.on('message', message => {
+        console.log('message recieved from backend')
+        setMessages(messages => [ ...messages, message ]);
+      });
+      
+      socket.on("roomData", ({ users }) => {
+       // setUsers(users);
+      });
+  }, []);
 
+      // socket listener for setting a message data payload from server to state
 
       // function for sending messages
       const sendMessage = (event) => {
