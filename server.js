@@ -36,12 +36,16 @@ app.use(express.json());
 
 app.use(express.static(path.join(__dirname, 'build')));
 
+app.use('/chatroom', chatRouter)
+
 app.use('/api/users', userRouter);
 app.use('/api/auth', authRouter);
 app.use('/api/flights', flightRouter);
 app.use('/api/itinerary', itineraryRouter);
 app.use('/api/hotels', hotelsRouter)
 app.use('/api/attractions', attractionsRouter)
+
+
 
 app.get('/*', function(req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
@@ -52,11 +56,10 @@ const port = process.env.PORT || 3001;
 const {addUser, removeUser, getUser, getUsersInRoom} = require('./users')
 //IO connection must be below io.on
 io.on('connection', (socket) => {
-  const socket_id = socket.id
   //Listening for join emit from client side (See ChatRoom.jsx)
-  socket.on('join', ({ name, room }, callback) => {
+  socket.on('join', ({ name, room, id }, callback) => {
     console.log('join backend listner: ', name, room)
-    const { error, user } = addUser({ id: socket_id, name, room });
+    const { error, user } = addUser({ id, name, room });
     console.log('user: ', user)
     // set socketID in state
 
@@ -73,8 +76,6 @@ io.on('connection', (socket) => {
 
   socket.on('sendMessage', ({ message, id, }) => {
     const user = getUser(id)
-    console.log('recieved message on backend', message, ' by ', user.name)
-    console.log(user)
 
     // this is failing
     io.to(user.room).emit('message', { user: user.name, text: message})
@@ -86,8 +87,6 @@ io.on('connection', (socket) => {
     console.log('User has left!!')
   })
 })
-
-app.use(chatRouter)
 
 // IO server listener
 httpServer.listen(port, () => console.log(`Socket.IO server has started listening on port ${port}`))

@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { useLocation } from 'react-router-dom'
+import { UserContext } from '../../components/UserContext'
 import queryString from 'query-string'
 //socketio clientside listener
 import io from 'socket.io-client'
@@ -12,9 +13,12 @@ let socket;
 
 
 const Chat = ({ props }) => {
+    const user = useContext(UserContext)
+    console.log(user)
+
     const [name, setName] = useState('')
     const [room, setRoom] = useState('')
-    const [id, setID] = useState('')
+    const [id, setID] = useState(user._id)
     const ENDPOINT = 'localhost:3001'
     // Set state for setting a message and sending a message
     const [message, setMessage] = useState('')
@@ -29,15 +33,11 @@ const Chat = ({ props }) => {
         
         console.log(socket)
         console.log(name, room)
-        socket.on('setID', (id) => {
-          console.log('set ID on listener active on clientside')
-          setID(id)
-        })
         setName(name)
         setRoom(room)
         
         // In order to send an event to everyone, Socket.IO gives us io.emit
-        socket.emit('join', ({ name, room }), () => {
+        socket.emit('join', ({ name, room, id }), () => {
             // alert(error)
         })
 
@@ -81,6 +81,8 @@ const Chat = ({ props }) => {
           console.log('client message emit - input message: ', message, 'id: ', id)
           socket = io(ENDPOINT)
           socket.emit('sendMessage', {message, id })
+          console.log('send message hit ', message, id)
+          setMessage('')
         }
       }
 
