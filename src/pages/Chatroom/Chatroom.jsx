@@ -15,7 +15,7 @@ const Chat = ({ props }) => {
     const [name, setName] = useState('')
     const [room, setRoom] = useState('')
     const [id, setID] = useState('')
-    const ENDPOINT = 'localhost:3000'
+    const ENDPOINT = 'localhost:3001'
     // Set state for setting a message and sending a message
     const [message, setMessage] = useState('')
     const [messages, setMessages] = useState([]) 
@@ -40,6 +40,13 @@ const Chat = ({ props }) => {
         socket.emit('join', ({ name, room }), () => {
             // alert(error)
         })
+
+        socket.on('message', ({text, user}) => {
+          console.log('message recieved from server: ', text, 'from ', user)
+             //setting a new message
+             console.log(text, user)
+             setMessages([...messages, {text, user}])
+        })
         // Deal with unmounting and detect when client disconnects
         return () => {
             // emit disconnect to backend
@@ -56,11 +63,7 @@ const Chat = ({ props }) => {
 
     // socket listener for setting a message data payload from server to state
     
-    socket.on('message', ({text, user}) => {
-        console.log('message recieved from server: ', text, 'from ', user)
-           //setting a new message
-           setMessages([...messages, {text, user}])
-      })
+
 
       // function for sending messages
       const sendMessage = (event) => {
@@ -69,8 +72,7 @@ const Chat = ({ props }) => {
         if(message) {
           console.log('client message emit - input message: ', message, 'id: ', id)
           socket = io(ENDPOINT)
-          setMessages([...messages, {user: name, text: message}])
-          setMessage("")
+          socket.emit('sendMessage', {message, id })
         }
       }
 

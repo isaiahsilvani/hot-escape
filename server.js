@@ -3,8 +3,13 @@ const express = require('express');
 const socketio = require('socket.io')
 const http = require('http')
 const app = express()
-const server = http.createServer(app)
-const io = socketio(server)
+const httpServer = http.createServer(app)
+const io = require("socket.io")(httpServer, {
+  cors: {
+    origin: "http://localhost:3000",
+    methods: ["GET", "POST"]
+  }
+});
 
 const path = require('path');
 const logger = require('morgan');
@@ -85,4 +90,4 @@ io.on('connection', (socket) => {
 app.use(chatRouter)
 
 // IO server listener
-server.listen(port, () => console.log(`Socket.IO server has started listening on port ${port}`))
+httpServer.listen(port, () => console.log(`Socket.IO server has started listening on port ${port}`))
