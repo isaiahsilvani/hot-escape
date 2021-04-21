@@ -125,6 +125,9 @@ const Chat = ( props ) => {
       // socket listener for setting a message data payload from server to state
 
       // function for sending messages
+
+      //make a function, whenever sendMessage is hit, fetch messages from database
+      // and plug into state to keep consistency
       const sendMessage = async (event) => {
         event.preventDefault();
     
@@ -134,7 +137,8 @@ const Chat = ( props ) => {
           // Add message to database so it can be loaded on first useEffect only
           console.log('message being sent: ', message)
           let response = await chatAPI.storeMessage({message, name, room})
-          console.log(response)
+          console.log(':O*HJFDS*new data store response', response)
+          setMessages(response.messages)
           //console.log(response)
           console.log('send message hit ', message, id)
           setMessage('')
