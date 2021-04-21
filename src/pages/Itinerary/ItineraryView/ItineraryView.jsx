@@ -51,7 +51,8 @@ export default function ItineraryView(props) {
       
   return (
     <>
-      <ItineraryDetails itinData={itineraryData} />
+      <ItineraryDetails itinData={itineraryData} center={'true'} />
+   
     {/* <main>
       <h1>
         Escape from {itineraryData.origin} to {itineraryData.destination}

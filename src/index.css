@@ -80,6 +80,10 @@ input, button, select {
   font-family: 'Lato'
 }
 
+.m-auto {
+  margin: 0 auto;
+}
+
 a {
   font-size: 1.6rem;
   color: var(--dark-pink);
