@@ -2,7 +2,16 @@ import React, { useState, useEffect, useContext } from 'react'
 import { useLocation } from 'react-router-dom'
 import { UserContext } from '../../components/UserContext'
 import queryString from 'query-string'
-import * as messagesAPI from '../../services/messagesService'
+//socketio clientside listener
+import io from 'socket.io-client'
+import InfoBar from '../../components/InfoBar/InfoBar'
+import Input from '../../components/Input/Input'
+import Messages from '../../components/Messages/Messages'
+
+import React, { useState, useEffect, useContext } from 'react'
+import { useLocation } from 'react-router-dom'
+import { UserContext } from '../../components/UserContext'
+import queryString from 'query-string'
 //socketio clientside listener
 import io from 'socket.io-client'
 import InfoBar from '../../components/InfoBar/InfoBar'
@@ -20,7 +29,11 @@ const Chat = ({ props }) => {
     const [room, setRoom] = useState('')
 
     const [id, setID] = useState(user._id)
-    const ENDPOINT = 'https://hot-escapes.herokuapp.com/'
+    const ENDPOINT = 'localhost:3001'
+
+
+
+
 
     // Set state for setting a message and sending a message
     const [message, setMessage] = useState('')
@@ -32,9 +45,7 @@ const Chat = ({ props }) => {
     useEffect(() => {
         const { name, room } = queryString.parse(query.search)
         // set socket connection
-
         setID(user._id)
-
         setName(name)
         setRoom(room)
         
@@ -42,6 +53,14 @@ const Chat = ({ props }) => {
         socket.emit('join', ({ name, room, id }), () => {
             // alert(error)
         })
+
+        // socket.on('message', ({text, user}) => {
+        //   console.log('message recieved from server: ', text, 'from ', user)
+        //      //setting a new message
+        //      console.log(text, user)
+        //      setMessages([...messages, {text, user}])
+        // })
+        // Deal with unmounting and detect when client disconnects
         return () => {
             // emit disconnect to backend
             socket.emit('disconnect-alt')
@@ -72,17 +91,11 @@ const Chat = ({ props }) => {
         event.preventDefault();
     
         if(message) {
-
           socket = io(ENDPOINT)
           socket.emit('sendMessage', {message, id })
-          console.log('send message hit ', message, id, name)
-          storeMsg(message)
+          console.log('send message hit ', message, id)
           setMessage('')
         }
-      }
-
-      const storeMsg = async (message) => {
-        await messagesAPI.storeMsg({message, name, id, room})
       }
 
       return (
