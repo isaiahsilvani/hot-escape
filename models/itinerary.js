@@ -33,6 +33,16 @@ const attractionSchema = new Schema({
     timestamps: true
 });
 
+const rentalSchema = new Schema({
+  company: { type: String },
+  pickupTime: { type: String },
+  dropoffTime: { type: String },
+  pickupDate: { type: Date },
+  dropoffDate: { type: Date }
+} , {
+    timestamps: true
+  });
+
 const itinerarySchema = new Schema({
   startDate: { type: Date, },
   endDate:  { type: Date, },
@@ -42,12 +52,13 @@ const itinerarySchema = new Schema({
   imageSrc: {type: String},
   flights: [flightSchema],
   hotels: [hotelSchema],
-  rentals: [],
+  rentals: [rentalSchema],
   attractions: [attractionSchema],
-
 }, {
   timestamps: true
 });
+
+
 
 
 module.exports = mongoose.model('Itinerary', itinerarySchema);
