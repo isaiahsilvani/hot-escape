@@ -2,13 +2,53 @@ const Room = require('../models/Room')
 
 module.exports = {
     index,
-    createRoom
+    createRoom,
+    storeMessage,
+    getRooms
+}
+ 
+function getRooms(req, res) {
+    console.log('get all rooms function hitt!!!!')
+    Room.find({})
+    .then(rooms => {
+        console.log(rooms)
+        res.json(rooms)
+    })
+}
+// get the room based on the room name
+function index(req, res) {
+    console.log('chat index controller function hit', req.params.room)
+    Room.findOne({roomName: req.params.room})
+    .then(room => {
+        console.log('found the room', room)
+        res.status(200).json(room)
+    })
+    .catch(err => {
+        res.status(400).send({'err': err.errmsg})
+    })
 }
 
-function index(req, res) {
-    console.log('chat index controller function hit')
-    res.send('server is up and running')
+function storeMessage(req, res) {
+    console.log('store message hit controller functoin', req.body)
+    Room.findOne({roomName: req.body.room})
+    .then(room => {
+        console.log(room)
+        room.messages.push({text: req.body.message, user: req.body.name})
+        room.save()
+        .then(() => {
+            res.json(room)
+        })
+    })
 }
+// function show(req,res) {
+//     Itinerary.findById(req.params.id)
+//     .then(itinerary => {
+//       res.json(itinerary)
+//     })
+//     .catch(err => {
+//       res.status(400).send({'err': err.errmsg});
+//     })
+//   }
 
 function createRoom(req, res) {
     var query = {},

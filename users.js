@@ -17,16 +17,17 @@ const addUser = ({ id, name, room }) => {
   return { user };
 }
 
-const removeUser = (id) => {
+const removeUser = (name) => {
     //get index of use
-  const index = users.findIndex((user) => user.id === id);
+  const index = users.findIndex((user) => user.name === name);
     // Returns the user we removed, while removing user from array
   if(index !== -1) return users.splice(index, 1)[0];
 }
 
 // Get user from array by ID
-const getUser = (id) => {
-  return users.find((user) => user.id === id)
+const getUser = (name) => {
+  let trimmedName = name.trim().toLowerCase();
+  return users.find((user) => user.name === trimmedName)
 };
 
 // Get all the users in a specific room
