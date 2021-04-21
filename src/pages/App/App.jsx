@@ -76,20 +76,7 @@ export default function App (props) {
             <ItineraryList />
           </ProtectedRoute>
  
-          
-          
-
-          <Route path='/flights'
-            render={()=> <FlightSearch />}
-          />
-          <Route path='/hotels'
-            render={()=> <HotelSearch />}
-          />
-          <Route path='/attractions'
-            render={()=> <AttractionSearch />}
-          />
-
-          <Route exact path="/"
+          <Route path="/"
             render={() => (
               <main>
                 <h1>Welcome to Hot Escape.</h1>

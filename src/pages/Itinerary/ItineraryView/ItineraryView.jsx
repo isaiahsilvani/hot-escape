@@ -1,14 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom'
 import * as itineraryAPI from '../../../services/itineraryService';
 import FlightSection from '../../Flights/FlightSection/FlightSection';
 import ItineraryNav from '../../../components/ItineraryNav/ItineraryNav'
 import HotelSection from '../../Hotels/HotelSection/HotelSection'
 import AttractionSection from '../../Attractions/AttractionSection/AttractionSection'
+import ItineraryDetails from '../../../components/ItineraryDetails/ItineraryDetails'
+import { UserContext } from '../../../components/UserContext'
 import './ItineraryView.css'
 
-export default function ItineraryView({user}) {
+export default function ItineraryView(props) {
   const {id} = useParams();
+  const user = useContext(UserContext)
   const [itineraryData, setItineraryData] = useState({})
   const [display, setDisplay] = useState('flights');
 
@@ -48,7 +51,8 @@ export default function ItineraryView({user}) {
       
   return (
     <>
-    <main>
+      <ItineraryDetails itinData={itineraryData} />
+    {/* <main>
       <h1>
         Escape from {itineraryData.origin} to {itineraryData.destination}
       </h1>
@@ -57,7 +61,7 @@ export default function ItineraryView({user}) {
         <br/>
       Origin: {itineraryData.origin} <br />
       Destination: {itineraryData.destination}</p>
-    </main>
+    </main> */}
     <ItineraryNav switchDisplay={setDisplay} display={display} />
     {displaySwitch()}
     

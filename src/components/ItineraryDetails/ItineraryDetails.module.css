@@ -1,0 +1,42 @@
+.twoColumns {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: max-content;
+  margin: 0 auto;
+}
+
+.twoColumns > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.colOne {
+  /* width: 40%; */
+  align-items: flex-end;
+}
+
+.colOne img {
+  width: 160px;
+  height: 240px;
+  border-radius: 1rem;
+}
+
+.colTwo {
+  /* width: 60%; */
+  align-items: flex-start;
+  padding-left: 2rem;
+}
+
+.colTwo h2 {
+  text-align: left;
+  margin: 0;
+  padding: 1rem 0;
+  font-size: 4rem;
+}
+
+.colTwo p {
+  margin: 2rem 0 0 0;
+  padding: 0;
+}
