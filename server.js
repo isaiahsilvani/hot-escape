@@ -76,9 +76,10 @@ io.on('connection', (socket) => {
   });
 
   socket.on('sendMessage', ({ message, id, }) => {
-    console.log('sendMessage hit', message, id)
     const user = getUser(id)
-    console.log(user)
+    console.log('sendMessage hit', message, id)
+    console.log(user.name)
+    console.log(user.room)
 
     // this is failing
     io.to(user.room).emit('message', { user: user.name, text: message})
