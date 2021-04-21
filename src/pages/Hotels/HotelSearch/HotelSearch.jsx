@@ -9,7 +9,7 @@ export default function AddHotel({itinID, setItineraryData, setDisplay}) {
 	  const [invalidForm, setValidForm] = useState(true);
     const [state, handleChange] = useForm({
         name: 'Name',
-        room: '000',
+        room: '00',
         checkInDate: getToday(),
         checkOutDate: getTomorrow(),
         price: '$0.00'
