@@ -1,9 +1,10 @@
 .twoColumns {
   display: flex;
   flex-flow: row nowrap;
-  justify-content: space-between;
+  justify-content: center;
   align-items: flex-start;
-  width: max-content;
+  /* width: max-content; */
+  max-width: 60%;
   margin: 0 auto;
 }
 
@@ -18,8 +19,8 @@
 }
 
 .colOne img {
-  width: 160px;
-  height: 240px;
+  width: 180px;
+  height: 270px;
   border-radius: 1rem;
 }
 

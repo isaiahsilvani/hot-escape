@@ -7,8 +7,8 @@ export default function ItineraryDetails({itinData}) {
   const returnDate = new Date(itinData.endDate).toLocaleDateString();
 
   return (
-    <main>
-      <div className={styles.twoColumns}>
+    // <main>
+      <div className={`whiteBox ${styles.twoColumns}`}>
         <div className={styles.colOne}>
           <img src={itinData.imageSrc} />
         </div>
@@ -23,6 +23,6 @@ export default function ItineraryDetails({itinData}) {
         
         </div>
       </div>
-    </main>
+    // </main>
   )
 }
