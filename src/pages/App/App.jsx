@@ -91,12 +91,17 @@ export default function App (props) {
 
           <Route exact path="/"
             render={() => (
+              
               <main>
-                <h1>Welcome to Hot Escape.</h1>
-                <h4>Your next vacation is waiting for you, all you've got to do it plan it.</h4>
-                <p> Use Hot Escape to plan your next vacation. You can create an itinerary for each of your vacation plans. You fill your itinerary with the flights that you search for and add in your hotels and attractions.  You can also use Hot Escape to chat with other travelers about their vacations. </p> <br/>
-                <h2>Safe Travels!</h2>
+                <div className='App'>
+                <h2>Welcome to Hot Escape</h2>
+                <h3>Your next vacation is waiting for you, all you've got to do is plan it.</h3>
+                <p> Use Hot Escape to plan your next vacation. You can: <br/> <br/>
+                  1. Create an itinerary for each of your vacation plans <br/>2. Search for flights and add them to your itinerary<br/>3. Add the hotels that you're planning to stay at <br/>4. Chat with others about their vacations </p> 
+                <h3>Safe Travels!</h3>
+                </div>
               </main>
+              
             )}
           />
         </Switch>
