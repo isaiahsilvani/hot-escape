@@ -1,5 +1,6 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Raleway:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Raleway:wght@300;400;600&family=Lato&display=swap');
+
 
 html {
   box-sizing: border-box
@@ -21,7 +22,7 @@ html {
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -73,7 +74,7 @@ h1 {
 }
 
 input, button, select {
-  font-family: 'Montserrat'
+  font-family: 'Lato'
 }
 
 main a {
