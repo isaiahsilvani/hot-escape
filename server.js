@@ -57,9 +57,9 @@ const {addUser, removeUser, getUser, getUsersInRoom} = require('./users')
 //IO connection must be below io.on
 io.on('connection', (socket) => {
   //Listening for join emit from client side (See ChatRoom.jsx)
-  socket.on('join', ({ name, room, id }, callback) => {
+  socket.on('join', ({ name, room }, callback) => {
     console.log('join backend listner: ', name, room)
-    const { error, user } = addUser({ id, name, room });
+    const { error, user } = addUser({ id: socket.id, name, room });
     console.log(user)
     console.log('user: ', user)
     // set socketID in state
@@ -67,7 +67,6 @@ io.on('connection', (socket) => {
     if(error) return callback(error);
 
     socket.join(user.room);
-    socket.emit('setID', (user.id))
     socket.emit('message', ({ user: 'admin', text: `${user.name}, welcome to room ${user.room}.`}));
 
     socket.broadcast.to(user.room).emit('message', ({ user: 'admin', text: `${user.name} has joined!` }));
@@ -75,14 +74,18 @@ io.on('connection', (socket) => {
     callback();
   });
 
+  socket.on('sendID', () => {
+    socket.emit('setID', (socket.id))
+  })
+
   socket.on('sendMessage', ({ message, id, }) => {
     const user = getUser(id)
     console.log('sendMessage hit', message, id)
-    console.log(user.name)
-    console.log(user.room)
+    console.log('user name: ', user.name)
+    console.log('user room: ', user.room)
 
     // this is failing
-    io.to(user.room).emit('message', { user: user.name, text: message})
+    io.to(user.room).emit('message', ({ user: user.name, text: message}))
     // io.to(user.room).emit('message', { user: user.name, text: message });
   });
 

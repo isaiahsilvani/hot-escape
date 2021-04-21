@@ -18,8 +18,8 @@ const Chat = ({ props }) => {
     const [name, setName] = useState('')
     const [room, setRoom] = useState('')
 
-    const [id, setID] = useState(user._id)
-    const ENDPOINT = 'https://hot-escapes.herokuapp.com/'
+    const [id, setID] = useState('')
+    const ENDPOINT = 'localhost:3001'
     // Set state for setting a message and sending a message
     const [message, setMessage] = useState('')
     const [messages, setMessages] = useState([]) 
@@ -30,13 +30,19 @@ const Chat = ({ props }) => {
     useEffect(() => {
         const { name, room } = queryString.parse(query.search)
         // set socket connection
-        setID(user._id)
+
         setName(name)
         setRoom(room)
         
         // In order to send an event to everyone, Socket.IO gives us io.emit
         socket.emit('join', ({ name, room, id }), () => {
+          console.log('join hit')
             // alert(error)
+        })
+        // set ID from served with socket.id for unique instances of users
+        socket.emit('sendID')
+        socket.on('setID', (id) => {
+          setID(id)
         })
 
         // socket.on('message', ({text, user}) => {
