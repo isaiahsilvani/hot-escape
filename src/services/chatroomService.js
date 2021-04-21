@@ -14,9 +14,9 @@ export function createRoom(data) {
     .then(res => res.json())
 }
 
-export function test() {
-    console.log('test chat hit')
-    return fetch(BASE_URL, {
+export function fetchRoomData(room) {
+    console.log('test chat hit', room)
+    return fetch(BASE_URL + room, {
         method: "GET",
         headers: {
             'content-type': 'application/json',

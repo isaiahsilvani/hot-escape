@@ -7,8 +7,8 @@ const chatCtrl = require('../controllers/chats')
 // Protected Routes
 console.log('router hit')
 router.use(require("../config/auth"));
-router.get('/', checkAuth, chatCtrl.index);
 router.post('/', checkAuth, chatCtrl.createRoom)
+router.get('/:room', checkAuth, chatCtrl.index);
 
 function checkAuth(req, res, next) {
     if (req.user) return next();

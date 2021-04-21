@@ -25,7 +25,7 @@ const Join = () => {
                     <div><input placeHolder="Nickname (optional)" value={name} className="joinInput" type="text" onChange={(e)=> setName(e.target.value)}></input></div>
                     <div><input required placeHolder="Room" className="joinInput" type="text" onChange={(e)=> setRoom(e.target.value)}></input></div>
                     <Link 
-                    onClick={e => (!name || !name) ? e.preventDefault() : null}
+                    onClick={e => (!name || !room) ? e.preventDefault() : null}
                     to={`/chatroom?name=${name}&room=${room}`}
                     query={`${name}/${room}`}>
                         <button className="button" type="submit" onClick={handleCreateRoom}>Enter Room</button>

@@ -4,11 +4,27 @@ module.exports = {
     index,
     createRoom
 }
-
+// get the room based on the room name
 function index(req, res) {
-    console.log('chat index controller function hit')
-    res.send('server is up and running')
+    console.log('chat index controller function hit', req.params.room)
+    Room.findOne({roomName: req.params.room})
+    .then(room => {
+        console.log('found the room', room)
+        res.status(200).json(room)
+    })
+    .catch(err => {
+        res.status(400).send({'err': err.errmsg})
+    })
 }
+// function show(req,res) {
+//     Itinerary.findById(req.params.id)
+//     .then(itinerary => {
+//       res.json(itinerary)
+//     })
+//     .catch(err => {
+//       res.status(400).send({'err': err.errmsg});
+//     })
+//   }
 
 function createRoom(req, res) {
     var query = {},
