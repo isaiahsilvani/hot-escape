@@ -15,7 +15,7 @@ export default function AttractionSection(props) {
     const displaySwitch = () => {
       switch(display) {
         case 'search':
-          return <AttractionSearch {...props}/>
+          return <AttractionSearch setDisplay={setDisplay} {...props}/>
 
         case 'view':
           return <AttractionEdit setDisplay={setDisplay} attractionId={attractionId} {...props} />

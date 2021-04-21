@@ -26,6 +26,7 @@ export default function LoginPage(props) {
 
   return (
     <main className="login">
+      <div className="userForm">
       <h1>Login</h1>
       <form autoComplete="off" onSubmit={handleSubmit}>
         
@@ -47,15 +48,15 @@ export default function LoginPage(props) {
           onChange={handleChange}
           required
         /></label>
-          <Link to="/signup">
-              Don't have an account? Sign up
-          </Link>
-        
         <button type="submit" className="btn green">Log In</button>
+        <Link to="/signup">
+            Don't have an account? Sign up
+        </Link>
+        <Link className="btn red" id='cancel' to="/">
+          Go Back
+        </Link>
       </form>
-      <Link className="btn red" id='cancel' to="/">
-        Go Back
-      </Link>
+      </div>
     </main>
   );
 }

@@ -36,63 +36,51 @@ export default function HotelEdit(props) {
   return (
   <>
     <h1>Edit Hotel</h1>
+    <div className="userForm">
     <form autoComplete="off" ref={formRef} onSubmit={handleSubmit}>
-      <div className="hotel-form">
-        <label>Hotel Name (required)</label>
+      <label>Hotel Name (required)
+      <input
+        name="name"
+        value={state.name}
+        onChange={handleChange}
+        required
+      /></label>
+        <label>Hotel Room (required)
         <input
-          className="form-control"
-          name="name"
-          value={state.name}
-          onChange={handleChange}
-          required
-        />
-      </div>
-      <div className="form-group">
-        <label>Hotel Room (required)</label>
-        <input
-          className="form-control"
           name="room"
           value={state.room}
           onChange={handleChange}
           required
-        />
-      </div>
-      <div className="form-group">
-        <label>Check-in Date</label>
+        /></label>
+        <label>Check-in Date
         <input
-          className="form-control"
           name="checkInDate"
-          value={state.checkInDate}
+          type="date"
+          value={state.checkInDate.split('T')[0]}
           onChange={handleChange}
-        />
-      </div>
-      <div className="form-group">
-        <label>Check-out Date</label>
+        /></label>
+        <label>Check-out Date
         <input
-          className="form-control"
           name="checkOutDate"
-          value={state.checkOutDate}
+          type="date"
+          value={state.checkOutDate.split('T')[0]}
           onChange={handleChange}
-        />
-      </div>
-      <div className="form-group">
-        <label>Price</label>
+        /></label>
+        <label>Price
         <input
-          className="form-control"
           name="price"
           value={state.price}
           onChange={handleChange}
           required
-        />
-      </div>
+        /></label>
       <button
         type="submit"
-        className="btn"
         disabled={invalidForm}
       >
         UPDATE HOTEL
       </button>
     </form>
+    </div>
   </>
 	)
 }
