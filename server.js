@@ -78,9 +78,10 @@ io.on('connection', (socket) => {
     socket.emit('setID', (socket.id))
   })
 
-  socket.on('sendMessage', ({ message, id, }) => {
-    const user = getUser(id)
-    console.log('sendMessage hit', message, id)
+  socket.on('sendMessage', ({ message, name, }) => {
+    console.log('send message hit', name)
+    const user = getUser(name)
+    console.log('sendMessage hit', message, name)
     console.log('user name: ', user.name)
     console.log('user room: ', user.room)
 
