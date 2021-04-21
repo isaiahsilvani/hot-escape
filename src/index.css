@@ -48,16 +48,16 @@ main {
   min-width: 80%;
   max-width: 90%;
   margin: 0 auto;
-  padding: 1rem;
+  padding: 2rem;
   border-radius: 0.5rem;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
 }
 
 h1 {
   color: #333;
-  font-size: 2rem;
+  font-size: 2.6rem;
   padding: 0 2rem;
-  margin: 0 0 1rem 0;
+  margin: 0 0 2rem 0;
   font-family: 'Raleway';
   font-weight: 400;
 }
@@ -79,31 +79,56 @@ main a:hover {
 
 .userForm {
   display: flex;
-  flex-flow: column;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  max-width: 60%;
+  margin: 0 auto;
 }
 
 .userForm form {
   display: flex;
   justify-content: center;
+  flex-direction: column;
   align-items: flex-end;
   flex-direction: column;
-  max-width: 70%;
 }
-
 
 .userForm label {
   font-size: 1.8rem;
   margin: 0.5rem 0;
   display: flex;
+  align-items: center;
   text-align: right;
 }
 
 .userForm label > input {
-  margin-left: 0.5rem;
+  margin: 0 0 0.5rem 0.5rem;
 }
 
 .userForm a {
   padding: 0.5rem 0 0 0;
+}
+
+.userForm input[type=date] {
+  padding: 1rem;
+}
+
+.twoColumns {
+  margin: 0 auto;
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-around;
+}
+.twoColumns > div {
+  width: 40%;
+}
+
+.oneColumn {
+  width: 100%;
+  max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }

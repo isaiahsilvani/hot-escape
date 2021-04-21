@@ -19,7 +19,7 @@ function index(req, res) {
 function create(req,res) {
   console.log(req.body);
   try {
-    Itinerary.create(req.body.formData)
+    Itinerary.create(req.body)
     .then(itinerary => {
       res.json(itinerary)
     })

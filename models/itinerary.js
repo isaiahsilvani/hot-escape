@@ -39,7 +39,7 @@ const itinerarySchema = new Schema({
   origin: { type: String, },
   destination: { type: String, },
   owner: {type: Schema.Types.ObjectId, ref: "User" },
-
+  imageSrc: {type: String},
   flights: [flightSchema],
   hotels: [hotelSchema],
   rentals: [],

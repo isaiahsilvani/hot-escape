@@ -1,4 +1,3 @@
-const Attraction = require('../models/attraction')
 const Itinerary = require('../models/itinerary')
 
 module.exports = {
