@@ -25,7 +25,7 @@ export default function LoginPage(props) {
   };
 
   return (
-    <main className="login">
+    <div className='whiteBox'>
       <div className="userForm">
       <h1>Login</h1>
       <form autoComplete="off" onSubmit={handleSubmit}>
@@ -57,7 +57,7 @@ export default function LoginPage(props) {
         </Link>
       </form>
       </div>
-    </main>
+    </div>
   );
 }
 

@@ -3,18 +3,17 @@
   flex-flow: row nowrap;
   justify-content: center;
   align-items: flex-start;
-  /* width: max-content; */
-  max-width: 60%;
+  width: max-content;
   margin: 0 auto;
 }
 
 .twoColumns > div {
   display: flex;
   flex-direction: column;
+  width: 50%;
 }
 
 .colOne {
-  /* width: 40%; */
   align-items: flex-end;
 }
 
@@ -25,7 +24,6 @@
 }
 
 .colTwo {
-  /* width: 60%; */
   align-items: flex-start;
   padding-left: 2rem;
 }
