@@ -23,7 +23,7 @@ function storeMessage(req, res) {
     Room.findOne({roomName: req.body.room})
     .then(room => {
         console.log(room)
-        room.messages.push({text: req.body.message, userName: req.body.name})
+        room.messages.push({text: req.body.message, user: req.body.name})
         room.save()
         .then(() => {
             res.json(room)

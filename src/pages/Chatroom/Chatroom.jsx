@@ -40,7 +40,10 @@ const Chat = ( props ) => {
           console.log('pass room ', room, 'as argument for fetchRoomData')
           const response = await chatAPI.fetchRoomData(room);
           setRoomData(response)
-          // ...
+          if (response) {
+            setMessages(response.messages)
+          }
+          // ...g lo
         }
         fetchData(room);
         // In order to send an event to everyone, Socket.IO gives us io.emit
