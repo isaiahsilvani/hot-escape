@@ -85,7 +85,7 @@ export default function App (props) {
                 <h2>Your next vacation is waiting for you, all you've got to do is plan it.</h2>
                  <h3>Use Hot Escape to plan your next vacation. You can: </h3> 
                  <p>  1. Create an itinerary for each of your vacation plans <br/>2. Search for flights and add them to your itinerary<br/>3. Add the hotels that you're planning to stay at <br/>4. Add the attractions you plan to see <br/>5. Add in the rentals you plan to use for transportation <br/>6. Chat with others about their vacations </p> 
-                <h3>Safe Travels!</h3>
+                <h3>Your next Escape awaits</h3>
                 </div>
               </main>
               
