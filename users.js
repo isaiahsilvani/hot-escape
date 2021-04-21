@@ -25,8 +25,8 @@ const removeUser = (id) => {
 }
 
 // Get user from array by ID
-const getUser = (id) => {
-  return users.find((user) => user.id === id)
+const getUser = (name) => {
+  return users.find((user) => user.name === name)
 };
 
 // Get all the users in a specific room

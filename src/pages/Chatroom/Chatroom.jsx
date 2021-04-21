@@ -130,7 +130,7 @@ const Chat = ( props ) => {
     
         if(message) {
           socket = io(ENDPOINT)
-          socket.emit('sendMessage', {message, id })
+          socket.emit('sendMessage', {message, name })
           // Add message to database so it can be loaded on first useEffect only
           console.log('message being sent: ', message)
           let response = await chatAPI.storeMessage({message, name, room})

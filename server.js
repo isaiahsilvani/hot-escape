@@ -78,14 +78,16 @@ io.on('connection', (socket) => {
     socket.emit('setID', (socket.id))
   })
 
-  socket.on('sendMessage', ({ message, id, }) => {
-    const user = getUser(id)
-    console.log('sendMessage hit', message, id)
-    console.log('user name: ', user.name)
-    console.log('user room: ', user.room)
+  socket.on('sendMessage', ({ message, name, }) => {
+    console.log('find a user by name: ', name)
+    const user = getUser(name)
+    console.log('sendMessage hit', message, name)
 
     // this is failing
-    io.to(user.room).emit('message', ({ user: user.name, text: message}))
+    console.log('right before here, id and user', name, user)
+    // Sometimes, the id is changed from the user when a new socket loads.
+    // Instead of getting 
+    io.to(user.room).emit('message', ({ user: name, text: message}))
     // io.to(user.room).emit('message', { user: user.name, text: message });
   });
 
