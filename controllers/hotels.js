@@ -1,4 +1,3 @@
-const Hotel = require('../models/hotel')
 const Itinerary = require('../models/itinerary')
 
 module.exports = {
