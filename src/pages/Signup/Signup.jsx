@@ -86,9 +86,6 @@ export default function SignupForm(props) {
           <Link id='signup' className="btn red" to="/login">
             Already have an account? Log in
           </Link>
-          <Link className="btn red" id='cancel' to="/">
-            Go Back
-          </Link>
         </form>
       </div>
     </div>

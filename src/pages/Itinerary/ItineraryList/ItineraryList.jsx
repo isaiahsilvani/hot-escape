@@ -3,7 +3,7 @@ import {Redirect} from 'react-router-dom'
 import { Link } from "react-router-dom";
 import { UserContext } from "../../../components/UserContext";
 import * as itineraryAPI from "../../../services/itineraryService";
-import ItineraryDetails from '../../../components/ItineraryDetails/ItineraryDetails'
+import ItineraryCard from '../../../components/ItineraryCard/ItineraryCard'
 import CreateItinerary from '../CreateItinerary/CreateItinerary'
 import styles from './ItineraryList.module.css'
 
@@ -25,7 +25,7 @@ export default function ItineraryList (props) {
       {itineraryList.length > 0
         ? itineraryList.map((itin) => (
           <Link to={"/itinerary/" + itin._id}>
-            <ItineraryDetails itinData={itin} />
+            <ItineraryCard itinData={itin} />
           </Link>
           ))
         : <CreateItinerary />}

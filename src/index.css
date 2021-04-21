@@ -36,8 +36,12 @@ body {
   background-size: cover;
   background-position: top center;
 
+  /* --light-pink: rgb(235,179,200);
+  --dark-pink: rgb(227, 147, 176); */
+
+
   --light-pink: rgb(235,179,200);
-  --dark-pink: rgb(227,147,177);
+  --dark-pink: rgb(228, 129, 165);
 
 }
 
@@ -85,7 +89,7 @@ input, button, select {
 }
 
 a {
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   color: var(--dark-pink);
   text-decoration: none;
 }

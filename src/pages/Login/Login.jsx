@@ -52,9 +52,6 @@ export default function LoginPage(props) {
         <Link to="/signup">
             Don't have an account? Sign up
         </Link>
-        <Link className="btn red" id='cancel' to="/">
-          Go Back
-        </Link>
       </form>
       </div>
     </div>

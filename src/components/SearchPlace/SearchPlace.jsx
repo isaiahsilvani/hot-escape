@@ -6,8 +6,6 @@ export default function SearchPlace({title, value, selectPlace}){
   const [places, setPlaces] = useState([])
   const [query, setQuery] = useState(value)
 
-  // purpose of this component is to take query in state  and return a selectable list
-  // of valid places to go to
   const sendRequest = async () => {
     if (query !== "") {
       const results = await flightAPI.searchPlace(query);
@@ -19,7 +17,6 @@ export default function SearchPlace({title, value, selectPlace}){
   useEffect(()=> {
     sendRequest();
   },[])
-
 
   return ( 
     <div className={styles.box}>

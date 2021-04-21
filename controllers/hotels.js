@@ -2,10 +2,8 @@ const Itinerary = require('../models/itinerary')
 
 module.exports = {
   create,
-  index,
   update,
   delete: deleteHotel,
-  show
 }
 
 function create(req, res) {
@@ -19,14 +17,6 @@ function create(req, res) {
       res.json(itinerary)
     })
   })
-}
-
-function index(req,res) {
-
-}
-
-function show(req, res) {
-
 }
 
 function deleteHotel(req, res){
