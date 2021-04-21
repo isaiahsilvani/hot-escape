@@ -91,8 +91,10 @@ io.on('connection', (socket) => {
   });
 
   //We are managing this specific socket that just connected, disconnect special function
-  socket.on('disconnect-alt', () => {
+  socket.on('disconnect-alt', ({name}) => {
     console.log('User has left!!')
+    const user = getUser(name)
+    removeUser(user)
   })
 })
 

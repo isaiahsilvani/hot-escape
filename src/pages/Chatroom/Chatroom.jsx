@@ -66,7 +66,7 @@ const Chat = ( props ) => {
         // Deal with unmounting and detect when client disconnects
         return () => {
             // emit disconnect to backend
-            socket.emit('disconnect-alt')
+            socket.emit('disconnect-alt', ({name}))
             console.log('client side socket disconnected')
             // clear state
             setName("")
