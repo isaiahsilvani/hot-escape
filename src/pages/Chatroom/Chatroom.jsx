@@ -83,6 +83,17 @@ const Chat = ( props ) => {
       socket.on("roomData", ({ users }) => {
        // setUsers(users);
       });
+      // if room didn't load on first useEffect, try again!
+      if (roomData === null) {
+        async function fetchData(room) {
+          // You can await here
+          console.log('pass room ', room, 'as argument for fetchRoomData')
+          const response = await chatAPI.fetchRoomData(room);
+          setRoomData(response)
+          // ...
+        }
+        fetchData(room);
+      }
   }, []);
 
     // fetch the room data with an API call
