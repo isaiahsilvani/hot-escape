@@ -19,7 +19,16 @@ function index(req, res) {
 }
 
 function storeMessage(req, res) {
-    console.log('store message hit', req.body)
+    console.log('store message hit controller functoin', req.body)
+    Room.findOne({roomName: req.body.room})
+    .then(room => {
+        console.log(room)
+        room.messages.push({text: req.body.message, userName: req.body.name})
+        room.save()
+        .then(() => {
+            res.json(room)
+        })
+    })
 }
 // function show(req,res) {
 //     Itinerary.findById(req.params.id)

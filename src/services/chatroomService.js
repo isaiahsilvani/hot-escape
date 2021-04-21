@@ -34,6 +34,7 @@ export function storeMessage(data) {
             'content-type': 'application/json',
             Authorization: "Bearer " + tokenService.getToken()
         },
+        // the routers connection when I remove JSON.stringify(data) from body
         body: JSON.stringify(data)
     }, {mode: "cors"})
     .then(res => res.json())
