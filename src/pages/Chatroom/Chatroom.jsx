@@ -34,16 +34,15 @@ const Chat = ( props ) => {
         // set socket connection
         setName(name)
         setRoom(room)
+        // fetch roomData from database
         async function fetchData(room) {
           // You can await here
           console.log('pass room ', room, 'as argument for fetchRoomData')
           const response = await chatAPI.fetchRoomData(room);
-          console.log(response)
+          setRoomData(response)
           // ...
         }
         fetchData(room);
-   
-        
         // In order to send an event to everyone, Socket.IO gives us io.emit
         socket.emit('join', ({ name, room, id }), () => {
           console.log('join hit')
@@ -77,6 +76,7 @@ const Chat = ( props ) => {
     useEffect(() => {
       socket.on('message', message => {
         console.log('message recieved on client from server: ', message)
+        // Store the message in the database, and setMessages as messages from database
         setMessages(messages => [ ...messages, message ]);
       });
       // recieve room data here
@@ -111,12 +111,16 @@ const Chat = ( props ) => {
       // socket listener for setting a message data payload from server to state
 
       // function for sending messages
-      const sendMessage = (event) => {
+      const sendMessage = async (event) => {
         event.preventDefault();
     
         if(message) {
           socket = io(ENDPOINT)
           socket.emit('sendMessage', {message, id })
+          // Add message to database so it can be loaded on first useEffect only
+          let response = await chatAPI.storeMessage(message)
+          console.log(response)
+
           console.log('send message hit ', message, id)
           setMessage('')
         }

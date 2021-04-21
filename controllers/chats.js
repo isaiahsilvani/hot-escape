@@ -2,7 +2,8 @@ const Room = require('../models/Room')
 
 module.exports = {
     index,
-    createRoom
+    createRoom,
+    storeMessage
 }
 // get the room based on the room name
 function index(req, res) {
@@ -15,6 +16,10 @@ function index(req, res) {
     .catch(err => {
         res.status(400).send({'err': err.errmsg})
     })
+}
+
+function storeMessage(req, res) {
+    console.log('store message hit', req.body)
 }
 // function show(req,res) {
 //     Itinerary.findById(req.params.id)

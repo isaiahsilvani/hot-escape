@@ -8,6 +8,7 @@ const chatCtrl = require('../controllers/chats')
 console.log('router hit')
 router.use(require("../config/auth"));
 router.post('/', checkAuth, chatCtrl.createRoom)
+router.post('/messages', checkAuth, chatCtrl.storeMessage)
 router.get('/:room', checkAuth, chatCtrl.index);
 
 function checkAuth(req, res, next) {

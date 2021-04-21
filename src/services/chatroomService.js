@@ -25,3 +25,16 @@ export function fetchRoomData(room) {
     }, {mode: "cors"})
     .then(res => res.json())
 }
+
+export function storeMessage(data) {
+    console.log('store message hit', data)
+    return fetch(BASE_URL + 'messages', {
+        method: "POST",
+        headers: {
+            'content-type': 'application/json',
+            Authorization: "Bearer " + tokenService.getToken()
+        },
+        body: JSON.stringify(data)
+    }, {mode: "cors"})
+    .then(res => res.json())
+}
