@@ -4,6 +4,7 @@ import { useForm } from '../../../hooks/useForm'
 import './CreateItinerary.css'
 import * as itineraryAPI from '../../../services/itineraryService'
 import { UserContext } from '../../../components/UserContext'
+import ImagePicker from '../../../components/ImagePicker/ImagePicker'
 
 export default function CreateItinerary(props){
   const user = useContext(UserContext)
@@ -15,8 +16,8 @@ export default function CreateItinerary(props){
     endDate: getToday(),
     origin: '',
     destination: '',
-    owner: user._id,
   })
+  const [escapeImg, setEscapeImg] = useState('');
   const [message, setMessage] = useState('');
 
   function getToday() {
@@ -27,7 +28,8 @@ export default function CreateItinerary(props){
   const handleSubmit = async (e) => {
     e.preventDefault();
     try{
-      const newItin = await itineraryAPI.addItinerary({formData})
+      const itinData = {...formData, owner: user._id, imageSrc: escapeImg }
+      const newItin = await itineraryAPI.addItinerary(itinData)
       history.push("/itinerary/" + newItin._id);
     } catch (err) {
       setMessage(err.message)
@@ -40,55 +42,60 @@ export default function CreateItinerary(props){
   }, [formData]);
 
   return (
+    <>
     <main>
-      <h1>Create New Itinerary</h1>
-      <div className="userForm">
-        <form 
-          autoComplete="off"
-          ref={formRef}
-          onSubmit={handleSubmit}
-        >
-          {message && <p>{message}</p>}
-          <label htmlFor="origin">Origin 
-          <input
-            type="text"
+      <h1>Plan a New Escape</h1>
+      <div className="twoColumns">
+        <ImagePicker setEscapeImg={setEscapeImg} />
+        <div className="userForm">
+          <form 
             autoComplete="off"
-            value={formData.origin}
-            name="origin"
-            onChange={handleChange}
-            required
-          /></label>
-          <label htmlFor="destination">Destination 
-          <input
-            type="text"
-            autoComplete="off"
-            value={formData.destination}
-            name="destination"
-            onChange={handleChange}
-            required
-          /></label>
-          <label htmlFor="flightDate">Start Date
-          <input 
-            type='date' 
-            name='startDate'
-            value={formData.startDate}
-            onChange={handleChange}
-            min={getToday()}
-          /></label>
-          <label htmlFor="flightDate">End Date
-          <input 
-            type='date' 
-            name='endDate'
-            value={formData.endDate}
-            onChange={handleChange}
-            min={getToday()}
-          /></label>
-          <button 
-            onClick={handleSubmit}
-            disabled={invalidForm}>
-          Create</button>
-        </form>
+            ref={formRef}
+            onSubmit={handleSubmit}
+          >
+            {message && <p>{message}</p>}
+            <label htmlFor="origin">Origin 
+            <input
+              type="text"
+              autoComplete="off"
+              value={formData.origin}
+              name="origin"
+              onChange={handleChange}
+              required
+            /></label>
+            <label htmlFor="destination">Destination 
+            <input
+              type="text"
+              autoComplete="off"
+              value={formData.destination}
+              name="destination"
+              onChange={handleChange}
+              required
+            /></label>
+            <label htmlFor="flightDate">Start Date
+            <input 
+              type='date' 
+              name='startDate'
+              value={formData.startDate}
+              onChange={handleChange}
+              min={getToday()}
+            /></label>
+            <label htmlFor="flightDate">End Date
+            <input 
+              type='date' 
+              name='endDate'
+              value={formData.endDate}
+              onChange={handleChange}
+              min={getToday()}
+            /></label>
+            <button 
+              onClick={handleSubmit}
+              disabled={invalidForm}>
+            Create</button>
+          </form>
+        </div>
       </div>
     </main>
+    </>
   )
 }
