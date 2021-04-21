@@ -48,6 +48,7 @@ const Join = () => {
                 </div>
             </div>
             <div>
+                {/*///git push <remotename> <commit SHA>:<remotebranchname></remotebranchname>*/}
             {rooms.map((roomItem, idx) => 
             <div key={idx}>
                 {console.log(roomItem)}
