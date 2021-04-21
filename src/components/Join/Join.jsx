@@ -48,10 +48,16 @@ const Join = () => {
                 </div>
             </div>
             <div>
-            {rooms.map((room, idx) => 
+            {rooms.map((roomItem, idx) => 
             <div key={idx}>
-                <p>Room: {room.roomName}</p>
-                <p>Created By: {room.owner}</p>
+                {console.log(roomItem)}
+                <Link 
+                    onClick={e => (!name) ? e.preventDefault() : null}
+                    to={`/chatroom?name=${name}&room=${roomItem.roomName}`}
+                >
+                    <p>Room: {roomItem.roomName}</p>
+                </Link>
+                <p>Created By: {roomItem.owner}</p>
             </div>)}
             
         </div>
