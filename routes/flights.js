@@ -3,13 +3,11 @@ const router = express.Router();
 const flightsCtrl = require('../controllers/flights');
 
 /*---------- Public Routes ----------*/
-router.post('/place', flightsCtrl.searchPlace)
-router.post('/search', flightsCtrl.searchFlights)
 
 /*---------- Protected Routes ----------*/
 router.use(require("../config/auth"));
-// router.post('/place', checkAuth, flightsCtrl.searchPlace)
-// router.post('/search', checkAuth, flightsCtrl.searchFlights)
+router.get('/place/:q', checkAuth, flightsCtrl.searchPlace)
+router.post('/search', checkAuth, flightsCtrl.searchFlights)
 router.post('/:itinid', checkAuth, flightsCtrl.addFlights)
 router.delete('/:itinid', checkAuth, flightsCtrl.deleteFlights)
 
