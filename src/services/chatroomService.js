@@ -39,3 +39,15 @@ export function storeMessage(data) {
     }, {mode: "cors"})
     .then(res => res.json())
 }
+
+export function getRooms(room) {
+    console.log('test chat hit', room)
+    return fetch(BASE_URL, {
+        method: "GET",
+        headers: {
+            'content-type': 'application/json',
+            Authorization: "Bearer " + tokenService.getToken()
+        }
+    }, {mode: "cors"})
+    .then(res => res.json())
+}

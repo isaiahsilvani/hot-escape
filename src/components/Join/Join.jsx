@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom'
 import { UserContext } from '../UserContext'
 import * as chatAPI from '../../services/chatroomService'
@@ -7,6 +7,7 @@ const Join = () => {
     const user = useContext(UserContext)
     const [name, setName] = useState(user.name)
     const [room, setRoom] = useState('')
+    const [rooms, setRooms] = useState([])
 
     const handleCreateRoom = async () => {
         // If the Room does not already exist in database, create it. If it already exists, do nothing
@@ -16,6 +17,20 @@ const Join = () => {
           // console.log(query, results.Places);
           
       }
+
+      useEffect(() => {
+        // recieve room data here
+        // if room didn't load on first useEffect, try again!
+        
+          async function fetchData(room) {
+            // You can await here
+            console.log('pass room ', room, 'as argument for fetchRoomData')
+            const response = await chatAPI.getRooms(room);
+            setRooms(response)
+            // ...
+          }
+          fetchData(room);
+    }, []);
 
     return ( 
         <main>
@@ -32,6 +47,14 @@ const Join = () => {
                     </Link>
                 </div>
             </div>
+            <div>
+            {rooms.map((room, idx) => 
+            <div key={idx}>
+                <p>Room: {room.roomName}</p>
+                <p>Created By: {room.owner}</p>
+            </div>)}
+            
+        </div>
         </main>
      );
 }

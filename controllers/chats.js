@@ -3,7 +3,17 @@ const Room = require('../models/Room')
 module.exports = {
     index,
     createRoom,
-    storeMessage
+    storeMessage,
+    getRooms
+}
+ 
+function getRooms(req, res) {
+    console.log('get all rooms function hitt!!!!')
+    Room.find({})
+    .then(rooms => {
+        console.log(rooms)
+        res.json(rooms)
+    })
 }
 // get the room based on the room name
 function index(req, res) {
