@@ -37,12 +37,12 @@ export default function SignupForm(props) {
   };
 
   return (
-    <main>
+    <div className="whiteBox">
       <div className="userForm">
         <h1>Sign Up</h1>
         <form autoComplete="off" ref={formRef} onSubmit={handleSubmit}>
         {message && <p>{message}</p>}
-        <label htmlFor="name">Name
+        <label htmlFor="name">Name:
           <input
             type="text"
             autoComplete="off"
@@ -52,7 +52,7 @@ export default function SignupForm(props) {
             onChange={handleChange}
             required
           /></label>
-          <label htmlFor="email">Email
+          <label htmlFor="email">Email:
           <input
             type="text"
             autoComplete="off"
@@ -62,7 +62,7 @@ export default function SignupForm(props) {
             onChange={handleChange}
             required
           /></label>
-          <label htmlFor="password">Password
+          <label htmlFor="password">Password:
           <input
             type="password"
             autoComplete="off"
@@ -72,7 +72,7 @@ export default function SignupForm(props) {
             onChange={handleChange}
             required
           /></label>
-          <label htmlFor="confirm">Confirm Password
+          <label htmlFor="confirm">Confirm Password:
           <input
             type="password"
             autoComplete="off"
@@ -91,6 +91,6 @@ export default function SignupForm(props) {
           </Link>
         </form>
       </div>
-    </main>
+    </div>
   );
 }

@@ -19,6 +19,7 @@
   cursor: pointer;
 }
 .imagePicker img{
-  width: 240px;
-  height: 360px;
+  width: 320px;
+  height: 210px;
+
 }

@@ -1,7 +1,7 @@
 import React, { useContext, useState, useRef, useEffect } from 'react';
 import { useHistory } from 'react-router';
 import { useForm } from '../../../hooks/useForm'
-import './CreateItinerary.css'
+import styles from './CreateItinerary.module.css'
 import * as itineraryAPI from '../../../services/itineraryService'
 import { UserContext } from '../../../components/UserContext'
 import ImagePicker from '../../../components/ImagePicker/ImagePicker'
@@ -43,11 +43,13 @@ export default function CreateItinerary(props){
 
   return (
     <>
-    <main>
-      <h1>Plan a New Escape</h1>
-      <div className="twoColumns">
-        <ImagePicker setEscapeImg={setEscapeImg} />
-        <div className="userForm">
+    <div className="whiteBox">
+    <h1>Plan a New Escape</h1>
+    <div className={styles.twoColumns}>
+        <div className={styles.colOne}>
+         <ImagePicker setEscapeImg={setEscapeImg} />
+        </div>
+        <div className={`userForm ${styles.colTwo}`}>
           <form 
             autoComplete="off"
             ref={formRef}
@@ -95,7 +97,7 @@ export default function CreateItinerary(props){
           </form>
         </div>
       </div>
-    </main>
+    </div>
     </>
   )
 }

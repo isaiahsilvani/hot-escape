@@ -58,9 +58,11 @@ main {
 .whiteBox {
   background: rgba(255,255,255,.9);
   margin: 0 auto;
-  padding: 2rem;
+  padding: 2rem 3rem;
   border-radius: 1rem;
+  width: max-content;
 }
+
 h1, h2, h2, h4 {
   font-family: 'Raleway';
   font-weight: 400;
@@ -71,19 +73,20 @@ h1 {
   font-size: 2.6rem;
   padding: 0 2rem;
   margin: 0 0 2rem 0;
+  text-align: center;
 }
 
 input, button, select {
   font-family: 'Lato'
 }
 
-main a {
+a {
   font-size: 1.6rem;
   color: var(--dark-pink);
   text-decoration: none;
 }
 
-main a:hover {
+a:hover {
   color: var(--light-pink);
   text-decoration: underline;
 }
@@ -122,18 +125,6 @@ main a:hover {
 
 .userForm input[type=date] {
   padding: 1rem;
-}
-
-.twoColumns {
-  margin: 0 auto;
-  width: 80%;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: space-around;
-}
-.twoColumns > div {
-  width: 40%;
 }
 
 .oneColumn {

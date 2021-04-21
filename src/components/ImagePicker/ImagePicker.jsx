@@ -4,7 +4,7 @@ import './ImagePicker.css'
 function importAll(r) {
   return r.keys().map(r);
 }
-const images = importAll(require.context('../../img/escapeImages/', false, /\.(png|jpe?g|svg)$/));
+const images = importAll(require.context('../../img/escapeImages/', false, /\.(png|webp|jpe?g|svg)$/));
 
 export default function ImagePicker (props) {
   const [chosenImg, setChosenImg] = useState(0);
