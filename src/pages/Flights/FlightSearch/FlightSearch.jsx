@@ -46,7 +46,7 @@ export default function FlightSearch(props) {
           flightID: quote.MinPrice * quote.OutboundLeg.DestinationId * quote.OutboundLeg.OriginId
         }
       })
-      if (flightResults) { 
+      if (flightResults.length > 0) { 
         setFlightResults(flightResults) 
         setMessage('')
       } else setMessage('No results found, please try again')

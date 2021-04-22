@@ -28,9 +28,11 @@ export default function AttractionSection(props) {
     return (
       <>
         <div className='section-nav'>
-          <div onClick={()=>setDisplay('list')}>
+          <div onClick={()=>setDisplay('list')}
+          className={display === 'list' ? 'active' : undefined}>
             My Attractions</div>
-          <div onClick={()=>setDisplay('search')}>
+          <div onClick={()=>setDisplay('search')}
+          className={display === 'search' ? 'active' : undefined}>
             Add Attractions</div>
         </div>
         {displaySwitch(attractionId)}

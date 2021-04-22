@@ -21,7 +21,7 @@ export default function ItineraryDetails({itinData, setEditItin}) {
               Ends <strong>{returnDate}</strong><br />
               
             </p>
-            <Link to={undefined} onClick={()=>setEditItin(true)}>Edit Itinerary</Link>
+            <Link to='#' onClick={()=>setEditItin(true)}>Edit Details</Link>
           </div>
         </div>
       </div>

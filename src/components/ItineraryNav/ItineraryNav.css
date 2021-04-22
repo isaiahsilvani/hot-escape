@@ -14,7 +14,8 @@
 
 .itineraryNav > div {
   padding: 1rem 1.5rem;
-  background: rgba(227,147,177,.9);
+  /* background: rgba(227,147,177,.9); */
+  background: linear-gradient(rgba(235,179,200,0.9), rgba(227,147,177,.9));
   text-shadow: #333 2px 2px 5px;
 
 }
