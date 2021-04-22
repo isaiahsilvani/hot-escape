@@ -123,7 +123,7 @@ const Chat = ( props ) => {
 
       
         
-    })
+    }, [roomData])
       
 
       return (
