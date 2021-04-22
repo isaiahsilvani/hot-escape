@@ -2,18 +2,21 @@
   color: #f3f3f3;
   margin: 2rem auto 0 auto;
   border-radius: 1rem;
-  font-size: 2.6rem;
+  font-size: 3rem;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   width: fit-content;
   font-family: 'Raleway';
   font-weight: 400;
+  box-shadow: 5px 5px 10px rgba(50,50,50, .4);
 }
 
 .itineraryNav > div {
   padding: 1rem 1.5rem;
   background: rgba(227,147,177,.9);
+  text-shadow: #333 2px 2px 5px;
+
 }
 
 .itineraryNav > div:first-of-type {

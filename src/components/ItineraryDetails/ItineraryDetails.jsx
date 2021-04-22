@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 import styles from './ItineraryDetails.module.css'
 
 export default function ItineraryDetails({itinData, center}) {
@@ -8,15 +9,19 @@ export default function ItineraryDetails({itinData, center}) {
 
   return (
     // <main>
-      <div className={`${styles.box} ${center ? 'm-auto': ''}`}>
-        <div className={styles.itinDetails}>
-          <img src={itinData.imageSrc} />
-          <div className={styles.details}>
+      <div className={styles.box}>
+        <div className={styles.twoColumns}>
+          <div className={styles.colOne}>
+            <img src={itinData.imageSrc} />
+          </div>
+          <div className={styles.colTwo}>
             <h1>Escape from {itinData.origin} to {itinData.destination}</h1>
             <p>
               Starts <strong>{departure}</strong><br />
-              Ends <strong>{returnDate}</strong>
+              Ends <strong>{returnDate}</strong><br />
+              
             </p>
+            <Link to={`/itinerary/${itinData._id}/edit}`} >Edit Itinerary</Link>
           </div>
         </div>
       </div>
