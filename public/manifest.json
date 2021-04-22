@@ -1,6 +1,6 @@
 {
-  "short_name": "JWT Template",
-  "name": "MERN Stack JWT Template",
+  "short_name": "Hot Escape",
+  "name": "Hot Escape: Plan Your Next Escape",
   "icons": [
     {
       "src": "favicon.ico",
@@ -8,12 +8,12 @@
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "spicy-wings192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "logo512.png",
+      "src": "spicy-wings512.png",
       "type": "image/png",
       "sizes": "512x512"
     }
