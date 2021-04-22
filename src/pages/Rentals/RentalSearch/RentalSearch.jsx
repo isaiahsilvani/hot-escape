@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
-import styles from './RentalSearch.module.css'
 import { useHistory } from 'react-router-dom'
 import { useForm } from '../../../hooks/useForm'
-import * as RentalAPI from '../../../services/RentalService'
+import * as rentalAPI from '../../../services/rentalService'
 
 export default function AddRental({itinID, setItineraryData, setDisplay}) {
     const history = useHistory();
@@ -34,8 +33,8 @@ export default function AddRental({itinID, setItineraryData, setDisplay}) {
       const handleSubmit = async (e) => {
           e.preventDefault();
           try{
-            const RentalData = {...state, itinID}
-            const newItin = await RentalAPI.addRental(RentalData)
+            const rentalData = {...state, itinID}
+            const newItin = await rentalAPI.addRental(rentalData)
             console.log("newItin", newItin)
             setItineraryData(newItin)
             setDisplay('list')

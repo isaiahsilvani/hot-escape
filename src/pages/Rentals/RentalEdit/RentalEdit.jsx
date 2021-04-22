@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom'
 import { useForm } from '../../../hooks/useForm'
 import * as rentalAPI from '../../../services/rentalService'
 
-export default function rentalEdit(props) {
+export default function RentalEdit(props) {
   const rental = props.itinData.rentals[props.rentalId]
   const [invalidForm, setValidForm] = useState(true);
   const [state, handleChange] = useForm({
@@ -24,7 +24,7 @@ export default function rentalEdit(props) {
         e.preventDefault();
         try{
           const rentalData = {rental: state, itinID: props.itinID, rentalId: rental._id}
-          const newItin = await rentalAPI.updaterental(rentalData)
+          const newItin = await rentalAPI.updateRental(rentalData)
           console.log("newItin", newItin)
           props.setItineraryData(newItin)
           props.setDisplay('list')
