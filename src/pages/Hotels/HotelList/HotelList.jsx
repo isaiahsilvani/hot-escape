@@ -18,7 +18,7 @@ export default function HotelList ({itinData, hotels, itinID, setItineraryData, 
   }
   return (
     <>
-      <h1>Hotel List</h1>
+      <h1>My Hotels</h1>
       {itinData.hotels.length ?
         <table>
           <thead>
