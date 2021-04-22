@@ -41,7 +41,7 @@ export default function HotelList ({itinData, hotels, itinID, setItineraryData, 
                 <td>{hotel.checkOutDate.split('T')[0]}</td>
                 <td>{hotel.price}</td>
                 <td><button onClick={()=>deleteHotel(hotel._id)} >Delete</button></td>
-                <td onClick={()=> editHotel(idx)}>Edit</td>
+                <td><button onClick={()=> editHotel(idx)}>Edit</button></td>
               </tr>
             ))}
           </tbody>
