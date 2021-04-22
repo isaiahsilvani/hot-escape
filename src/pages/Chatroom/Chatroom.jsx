@@ -9,13 +9,8 @@ import Input from '../../components/Input/Input'
 import Messages from '../../components/Messages/Messages'
 import * as chatAPI from '../../services/chatroomService'
 
-//define socket and endpoint outside of component
-let socket;
-
 
 const Chat = ( props ) => {
-    const user = useContext(UserContext)
-
     const [name, setName] = useState('')
     const [room, setRoom] = useState('')
     const [roomData, setRoomData] = useState({})
@@ -26,7 +21,7 @@ const Chat = ( props ) => {
     const [messages, setMessages] = useState([]) 
 
     const query = useLocation()
-    socket = io(ENDPOINT)
+    let socket = io(ENDPOINT)
     //Everytime component loads, connect  new client (user) to server
     useEffect(() => {
         const { name, room } = queryString.parse(query.search)
@@ -91,15 +86,9 @@ const Chat = ( props ) => {
         event.preventDefault();
     
         if(message) {
-          socket = io(ENDPOINT)
-          socket.emit('sendMessage', {message, name, room })
-          // Add message to database so it can be loaded on first useEffect only
-          console.log('message being sent: ', message)
-          let response = await chatAPI.storeMessage({message, name, room})
-          console.log(response)
-          //console.log(response)
-          console.log('send message hit ', message, name)
+          let messageData = message
           setMessage('')
+          await chatAPI.storeMessage({message: messageData, name, room})
         }
       }
 
