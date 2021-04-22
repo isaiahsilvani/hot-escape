@@ -15,11 +15,11 @@
 }
 
 .section-nav > div:first-of-type{
-  border-radius: 0 0 0 1rem;
+  border-radius: 1rem 0 0 1rem;
 }
 
 .section-nav > div:last-of-type{
-  border-radius: 0 0 1rem 0;
+  border-radius: 0 1rem 1rem 0;
 }
 
 .section-nav > div:hover {
@@ -29,7 +29,7 @@
 }
 
 .section-nav {
-  margin: -2rem 0 1rem 0;
+  margin: -1rem 0 1rem 0;
   display: flex;
   justify-content: center;
 }
