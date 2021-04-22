@@ -4,7 +4,7 @@ import Message from '../Message/Message'
 import './Messages.css'
 
 
-const Messages = ({ messages, name }) => {
+const Messages = ({ messages, name, }) => {
     return ( 
         <div>
             {messages.map((message, idx) => 
