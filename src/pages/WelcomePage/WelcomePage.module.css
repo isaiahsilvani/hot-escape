@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: flex-start;
   width: 90%;
-  margin: 0 auto 2rem auto;
+  margin: 0 auto;
 }
 
 .twoColumns > div {
@@ -44,8 +44,7 @@
 }
 
 .welcomeImg {
-  width: 45vmin;
-  height: 30vmin;
+  width: 100%;
   border-radius: 1rem;
   box-shadow: 5px 5px 10px rgba(50,50,50, .6);
 }

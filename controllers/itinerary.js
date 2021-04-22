@@ -9,57 +9,63 @@ module.exports = {
 }
 
 function index(req, res) {
-  console.log('hiii', req.user._id)
-  Itinerary.find({owner: req.user._id})
-  .then((itineraries) => {
-    res.json(itineraries)
-  })
+  try {
+    Itinerary.find({owner: req.user._id})
+    .then((itineraries) => {
+      res.json(itineraries)
+    })
+  } catch (error) {
+    res.status(400).send({'err': err.errmsg});
+  }
 }
 
 function create(req,res) {
-  console.log(req.body);
   try {
     Itinerary.create(req.body)
     .then(itinerary => {
       res.json(itinerary)
     })
   } catch (err) {
-  res.status(400).send({'err': err.errmsg});
+    res.status(400).send({'err': err.errmsg});
   }
 }
 
 function update(req,res) {
-  console.log("request", req.body)
-  Itinerary.findOne({_id: req.body.itinID, owner: req.user._id})
-  .then(itinerary => {
-    itinerary.startDate = req.body.startDate;
-    itinerary.endDate = req.body.endDate;
-    itinerary.origin = req.body.origin;
-    itinerary.destination = req.body.destination;
-    itinerary.imageSrc = req.body.imageSrc;
-    itinerary.save()
+  try {
+    Itinerary.findOne({_id: req.body.itinID, owner: req.user._id})
+    .then(itinerary => {
+      itinerary.startDate = req.body.startDate;
+      itinerary.endDate = req.body.endDate;
+      itinerary.origin = req.body.origin;
+      itinerary.destination = req.body.destination;
+      itinerary.imageSrc = req.body.imageSrc;
+      itinerary.save()
+      .then(itinerary => {
+        res.json(itinerary)
+      })
+    })
+  } catch (err) {
+    res.status(400).send({'err': err.errmsg});
+  }
+}
+
+function deleteItinerary(req,res) {
+  try {
+    Itinerary.findByIdAndDelete(req.params.id)
     .then(itinerary => {
       res.json(itinerary)
     })
     .catch(err => {
       res.json(err.message)
     })
-  })
-}
-
-function deleteItinerary(req,res) {
-  Itinerary.findByIdAndDelete(req.params.id)
-  .then(itinerary => {
-    res.json(itinerary)
-  })
-  .catch(err => {
-    res.json(err.message)
-  })
+  } catch (err) {
+    res.status(400).send({'err': err.errmsg});
+  }
 }
 
 
 function show(req,res) {
-  Itinerary.findById(req.params.id)
+  Itinerary.findOne({_id: req.params.id, owner: req.user._id})
   .then(itinerary => {
     res.json(itinerary)
   })

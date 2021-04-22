@@ -6,8 +6,6 @@ const attractionsCtrl = require('../controllers/attractions');
 
 /*---------- Protected Routes ----------*/
 router.use(require("../config/auth"));
-router.get('/', checkAuth, attractionsCtrl.index);
-router.get('/:id', checkAuth, attractionsCtrl.show);
 router.post('/', checkAuth, attractionsCtrl.create);
 router.put('/:id', checkAuth, attractionsCtrl.update);
 router.delete('/:itinid/:id', checkAuth, attractionsCtrl.delete);

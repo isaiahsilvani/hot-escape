@@ -2,8 +2,6 @@ const Itinerary = require('../models/itinerary')
 
 module.exports = {
   create,
-  index,
-  show,
   update,
   delete: deleteAttraction
 }
@@ -19,18 +17,6 @@ function create(req, res) {
     })
   })
   .catch(err => {res.json(err)})
-}
-
-function index(req,res) {
-
-}
-
-function show(req, res) {
-
-}
-
-function update(req, res){
-
 }
 
 function deleteAttraction(req, res){

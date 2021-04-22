@@ -10,7 +10,7 @@ export default function ItineraryCard({itinData, center}) {
     // <main>
       <div className={`${styles.box} ${center ? 'm-auto': ''}`}>
         <div className={styles.itinDetails}>
-          <img src={itinData.imageSrc} />
+          <img src={itinData.imageSrc} alt=""/>
           <div className={styles.details}>
             <h1>Escape from {itinData.origin} to {itinData.destination}</h1>
             <p>
