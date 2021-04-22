@@ -1,16 +1,36 @@
 .section-nav > div {
-  display: inline-block;
-  padding: 1rem;
-  border: solid 1px #ccc;
-  margin-right: 1rem;
+  /* display: inline-block; */
+  padding: 1rem 1.5rem;
+  background: linear-gradient( #efefef, #bbb);
   cursor: pointer;
-  border-radius: 0.5rem;
+  color: #444;
+  font-size: 2rem;
+  font-family: 'Raleway';
+  font-weight: 400;  
+
+}
+
+.section-nav > div.active {
+  text-decoration: underline;
+}
+
+.section-nav > div:first-of-type{
+  border-radius: 0 0 0 1rem;
+}
+
+.section-nav > div:last-of-type{
+  border-radius: 0 0 1rem 0;
 }
 
 .section-nav > div:hover {
+  /* background: linear-gradient(#ccc, #999); */
+  /* color: #fff; */
   background: #eee;
 }
 
 .section-nav {
-  margin: 0 0 1rem 0;
+  margin: -2rem 0 1rem 0;
+  display: flex;
+  justify-content: center;
 }
+

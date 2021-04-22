@@ -21,16 +21,13 @@ export default function FlightSection(props) {
 
   return (
     <main>
-      <h1>Flights</h1>
       <div className='section-nav'>
-        <div onClick={()=>setDisplay('list')}>
+        <div onClick={()=>setDisplay('list')}
+          className={display === 'list' ? 'active' : undefined}>
           My Flights</div>
-        <div onClick={()=>setDisplay('search')}>
+        <div onClick={()=>setDisplay('search')}
+          className={display === 'search' ? 'active' : undefined}>
           Search Flights</div>
-        {/* <div onClick={()=> {
-          setDisplay('view');
-          setFlightId(666)}}>
-          Flight Details</div> */}
       </div>
       {message && <p>{message}</p>}
       {displaySwitch()}

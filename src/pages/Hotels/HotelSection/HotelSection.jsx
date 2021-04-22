@@ -25,9 +25,11 @@ export default function HotelSection(props) {
   return (
     <>
       <div className='section-nav'>
-        <div onClick={()=>setDisplay('list')}>
+        <div onClick={()=>setDisplay('list')}
+          className={display === 'list' ? 'active' : undefined}>
           My Hotels</div>
-        <div onClick={()=>setDisplay('search')}>
+        <div onClick={()=>setDisplay('search')}
+          className={display === 'search' ? 'active' : undefined}>
           Add Hotels</div>
       </div>
       {displaySwitch(hotelId)}
