@@ -42,9 +42,11 @@ export default function FlightList
 
   return (
     <>
-      {controls === 'add' && <button onClick={addFlights}>Add Selected</button>}
-      {controls === 'del' && <button onClick={deleteFlights}>Remove Selected</button>}
+      <h1>Flights</h1>
       {flights?.length ?
+        <>
+        {controls === 'add' && <button onClick={addFlights}>Add Selected</button>}
+        {controls === 'del' && <button onClick={deleteFlights}>Remove Selected</button>}
         <table>
           <thead>
             <tr>
@@ -77,7 +79,7 @@ export default function FlightList
             ))}
           </tbody>
         </table>
-      
+      </>
       : <p>No flights found</p>}
     </>
   );

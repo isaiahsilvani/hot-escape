@@ -2,9 +2,6 @@ import React, { useState, useEffect } from 'react';
 import AttractionSearch from '../AttractionSearch/AttractionSearch'
 import AttractionList from '../AttractionList/AttractionList'
 import AttractionEdit from '../AttractionEdit/AttractionEdit'
-import { useParams } from 'react-router-dom'
-
-import './AttractionSection.css'
 
 export default function AttractionSection(props) {
     const [display, setDisplay] = useState('list');
@@ -28,9 +25,11 @@ export default function AttractionSection(props) {
     return (
       <>
         <div className='section-nav'>
-          <div onClick={()=>setDisplay('list')}>
+          <div onClick={()=>setDisplay('list')}
+          className={display === 'list' ? 'active' : undefined}>
             My Attractions</div>
-          <div onClick={()=>setDisplay('search')}>
+          <div onClick={()=>setDisplay('search')}
+          className={display === 'search' ? 'active' : undefined}>
             Add Attractions</div>
         </div>
         {displaySwitch(attractionId)}

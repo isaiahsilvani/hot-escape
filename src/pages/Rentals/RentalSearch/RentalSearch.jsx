@@ -7,7 +7,7 @@ export default function AddRental({itinID, setItineraryData, setDisplay}) {
     const history = useHistory();
 	  const [invalidForm, setValidForm] = useState(true);
     const [state, handleChange] = useForm({
-        company: 'Name',
+        company: '',
         pickupTime: '10:00',
         dropoffTime: '10:00',
         pickupDate: getToday(),
@@ -35,7 +35,6 @@ export default function AddRental({itinID, setItineraryData, setDisplay}) {
           try{
             const rentalData = {...state, itinID}
             const newItin = await rentalAPI.addRental(rentalData)
-            console.log("newItin", newItin)
             setItineraryData(newItin)
             setDisplay('list')
           } catch (err) {
@@ -48,38 +47,38 @@ export default function AddRental({itinID, setItineraryData, setDisplay}) {
       <h1>Add Rental</h1>
       <div className="userForm">
       <form autoComplete="off" ref={formRef} onSubmit={handleSubmit}>
-        <label>Rental Name (required)
+        <label>Retal Company (required)
         <input
           className="form-control"
-          name="name"
+          name="company"
           value={state.company}
           onChange={handleChange}
           required
         /></label>
-        <label>Rental Room (required)
+        <label>Pick-up Time (required)
         <input
-          name="room"
+          name="pickupTime"
           value={state.pickupTime}
           onChange={handleChange}
           required
         /></label>
-        <label>Check-in Date
+        <label>Drop-off Time
         <input
-          type="date"
-          name="checkInDate"
+          name="dropoffTime"
           value={state.dropoffTime}
           onChange={handleChange}
         /></label>
-        <label>Check-out Date
+        <label>Pick-up Date
         <input
           type="date"
-          name="checkOutDate"
+          name="pickupDate"
           value={state.pickupDate}
           onChange={handleChange}
         /></label>
-        <label>Price
+        <label>Drop-off Date
         <input
-          name="price"
+          type="date"
+          name="dropoffDate"
           value={state.dropoffDate}
           onChange={handleChange}
         /></label>

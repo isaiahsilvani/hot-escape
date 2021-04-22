@@ -32,20 +32,17 @@ export default function ItineraryView(props) {
       case 'hotels':
         return (
           <main>
-            <h1>Hotels</h1>
             <HotelSection setItineraryData={setItineraryData} itinID={id} itinData={itineraryData} />
           </main>)
       case 'attractions':
         return (
           <main>
-            <h1>Attractions</h1>
             <AttractionSection setItineraryData={setItineraryData} itinID={id} itinData={itineraryData} />
           </main>
         )
         case 'rentals':
         return (
           <main>
-            <h1>Rentals</h1>
             <RentalSection setItineraryData={setItineraryData} itinID={id} itinData={itineraryData} />
           </main>
         )
