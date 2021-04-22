@@ -31,6 +31,7 @@ nav li a {
   font-size: 2rem;
   color: #333;
   text-decoration: none;
+  text-shadow: 2px 2px 2px #ccc;
 }
 
 nav li:hover {
