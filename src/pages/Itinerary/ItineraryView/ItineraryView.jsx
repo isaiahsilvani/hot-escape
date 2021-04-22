@@ -6,6 +6,7 @@ import ItineraryNav from '../../../components/ItineraryNav/ItineraryNav'
 import HotelSection from '../../Hotels/HotelSection/HotelSection'
 import AttractionSection from '../../Attractions/AttractionSection/AttractionSection'
 import ItineraryDetails from '../../../components/ItineraryDetails/ItineraryDetails'
+import EditItinerary from '../EditItinerary/EditItinerary'
 import { UserContext } from '../../../components/UserContext'
 import './ItineraryView.css'
 
@@ -14,6 +15,7 @@ export default function ItineraryView(props) {
   const user = useContext(UserContext)
   const [itineraryData, setItineraryData] = useState({})
   const [display, setDisplay] = useState('flights');
+  const [editItin, setEditItin] = useState(false)
 
   useEffect(() => {
     async function fetchData() {
@@ -23,10 +25,6 @@ export default function ItineraryView(props) {
     }
     fetchData();
   }, []);
-
-  function setFlight(flights) {
-    setItineraryData({...itineraryData, flights})
-  }
 
   const displaySwitch = () => {
     switch(display) {
@@ -51,7 +49,9 @@ export default function ItineraryView(props) {
       
   return (
     <>
-      <ItineraryDetails itinData={itineraryData} center={'true'} />
+      {editItin ? <EditItinerary setItineraryData={setItineraryData} itinData={itineraryData} setEditItin={setEditItin} /> 
+      : 
+      <ItineraryDetails itinData={itineraryData} setEditItin={setEditItin} /> }
    
     {/* <main>
       <h1>

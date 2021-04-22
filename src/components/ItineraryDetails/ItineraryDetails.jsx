@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import styles from './ItineraryDetails.module.css'
 
-export default function ItineraryDetails({itinData, center}) {
+export default function ItineraryDetails({itinData, setEditItin}) {
 
   const departure = new Date(itinData.startDate).toLocaleDateString();
   const returnDate = new Date(itinData.endDate).toLocaleDateString();
@@ -21,7 +21,7 @@ export default function ItineraryDetails({itinData, center}) {
               Ends <strong>{returnDate}</strong><br />
               
             </p>
-            <Link to={`/itinerary/${itinData._id}/edit}`} >Edit Itinerary</Link>
+            <Link to={undefined} onClick={()=>setEditItin(true)}>Edit Itinerary</Link>
           </div>
         </div>
       </div>

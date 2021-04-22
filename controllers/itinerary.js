@@ -29,11 +29,32 @@ function create(req,res) {
 }
 
 function update(req,res) {
-
+  console.log("request", req.body)
+  Itinerary.findOne({_id: req.body.itinID, owner: req.user._id})
+  .then(itinerary => {
+    itinerary.startDate = req.body.startDate;
+    itinerary.endDate = req.body.endDate;
+    itinerary.origin = req.body.origin;
+    itinerary.destination = req.body.destination;
+    itinerary.imageSrc = req.body.imageSrc;
+    itinerary.save()
+    .then(itinerary => {
+      res.json(itinerary)
+    })
+    .catch(err => {
+      res.json(err.message)
+    })
+  })
 }
 
 function deleteItinerary(req,res) {
-
+  Itinerary.findByIdAndDelete(req.params.id)
+  .then(itinerary => {
+    res.json(itinerary)
+  })
+  .catch(err => {
+    res.json(err.message)
+  })
 }
 
 

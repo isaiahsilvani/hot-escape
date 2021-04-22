@@ -10,7 +10,7 @@ router.use(require("../config/auth"));
 router.get("/:uid", checkAuth, itineraryControl.index)
 router.get("/show/:id", checkAuth, itineraryControl.show)
 router.post("/", checkAuth, itineraryControl.create)
-router.put("/", checkAuth, itineraryControl.update)
+router.put("/:id", checkAuth, itineraryControl.update)
 router.delete("/:id", checkAuth, itineraryControl.delete)
 
 function checkAuth(req, res, next) {
