@@ -35,9 +35,9 @@ export default function RentalList ({itinData, rentals, itinID, setItineraryData
               <tr>
                 <td>{rental.company}</td>
                 <td>{rental.pickupTime}</td>
-                <td>{rental.dropoffTime.split('T')[0]}</td>
+                <td>{rental.dropoffTime}</td>
                 <td>{rental.pickupDate.split('T')[0]}</td>
-                <td>{rental.dropoffDate}</td>
+                <td>{rental.dropoffDate.split('T')[0]}</td>
                 <td><button onClick={()=>deleteRental(rental._id)} >Delete</button></td>
                 <td onClick={()=> editRental(idx)}>Edit</td>
               </tr>
