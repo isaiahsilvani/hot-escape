@@ -20,7 +20,6 @@ const Chat = ( props ) => {
     const [room, setRoom] = useState('')
     const [roomData, setRoomData] = useState({})
 
-    const [id, setID] = useState('')
     const ENDPOINT = 'localhost:3001'
     // Set state for setting a message and sending a message
     const [message, setMessage] = useState('')
@@ -47,23 +46,11 @@ const Chat = ( props ) => {
         }
         fetchData(room);
         // In order to send an event to everyone, Socket.IO gives us io.emit
-        socket.emit('join', ({ name, room, id }), () => {
+        socket.emit('join', ({ name, room }), () => {
           console.log('join hit')
             // alert(error)
         })
-        // set ID from served with socket.id for unique instances of users
-        socket.emit('sendID')
-        socket.on('setID', (id) => {
-          setID(id)
-        })
 
-        // socket.on('message', ({text, user}) => {
-        //   console.log('message recieved from server: ', text, 'from ', user)
-        //      //setting a new message
-        //      console.log(text, user)
-        //      setMessages([...messages, {text, user}])
-        // })
-        // Deal with unmounting and detect when client disconnects
         return () => {
             // emit disconnect to backend
             socket.emit('disconnect-alt', ({name}))
@@ -82,10 +69,7 @@ const Chat = ( props ) => {
         // Store the message in the database, and setMessages as messages from database
         setMessages(messages => [ ...messages, message ]);
       });
-      // recieve room data here
-      socket.on("roomData", ({ users }) => {
-       // setUsers(users);
-      });
+
       // if room didn't load on first useEffect, try again!
       if (roomData === null) {
         async function fetchData(room) {
@@ -99,28 +83,6 @@ const Chat = ( props ) => {
       }
   }, []);
 
-    // fetch the room data with an API call
-
-  
-  // commit
-  // useEffect(() => {
-  //   let roomData = fetchRoomData(room)
-  //   console.log(roomData)
-  // })
-  
-  // const fetchRoomData = async () => {
-  //   const roomData = await chatAPI.fetchRoomData(room)
-  //   return roomData
-  // }
-
-  // const sendRequest = async () => {
-  //   if (query !== "") {
-  //     const results = await flightAPI.searchPlace(query);
-  //     // console.log(query, results.Places);
-  //     setPlaces(results.Places)
-  //   }
-  // }
-
 
       // socket listener for setting a message data payload from server to state
 
@@ -130,17 +92,37 @@ const Chat = ( props ) => {
     
         if(message) {
           socket = io(ENDPOINT)
-          socket.emit('sendMessage', {message, name })
+          socket.emit('sendMessage', {message, name, room })
           // Add message to database so it can be loaded on first useEffect only
           console.log('message being sent: ', message)
           let response = await chatAPI.storeMessage({message, name, room})
           console.log(response)
           //console.log(response)
-          console.log('send message hit ', message, id)
+          console.log('send message hit ', message, name)
           setMessage('')
         }
       }
 
+      // catch the roomData null error with useEffect. If roomData = null, it hasn't been created yet.
+      useEffect(() => {
+        setTimeout(function() {
+          console.log('set timeout yayyy')
+          if (roomData === null) {
+            console.log('oh no, the room data is null!')
+            const handleCreateRoom = async () => {
+              // If the Room does not already exist in database, create it. If it already exists, do nothing
+              console.log('handle create room hit')
+              const data = {name, room}
+              const results = await chatAPI.createRoom(data);
+              setRoomData(results)
+            }
+            handleCreateRoom()
+          }
+        }, 2000);
+
+      
+        
+    })
       
 
       return (

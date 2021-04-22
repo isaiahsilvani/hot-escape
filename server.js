@@ -59,7 +59,7 @@ io.on('connection', (socket) => {
   //Listening for join emit from client side (See ChatRoom.jsx)
   socket.on('join', ({ name, room }, callback) => {
     console.log('join backend listner: ', name, room)
-    const { error, user } = addUser({ id: socket.id, name, room });
+    const { error, user } = addUser({ name, room });
     console.log(user)
     console.log('user: ', user)
     // set socketID in state
@@ -74,19 +74,12 @@ io.on('connection', (socket) => {
     callback();
   });
 
-  socket.on('sendID', () => {
-    socket.emit('setID', (socket.id))
-  })
 
-  socket.on('sendMessage', ({ message, name, }) => {
+  socket.on('sendMessage', ({ message, name, room}) => {
     console.log('send message hit', name)
-    const user = getUser(name)
-    console.log('sendMessage hit', message, name)
-    console.log('user name: ', user.name)
-    console.log('user room: ', user.room)
 
     // this is failing
-    io.to(user.room).emit('message', ({ user: user.name, text: message}))
+    io.to(room).emit('message', ({ user: name, text: message}))
     // io.to(user.room).emit('message', { user: user.name, text: message });
   });
 
