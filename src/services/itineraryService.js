@@ -26,3 +26,24 @@ export function getOne(id) {
   })
   .then(res => res.json())
 }
+
+export function updateItinerary(itineraryData) {
+  console.log("update data", itineraryData)
+  return fetch(`${BASE_URL}${itineraryData.itinID}`, {
+    headers: { 'content-type': 'application/json',
+      Authorization: "Bearer " + tokenService.getToken() },
+    method: 'PUT',
+    body: JSON.stringify(itineraryData)
+  },{mode: "cors" })
+  .then(res => res.json())
+}
+
+
+export function deleteItinerary(itinID) {
+  return fetch(`${BASE_URL}${itinID}`, {
+    headers: { 'content-type': 'application/json',
+      Authorization: "Bearer " + tokenService.getToken() },
+    method: 'DELETE',
+  },{mode: "cors" })
+  .then(res => res.json())
+}

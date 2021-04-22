@@ -10,6 +10,13 @@ export default function ImagePicker (props) {
   const [chosenImg, setChosenImg] = useState(0);
   
   useEffect(()=>{
+    if (props.startImg) {
+      const index = images.findIndex(image => image.default === props.startImg)
+      setChosenImg(index)
+    }
+  },[])
+
+  useEffect(()=>{
     props.setEscapeImg(images[chosenImg].default)
   },[chosenImg])
 
@@ -20,9 +27,8 @@ export default function ImagePicker (props) {
   }
   return (
     <div className="imagePicker">
-      <img name="escapeImage" src={images[chosenImg].default} />
       <label htmlFor="escapeImage">Choose an image for your Escape</label>
-      
+      <img name="escapeImage" src={images[chosenImg].default} />
       <div className="controls">
         <span onClick={()=>showImg(-1)}>&#8592;</span>
         <span onClick={()=>showImg(1)}>&#8594;</span>
