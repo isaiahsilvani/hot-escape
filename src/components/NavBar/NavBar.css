@@ -21,9 +21,10 @@ nav ul.nav-login {
   justify-content: flex-end;
 }
 nav li {
-  display: inline-block;
+  display: flex;
   height: 100%;
   padding: 1.5rem 1.5rem;
+  align-items: center;
 }
 
 nav li a {
@@ -37,6 +38,12 @@ nav li:hover {
   background: #eee;
 }
 
-img.logo {
-  height: 2rem;
+nav li.logo {
+  padding: 1rem 1.5rem 0.5rem 1.5rem;
+}
+
+li.logo img {
+  height: 4rem;
+  width: 6rem;
+  border: none;
 }
