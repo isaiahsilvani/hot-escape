@@ -13,6 +13,10 @@ export default function ItineraryNav(props) {
       <div className={props.display==='attractions' ? 'active' : undefined}
         onClick={()=>props.switchDisplay('attractions')}>
         Attractions</div>
+      <div className={props.display==='rentals' ? 'active' : undefined}
+        onClick={()=>props.switchDisplay('rentals')}>
+        Rentals</div>
     </div>
+    
   )
 }
