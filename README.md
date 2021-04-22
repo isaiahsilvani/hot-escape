@@ -1,6 +1,6 @@
 # HOT ESCAPE
 
-Hot Escape was developed with the objective of allowing users to plan their entire vacation all in 1 app! You are able to select flights, log hotels, as well as plan attractions all within the Hot Escape app.
+Hot Escape was developed with the objective of allowing users to plan their entire vacation all in 1 app! You are able to select flights, log hotels, log rental information, as well as plan attractions all within the Hot Escape app.
 This app was developed in one week during our time at General Assembly as a group React project.
 
 ## Getting Started
@@ -23,7 +23,7 @@ Trello board: https://trello.com/b/3qC2inUw/unit-3-group-project
 
 ***
 
-### Create Itenerary Page
+### Create Itinerary Page
 
 ![createitin](https://i.imgur.com/Deb4arB.png)
 
@@ -87,7 +87,7 @@ Each user receives an Itinerary page in which they can add to or modify all the 
 - React Developer Tools
 - Bootstap
 
-## ICEBOX ITEMS
+## Icebox Items
 
 - Hotels API
 - Rentals API
