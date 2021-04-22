@@ -32,7 +32,7 @@ export default function HotelSection(props) {
           className={display === 'search' ? 'active' : undefined}>
           Add Hotels</div>
       </div>
-      {displaySwitch(hotelId)}
+      {displaySwitch()}
     </>
   )
 }

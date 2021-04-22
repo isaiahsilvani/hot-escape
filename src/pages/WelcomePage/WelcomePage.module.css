@@ -1,0 +1,55 @@
+.twoColumns {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: flex-start;
+  width: 90%;
+  margin: 0 auto 2rem auto;
+}
+
+.twoColumns > div {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  padding: 1rem;
+}
+
+.colOne {
+  align-items: flex-end;
+}
+
+.colTwo {
+  align-items: flex-start;
+  margin-left: 1.5rem;
+}
+
+.welcomePage h3 {
+  font-size: 2.5rem;
+  margin: 0;
+  text-align: center;
+}
+.colTwo h3 {
+  text-align: left;
+}
+
+.colTwo p {
+  margin: 2rem 0 0 0;
+  padding: 0;
+}
+
+.welcomePage ol {
+  text-align: left;
+  font-size: 1.8rem;
+  line-height: 3.2rem; 
+}
+
+.welcomeImg {
+  width: 45vmin;
+  height: 30vmin;
+  border-radius: 1rem;
+  box-shadow: 5px 5px 10px rgba(50,50,50, .6);
+}
+
+.welcomePage a {
+  font-size: 2.5rem;
+}

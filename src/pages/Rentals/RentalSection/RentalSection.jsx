@@ -25,10 +25,10 @@ export default function RentalSection(props) {
       <div className='section-nav'>
         <div onClick={()=>setDisplay('list')}
           className={display === 'list' ? 'active' : undefined}>
-          My rentals</div>
+          My Rentals</div>
         <div onClick={()=>setDisplay('search')}
           className={display === 'search' ? 'active' : undefined}>
-          Add rentals</div>
+          Add Rentals</div>
       </div>
       {displaySwitch(rentalId)}
     </>

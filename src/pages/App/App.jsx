@@ -17,6 +17,7 @@ import ItineraryList from '../Itinerary/ItineraryList/ItineraryList';
 import ItineraryView from '../Itinerary/ItineraryView/ItineraryView';
 import { UserContext } from '../../components/UserContext'
 import ProtectedRoute from '../../components/ProtectedRoute'
+import WelcomePage from '../WelcomePage/WelcomePage'
 
 export default function App (props) {
   const [user, setUser] = useState(authService.getUser())
@@ -75,16 +76,7 @@ export default function App (props) {
  
           <Route path="/"
             render={() => (
-              
-              <main>
-                <div className='App'>
-                <h1>Welcome to Hot Escape</h1>
-                 <h3>Use Hot Escape to plan your next vacation. You can: </h3> 
-                 <p>  1. Create an itinerary for each of your vacation plans <br/>2. Search for flights and add them to your itinerary<br/>3. Add your hotels, attractions and rentals <br/>4. Chat with others about their vacations </p> 
-                <h3>Enjoy your next Escape</h3>
-                </div>
-              </main>
-              
+              <WelcomePage />              
             )}
           />
         </Switch>

@@ -17,7 +17,7 @@ export default function AttractionList ({itinData, attractions, itinID, setItine
       
     return (
       <>
-        <h1>Attraction List</h1>
+        <h1>My Attractions</h1>
         {itinData.attractions.length ?
           <table>
             <thead>

@@ -16,7 +16,7 @@ export default function RentalList ({itinData, rentals, itinID, setItineraryData
   }
   return (
     <>
-      <h1>Rental List</h1>
+      <h1>My Rentals</h1>
       {itinData.rentals.length ?
         <table>
           <thead>
