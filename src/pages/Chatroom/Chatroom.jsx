@@ -20,7 +20,7 @@ const Chat = ( props ) => {
     const [room, setRoom] = useState('')
     const [roomData, setRoomData] = useState({})
 
-    const ENDPOINT = 'localhost:3001'
+    const ENDPOINT = 'https://hot-escapes.herokuapp.com/'
     // Set state for setting a message and sending a message
     const [message, setMessage] = useState('')
     const [messages, setMessages] = useState([]) 
