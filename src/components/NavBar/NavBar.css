@@ -6,6 +6,8 @@ nav {
   justify-content: space-between;
   font-family: 'Raleway';
   font-weight: 400;
+  box-shadow: 5px 5px 10px rgba(50,50,50, .3);
+
 }
 nav ul {
   margin: 0;
