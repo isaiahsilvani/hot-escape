@@ -10,7 +10,7 @@ export default function ImagePicker (props) {
   const [chosenImg, setChosenImg] = useState(0);
   
   useEffect(()=>{
-    if (props.startImg) {
+    if (props?.startImg) {
       const index = images.findIndex(image => image.default === props.startImg)
       setChosenImg(index)
     }

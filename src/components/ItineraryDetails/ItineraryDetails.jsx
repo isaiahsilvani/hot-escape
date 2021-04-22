@@ -12,7 +12,7 @@ export default function ItineraryDetails({itinData, setEditItin}) {
       <div className={styles.box}>
         <div className={styles.twoColumns}>
           <div className={styles.colOne}>
-            <img src={itinData.imageSrc} />
+            <img src={itinData.imageSrc} alt=""/>
           </div>
           <div className={styles.colTwo}>
             <h1>Escape from {itinData.origin} to {itinData.destination}</h1>

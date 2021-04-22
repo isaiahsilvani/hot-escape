@@ -4,7 +4,6 @@ import * as flightsAPI from '../../../services/flightService'
 import styles from './FlightSearch.module.css'
 import FlightList from '../FlightList/FlightList'
 
-import { useParams } from 'react-router-dom'
 
 export default function FlightSearch(props) {
   const [flightResults, setFlightResults] = useState([]);

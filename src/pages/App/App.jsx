@@ -1,23 +1,18 @@
-import { Switch, Route, Redirect, useHistory } from "react-router-dom";
-
-import React, { useState, createContext } from "react";
-
+import { Switch, Route, useHistory } from "react-router-dom";
+import React, { useState } from "react";
 import NavBar from "../../components/NavBar/NavBar";
 import Signup from "../Signup/Signup";
 import Login from "../Login/Login";
-import Users from '../Users/Users'
 import authService from "../../services/authService"
-
 import Join from '../../components/Join/Join'
 import Chatroom from '../Chatroom/Chatroom'
-
-import "./App.css";
 import CreateItinerary from "../Itinerary/CreateItinerary/CreateItinerary";
 import ItineraryList from '../Itinerary/ItineraryList/ItineraryList';
 import ItineraryView from '../Itinerary/ItineraryView/ItineraryView';
 import { UserContext } from '../../components/UserContext'
 import ProtectedRoute from '../../components/ProtectedRoute'
 import WelcomePage from '../WelcomePage/WelcomePage'
+import "./App.css";
 
 export default function App (props) {
   const [user, setUser] = useState(authService.getUser())

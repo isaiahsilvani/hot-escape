@@ -63,7 +63,7 @@ main {
 .whiteBox {
   background: rgba(255,255,255,.9);
   margin: 0 auto;
-  padding: 2rem 3rem;
+  padding: 2rem 4rem;
   border-radius: 1rem;
   width: max-content;
   box-shadow: 5px 5px 10px rgba(50,50,50, .4);
@@ -84,7 +84,14 @@ h1 {
 }
 
 input, button, select {
-  font-family: 'Lato'
+  font-family: 'Lato';
+  padding: 0.5rem;
+}
+
+input {
+  border-radius: 0.5rem;
+  border: solid 1px #999;
+  outline: none;
 }
 
 button {
