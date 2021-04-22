@@ -1,0 +1,22 @@
+input {
+  margin-bottom: 1em;
+}
+
+.input {
+  display: flex;
+  justify-content: center;
+  text-align: left;
+}
+
+#name {
+  margin-right: 0.7em;
+}
+
+#roomInput {
+  margin-left: 0.3em;
+}
+
+table {
+  text-align: left;
+  margin-left: 3em;
+}

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import styles from './Input.css'
 
 const Input = ({ message, setMessage, sendMessage }) => {
     return ( 

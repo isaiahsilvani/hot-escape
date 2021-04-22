@@ -1,0 +1,5 @@
+#chatroom {
+  height: 85vh;
+  position: relative;
+  overflow: scroll;
+}

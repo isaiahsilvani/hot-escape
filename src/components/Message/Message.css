@@ -1,0 +1,27 @@
+.messageContainer {
+  display: flex;
+  flex-direction: row;
+  background-color: whitesmoke;
+  padding: 0;
+  padding: 0 10px;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+.flex-end {
+  justify-content: flex-end;
+  text-align: right;
+  background-color: #e1f7f7;
+}
+
+.flex-start {
+  justify-content: flex-start;
+  text-align: left;
+  background-color: #d7f5d3;
+}
+
+.text {
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}

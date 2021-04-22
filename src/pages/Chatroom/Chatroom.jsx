@@ -8,6 +8,7 @@ import InfoBar from '../../components/InfoBar/InfoBar'
 import Input from '../../components/Input/Input'
 import Messages from '../../components/Messages/Messages'
 import * as chatAPI from '../../services/chatroomService'
+import styles from './Chatroom.css'
 
 //define socket and endpoint outside of component
 let socket;
@@ -122,16 +123,16 @@ const Chat = ( props ) => {
 
       
         
-    })
+    }, [roomData])
       
 
       return (
-        <main>
+        <main id='chatroom'>
           <div className="outerContainer">
             <div className="container">
               <InfoBar room={room}/>
-              <Input message={message} setMessage={setMessage} sendMessage={sendMessage}/>
               <Messages messages={messages} name={name}/>
+              <Input message={message} setMessage={setMessage} sendMessage={sendMessage}/>
             </div>
           </div>
         </main>
