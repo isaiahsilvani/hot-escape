@@ -1,4 +1,4 @@
-input {
+.joinOuter input {
   margin-bottom: 1em;
 }
 
@@ -16,7 +16,7 @@ input {
   margin-left: 0.3em;
 }
 
-table {
+.joinOuter table {
   text-align: left;
   margin-left: 3em;
 }

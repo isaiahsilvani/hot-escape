@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom'
 import { UserContext } from '../UserContext'
 import * as chatAPI from '../../services/chatroomService'
-import styles from './Join.css'
+import styles from './Join.module.css'
 
 const Join = () => {
     const user = useContext(UserContext)
@@ -25,7 +25,7 @@ const Join = () => {
 
     return ( 
         <main>
-            <div className='joinOuter'>
+            <div className={styles.joinOuter}>
                 <h1>Chat with other travelers</h1>
                 <div className="joinInner">
                     <div className='input' ><label id='name'>Your Name </label><input placeHolder="Nickname (optional)" value={name} className="joinInput" type="text" onChange={(e)=> setName(e.target.value)}></input></div>

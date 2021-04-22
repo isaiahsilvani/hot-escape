@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import styles from './Input.css'
+import styles from './Input.module.css'
 
 const Input = ({ message, setMessage, sendMessage }) => {
     return ( 
-        <form className="form">
+        <form className={styles.inputForm}>
             <input
                 className='input'
                 type='text'

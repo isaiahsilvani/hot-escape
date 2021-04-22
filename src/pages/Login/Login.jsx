@@ -24,7 +24,6 @@ export default function LoginPage(props) {
   };
 
   return (
-    <main>
     <div className='whiteBox'>
       <div className="userForm">
       <h1>Login</h1>
@@ -55,7 +54,6 @@ export default function LoginPage(props) {
       </form>
       </div>
     </div>
-    </main>
   );
 }
 
