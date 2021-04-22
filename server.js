@@ -26,6 +26,7 @@ const itineraryRouter = require('./routes/itinerary');
 const hotelsRouter = require('./routes/hotels');
 const attractionsRouter = require('./routes/attractions')
 const chatRouter = require('./routes/chatroom')
+const rentalRouter = require('./routes/rentals')
 
 const cors = require('cors')
 
@@ -44,6 +45,7 @@ app.use('/api/flights', flightRouter);
 app.use('/api/itinerary', itineraryRouter);
 app.use('/api/hotels', hotelsRouter)
 app.use('/api/attractions', attractionsRouter)
+app.use('/api/rentals', rentalRouter)
 
 
 
