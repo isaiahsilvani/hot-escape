@@ -1,35 +1,34 @@
   
 import React from 'react';
-
-
 import ReactEmoji from 'react-emoji';
+import styles from './Message.css'
 
 const Message = ({ message: { text, user }, name }) => {
   let isSentByCurrentUser = false;
+  console.log('compare ', user, ' to ', NamedNodeMap)
+  const compareName = name
 
-  const trimmedName = name.trim().toLowerCase();
-
-  if(user === trimmedName) {
+  if(user === compareName) {
     isSentByCurrentUser = true;
   }
 
   return (
     isSentByCurrentUser
       ? (
-        <div className="messageContainer justifyEnd">
-          <p className="sentText pr-10">{trimmedName}</p>
-          <div className="messageBox backgroundBlue">
+        <span className="messageContainer flex-end">
+          <p className="sentText pr-10">{compareName}</p>
+          <span className="messageBox backgroundBlue">
             <p className="messageText colorWhite">{ReactEmoji.emojify(text)}</p>
-          </div>
-        </div>
+          </span>
+        </span>
         )
         : (
-          <div className="messageContainer justifyStart">
-            <div className="messageBox backgroundLight">
-              <p className="messageText colorDark">{ReactEmoji.emojify(text)}</p>
-            </div>
+          <span className="messageContainer flex-start">
             <p className="sentText pl-10 ">{user}</p>
-          </div>
+            <span className="messageBox backgroundLight">
+              <p className="messageText colorDark">{ReactEmoji.emojify(text)}</p>
+            </span>
+          </span>
         )
   );
 }
