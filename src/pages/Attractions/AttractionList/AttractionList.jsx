@@ -34,7 +34,7 @@ export default function AttractionList ({itinData, attractions, itinID, setItine
                   <td>{attraction.name}</td>
                   <td>{attraction.location}</td>
                   <td><button onClick={()=>deleteAttraction(attraction._id)} >Delete</button></td>
-                  <td onClick={()=> editAttraction(idx)}>Edit</td>
+                  <td><button onClick={()=> editAttraction(idx)}>Edit</button></td>
                 </tr>
               ))}
             </tbody>
