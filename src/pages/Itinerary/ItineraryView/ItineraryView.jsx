@@ -5,6 +5,7 @@ import FlightSection from '../../Flights/FlightSection/FlightSection';
 import ItineraryNav from '../../../components/ItineraryNav/ItineraryNav'
 import HotelSection from '../../Hotels/HotelSection/HotelSection'
 import AttractionSection from '../../Attractions/AttractionSection/AttractionSection'
+import RentalSection from '../../Rentals/RentalSection/RentalSection'
 import ItineraryDetails from '../../../components/ItineraryDetails/ItineraryDetails'
 import EditItinerary from '../EditItinerary/EditItinerary'
 import { UserContext } from '../../../components/UserContext'
@@ -39,6 +40,13 @@ export default function ItineraryView(props) {
           <main>
             <h1>Attractions</h1>
             <AttractionSection setItineraryData={setItineraryData} itinID={id} itinData={itineraryData} />
+          </main>
+        )
+        case 'rentals':
+        return (
+          <main>
+            <h1>Rentals</h1>
+            <RentalSection setItineraryData={setItineraryData} itinID={id} itinData={itineraryData} />
           </main>
         )
       case 'flights':

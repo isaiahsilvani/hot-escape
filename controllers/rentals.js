@@ -26,7 +26,6 @@ function deleteRental(req, res){
     const index = itinerary.rentals.findIndex(rental => rental._id.equals(req.params.id))
     // console.log('found index', index)
     itinerary.rentals.splice(index, 1)
-    // console.log("new hotels array", itinerary.hotels)
     itinerary.save()
     .then((itinerary) => {
       res.json(itinerary)
