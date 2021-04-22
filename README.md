@@ -13,19 +13,19 @@ Trello board: https://trello.com/b/3qC2inUw/unit-3-group-project
 
 ### Landing Page
 
-![landing](https://i.imgur.com/FTFZLEK.png)
+![landing](https://i.imgur.com/aPsFn87.png)
 
 ***
 
 ### Login Page
 
-![login](https://i.imgur.com/02sxnqj.png)
+![login](https://i.imgur.com/JkGAJuC.png)
 
 ***
 
 ### Create Itinerary Page
 
-![createitin](https://i.imgur.com/Deb4arB.png)
+![createitin](https://i.imgur.com/fZrX1Qq.png)
 
 ***
 
@@ -55,7 +55,7 @@ Trello board: https://trello.com/b/3qC2inUw/unit-3-group-project
 
 ### Chat Room
 
-![chatroom](https://i.imgur.com/6hAutnf.png)
+![chatroom](https://i.imgur.com/G67k8n0.png)
 
 
 ## App Description:
