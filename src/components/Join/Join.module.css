@@ -15,8 +15,9 @@
 #roomInput {
   margin-left: 0.3em;
 }
-
+//
 .joinOuter table {
   text-align: left;
   margin-left: 3em;
+  justify-content: space-around;
 }

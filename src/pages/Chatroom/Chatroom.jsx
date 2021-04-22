@@ -64,25 +64,12 @@ const Chat = ( props ) => {
         }
     }, [ENDPOINT, query])
 
-    useEffect(() => {
+    
       socket.on('message', message => {
         console.log('message recieved on client from server: ', message)
         // Store the message in the database, and setMessages as messages from database
         setMessages(messages => [ ...messages, message ]);
       });
-
-      // if room didn't load on first useEffect, try again!
-      if (roomData === null) {
-        async function fetchData(room) {
-          // You can await here
-          console.log('pass room ', room, 'as argument for fetchRoomData')
-          const response = await chatAPI.fetchRoomData(room);
-          setRoomData(response)
-          // ...
-        }
-        fetchData(room);
-      }
-  }, []);
 
 
       // socket listener for setting a message data payload from server to state
