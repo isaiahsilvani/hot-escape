@@ -6,8 +6,6 @@ const rentalsCtrl = require('../controllers/rentals');
 
 /*---------- Protected Routes ----------*/
 router.use(require("../config/auth"));
-router.get('/', checkAuth, rentalsCtrl.index);
-router.get('/:id', checkAuth, rentalsCtrl.show);
 router.post('/', checkAuth, rentalsCtrl.create);
 router.put('/:id', checkAuth, rentalsCtrl.update);
 router.delete('/:itinid/:id', checkAuth, rentalsCtrl.delete);

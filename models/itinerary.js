@@ -27,8 +27,8 @@ const hotelSchema = new Schema({
 });
 
 const attractionSchema = new Schema({
-  name:{type: String},
-  location: {type:String},
+  name:{ type: String },
+  location: { type:String },
   }, {
     timestamps: true
 });

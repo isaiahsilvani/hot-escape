@@ -1,14 +1,12 @@
 import React, {useState, useContext, useEffect} from 'react';
 import { UserContext } from '../../../components/UserContext'
-import * as RentalsAPI from '../../../services/RentalService'
-
+import * as rentalsAPI from '../../../services/rentalService'
 
 export default function RentalList ({itinData, rentals, itinID, setItineraryData, setRentalId, setDisplay}) {
   const user = useContext(UserContext);
 
-  const deleteRental = async (RentalID) => {
-    // console.log("RentalID", RentalID, "idinID", itinID);
-    const result = await RentalsAPI.deleteOne(itinID, RentalID);
+  const deleteRental = async (rentalID) => {
+    const result = await rentalsAPI.deleteOne(itinID, rentalID);
     setItineraryData(result);
   }
 
@@ -19,7 +17,7 @@ export default function RentalList ({itinData, rentals, itinID, setItineraryData
   return (
     <>
       <h1>Rental List</h1>
-      {itinData.Rentals.length ?
+      {itinData.rentals.length ?
         <table>
           <thead>
             <tr>
@@ -33,21 +31,21 @@ export default function RentalList ({itinData, rentals, itinID, setItineraryData
             </tr>
           </thead>
           <tbody>
-            {itinData.Rentals.map((Rental, idx) => (
+            {itinData.rentals.map((rental, idx) => (
               <tr>
-                <td>{Rental.company}</td>
-                <td>{Rental.pickupTime}</td>
-                <td>{Rental.dropoffTime.split('T')[0]}</td>
-                <td>{Rental.pickupDate.split('T')[0]}</td>
-                <td>{Rental.dropoffDate}</td>
-                <td><button onClick={()=>deleteRental(Rental._id)} >Delete</button></td>
+                <td>{rental.company}</td>
+                <td>{rental.pickupTime}</td>
+                <td>{rental.dropoffTime}</td>
+                <td>{rental.pickupDate.split('T')[0]}</td>
+                <td>{rental.dropoffDate.split('T')[0]}</td>
+                <td><button onClick={()=>deleteRental(rental._id)} >Delete</button></td>
                 <td onClick={()=> editRental(idx)}>Edit</td>
               </tr>
             ))}
           </tbody>
         </table>
       
-      : <p>No Rentals yet</p>}
+      : <p>No rentals yet</p>}
     </>
   );
 }
