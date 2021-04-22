@@ -19,4 +19,5 @@
 .joinOuter table {
   text-align: left;
   margin-left: 3em;
+  justify-content: space-around;
 }
