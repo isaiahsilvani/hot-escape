@@ -2,9 +2,6 @@ import React, { useState, useEffect } from 'react';
 import HotelSearch from '../HotelSearch/HotelSearch'
 import HotelList from '../HotelList/HotelList'
 import HotelEdit from '../HotelEdit/HotelEdit'
-import { useParams } from 'react-router-dom'
-
-import './HotelSection.css'
 
 export default function HotelSection(props) {
   const [display, setDisplay] = useState('list');
