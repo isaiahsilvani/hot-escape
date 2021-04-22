@@ -10,8 +10,8 @@ export default function RentalEdit(props) {
       company: rental?.company,
       pickupTime: rental?.pickupTime,
       dropoffTime: rental?.dropoffTime,
-      pickupDate: rental?.pickupDate,
-      dropoffDate: rental?.dropoffDate,
+      pickupDate: rental?.pickupDate.split('T')[0],
+      dropoffDate: rental?.dropoffDate.split('T')[0]
   })
     
   const formRef = useRef();
@@ -25,7 +25,6 @@ export default function RentalEdit(props) {
         try{
           const rentalData = {rental: state, itinID: props.itinID, rentalId: rental._id}
           const newItin = await rentalAPI.updateRental(rentalData)
-          console.log("newItin", newItin)
           props.setItineraryData(newItin)
           props.setDisplay('list')
         } catch (err) {

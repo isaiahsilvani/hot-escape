@@ -35,7 +35,6 @@ export default function AddRental({itinID, setItineraryData, setDisplay}) {
           try{
             const rentalData = {...state, itinID}
             const newItin = await rentalAPI.addRental(rentalData)
-            console.log("newItin", newItin)
             setItineraryData(newItin)
             setDisplay('list')
           } catch (err) {
