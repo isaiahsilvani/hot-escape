@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
-import { UserContext } from '../../components/UserContext'
 import queryString from 'query-string'
 //socketio clientside listener
 import io from 'socket.io-client'
@@ -15,7 +14,6 @@ let socket;
 
 
 const Chat = ( props ) => {
-    const user = useContext(UserContext)
 
     const [name, setName] = useState('')
     const [room, setRoom] = useState('')
@@ -48,14 +46,12 @@ const Chat = ( props ) => {
         fetchData(room);
         // In order to send an event to everyone, Socket.IO gives us io.emit
         socket.emit('join', ({ name, room }), () => {
-          console.log('join hit')
             // alert(error)
         })
 
         return () => {
             // emit disconnect to backend
             socket.emit('disconnect-alt', ({name}))
-            console.log('client side socket disconnected')
             // clear state
             setName("")
             setRoom("")
@@ -66,7 +62,6 @@ const Chat = ( props ) => {
 
     
       socket.on('message', message => {
-        console.log('message recieved on client from server: ', message)
         // Store the message in the database, and setMessages as messages from database
         setMessages(messages => [ ...messages, message ]);
       });
@@ -82,7 +77,6 @@ const Chat = ( props ) => {
           socket = io(ENDPOINT)
           socket.emit('sendMessage', {message, name, room })
           // Add message to database so it can be loaded on first useEffect only
-          console.log('message being sent: ', message)
           let response = await chatAPI.storeMessage({message, name, room})
           console.log(response)
           //console.log(response)
@@ -94,12 +88,10 @@ const Chat = ( props ) => {
       // catch the roomData null error with useEffect. If roomData = null, it hasn't been created yet.
       useEffect(() => {
         setTimeout(function() {
-          console.log('set timeout yayyy')
           if (roomData === null) {
             console.log('oh no, the room data is null!')
             const handleCreateRoom = async () => {
               // If the Room does not already exist in database, create it. If it already exists, do nothing
-              console.log('handle create room hit')
               const data = {name, room}
               const results = await chatAPI.createRoom(data);
               setRoomData(results)

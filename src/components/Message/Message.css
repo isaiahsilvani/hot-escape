@@ -21,7 +21,20 @@
 }
 
 .text {
-  flex-direction: column;
+  flex-direction: row;
   margin: 0;
   padding: 0;
+}
+
+.messageContainer p {
+  margin: 0;
+  padding: 4px;
+}
+
+.messageBox {
+  padding: 0 0;
+}
+
+.sentText {
+  margin-bottom: 2px;
 }

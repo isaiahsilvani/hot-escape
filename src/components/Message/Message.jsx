@@ -17,19 +17,20 @@ const Message = ({ message: { text, user }, name }) => {
       ? (
         <span className="messageContainer flex-end">
             <span class='text'>
-              <span className="sentText pr-10">{compareName}</span>
-              <span className="messageBox backgroundBlue">
-              <p className="messageText colorWhite">{ReactEmoji.emojify(text)}</p>
+              <span className="messageBox">
+              <p className="messageText">{ReactEmoji.emojify(text)}</p>
             </span>
           </span>
         </span>
         )
         : (
           <span className="messageContainer flex-start">
-            <span className="messageBox backgroundLight">
-              <p className="messageText colorDark">{ReactEmoji.emojify(text)}</p>
-            </span>
+          <span className="messageBox">
+          <span className="sentText ">{user}</span>
+            <p className="messageText">{ReactEmoji.emojify(text)}</p>
           </span>
+          
+        </span>
         )
   );
 }
