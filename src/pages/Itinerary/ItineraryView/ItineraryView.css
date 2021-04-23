@@ -1,5 +1,4 @@
 .section-nav > div {
-  /* display: inline-block; */
   padding: 1rem 1.5rem;
   background: linear-gradient( #efefef, #bbb);
   cursor: pointer;
@@ -23,8 +22,6 @@
 }
 
 .section-nav > div:hover {
-  /* background: linear-gradient(#ccc, #999); */
-  /* color: #fff; */
   background: #eee;
 }
 

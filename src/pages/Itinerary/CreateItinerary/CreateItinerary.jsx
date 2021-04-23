@@ -24,7 +24,6 @@ export default function CreateItinerary(props){
     return new Date().toISOString().split('T')[0]
   }
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try{
@@ -34,7 +33,6 @@ export default function CreateItinerary(props){
     } catch (err) {
       setMessage(err.message)
     }
-
   }
 
   useEffect(() => {

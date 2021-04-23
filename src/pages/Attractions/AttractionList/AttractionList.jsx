@@ -1,9 +1,7 @@
-import React, {useState, useContext, useEffect} from 'react';
-import { UserContext } from '../../../components/UserContext'
+import React from 'react';
 import * as attractionsAPI from '../../../services/attractionService'
 
 export default function AttractionList ({itinData, attractions, itinID, setItineraryData, setAttractionId, setDisplay}) {
-    const user = useContext(UserContext);
 
     const deleteAttraction = async (attractionID) => {
         const result = await attractionsAPI.deleteOne(itinID, attractionID);

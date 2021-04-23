@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom'
 import * as itineraryAPI from '../../../services/itineraryService';
 import FlightSection from '../../Flights/FlightSection/FlightSection';
@@ -8,19 +8,16 @@ import AttractionSection from '../../Attractions/AttractionSection/AttractionSec
 import RentalSection from '../../Rentals/RentalSection/RentalSection'
 import ItineraryDetails from '../../../components/ItineraryDetails/ItineraryDetails'
 import EditItinerary from '../EditItinerary/EditItinerary'
-import { UserContext } from '../../../components/UserContext'
 import './ItineraryView.css'
 
 export default function ItineraryView(props) {
   const {id} = useParams();
-  const user = useContext(UserContext)
   const [itineraryData, setItineraryData] = useState({})
   const [display, setDisplay] = useState('flights');
   const [editItin, setEditItin] = useState(false)
 
   useEffect(() => {
     async function fetchData() {
-      // get itinerary data based on ID parameter
       const itineraryData = await itineraryAPI.getOne(id);
       setItineraryData(itineraryData)
     }
@@ -55,22 +52,9 @@ export default function ItineraryView(props) {
   return (
     <>
       {editItin ? <EditItinerary setItineraryData={setItineraryData} itinData={itineraryData} setEditItin={setEditItin} /> 
-      : 
-      <ItineraryDetails itinData={itineraryData} setEditItin={setEditItin} /> }
-   
-    {/* <main>
-      <h1>
-        Escape from {itineraryData.origin} to {itineraryData.destination}
-      </h1>
-      <p>
-        {itineraryData.startDate?.split('T')[0].replaceAll('-','/')} to {itineraryData.endDate?.split('T')[0].replaceAll('-','/')}
-        <br/>
-      Origin: {itineraryData.origin} <br />
-      Destination: {itineraryData.destination}</p>
-    </main> */}
-    <ItineraryNav switchDisplay={setDisplay} display={display} />
-    {displaySwitch()}
-    
+      : <ItineraryDetails itinData={itineraryData} setEditItin={setEditItin} /> }
+      <ItineraryNav switchDisplay={setDisplay} display={display} />
+      {displaySwitch()}
     </>
   )
 };

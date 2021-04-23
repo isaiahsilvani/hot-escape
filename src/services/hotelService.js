@@ -2,7 +2,6 @@ import tokenService from "./tokenService"
 const BASE_URL = '/api/hotels/'
 
 export function addHotel(hotelData) {
-    console.log("service data", hotelData)
     return fetch(BASE_URL, {
       headers: { 'content-type': 'application/json',
         Authorization: "Bearer " + tokenService.getToken() },

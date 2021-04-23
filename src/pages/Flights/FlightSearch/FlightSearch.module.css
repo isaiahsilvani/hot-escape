@@ -9,6 +9,7 @@
   align-items: center;
   flex-direction: column;
   max-width: 30%;
+  margin: 0 1rem;
 }
 
 .flightDate > * {
@@ -20,6 +21,8 @@
   flex-direction: row;
   justify-content: space-around;
   padding: 1rem 0;
+  max-width: 90%;
+  margin: 0 auto;
 }
 
 .searchInputs input[type=date] {

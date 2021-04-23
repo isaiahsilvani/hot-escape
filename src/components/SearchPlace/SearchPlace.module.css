@@ -1,6 +1,5 @@
 .box {
   text-align: left;
-  max-width: 33%;
   border-radius: 0.5rem;
   display: flex;
   flex-direction: column;

@@ -2,7 +2,6 @@ import tokenService from "./tokenService"
 const BASE_URL = '/messages/'
 
 export function storeMsg(data) {
-    console.log('send message service hit', data)
     return fetch(BASE_URL, {
         method: "POST",
         headers: {

@@ -2,7 +2,6 @@ import tokenService from "./tokenService"
 const BASE_URL = '/api/attractions/'
 
 export function addAttraction(attractionData) {
-    console.log("service data", attractionData)
     return fetch(BASE_URL, {
       headers: { 'content-type': 'application/json',
         Authorization: "Bearer " + tokenService.getToken() },
@@ -22,7 +21,6 @@ export function deleteOne(itinID, attractionID) {
 }
 
 export function updateAttraction(attractionData) {
-  console.log("service data", attractionData)
   return fetch(BASE_URL + attractionData.attractionId, {
     headers: { 'content-type': 'application/json',
       Authorization: "Bearer " + tokenService.getToken() },

@@ -38,10 +38,6 @@ export default function EditItinerary({itinData, setEditItin, setItineraryData})
     history.push('/itinerary')
   }
 
-  function getToday() {
-    return new Date().toISOString().split('T')[0]
-  }
-
   useEffect(() => {
     formRef.current.checkValidity() ? setValidForm(false) : setValidForm(true);
   }, [formData]);

@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import closeIcon from '../../Icons/closeIcon.png'
 import onlineIcon from '../../Icons/onlineIcon.png'
-import styles from './InfoBar.css'
+import styles from './InfoBar.module.css'
 
 const InfoBar = ({ room }) => {
     return ( 
-        <div className='infoBar'>
-            <div className='icons'>
+        <>
+        <div className={styles.infoBar}>
+            <div className={styles.icons}>
                 <div className='leftInnerContainer'>
                     <img className='onlineIcon' src={onlineIcon} alt='online icon'/>
                 </div>
@@ -15,8 +16,8 @@ const InfoBar = ({ room }) => {
                     <a href='/'><img src={closeIcon} alt='close icon'/></a>
                 </div>
             </div>
-            
         </div>
+        </>
      );
 }
  

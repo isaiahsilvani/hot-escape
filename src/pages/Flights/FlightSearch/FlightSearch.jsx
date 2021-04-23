@@ -14,11 +14,6 @@ export default function FlightSearch(props) {
   const [flightDate, setFlightDate] = useState(props.itinData.startDate.split('T')[0])
   const [message, setMessage] = useState('')
 
-  function getToday() {
-    const today = new Date;
-    return today.toISOString().split('T')[0];
-  }
-
   const handleFlightsSearch = async () => {
     const flightData = {originPlace, destinationPlace, flightDate}
     if (!originPlace.code || ! destinationPlace.code) {
@@ -45,7 +40,7 @@ export default function FlightSearch(props) {
           flightID: quote.MinPrice * quote.OutboundLeg.DestinationId * quote.OutboundLeg.OriginId
         }
       })
-      if (flightResults.length > 0) { 
+      if (flightResults) { 
         setFlightResults(flightResults) 
         setMessage('')
       } else setMessage('No results found, please try again')
