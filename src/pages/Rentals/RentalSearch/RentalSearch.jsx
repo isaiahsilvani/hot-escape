@@ -47,7 +47,7 @@ export default function AddRental({itinID, setItineraryData, setDisplay}) {
       <h1>Add Rental</h1>
       <div className="userForm">
       <form autoComplete="off" ref={formRef} onSubmit={handleSubmit}>
-        <label>Retal Company (required)
+        <label>Rental Company (required)
         <input
           className="form-control"
           name="company"
