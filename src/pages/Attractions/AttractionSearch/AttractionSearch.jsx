@@ -1,10 +1,8 @@
-import React, {Component, useState, useRef, useEffect } from 'react';
-import { useHistory } from 'react-router';
+import React, { useState, useRef, useEffect } from 'react';
 import { useForm } from '../../../hooks/useForm';
 import * as attractionAPI from '../../../services/attractionService'
 
 export default function AddAttraction({itinID, setDisplay, setItineraryData}){
-  const history = useHistory();
   const [invalidForm, setValidForm] = useState(true);
   const [state, handleChange]       = useForm({
     name: '',

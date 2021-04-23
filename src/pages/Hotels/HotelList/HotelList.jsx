@@ -1,10 +1,9 @@
-import React, {useState, useContext, useEffect} from 'react';
+import React from 'react';
 import { UserContext } from '../../../components/UserContext'
 import * as hotelsAPI from '../../../services/hotelService'
 
 
-export default function HotelList ({itinData, hotels, itinID, setItineraryData, setHotelId, setDisplay}) {
-  const user = useContext(UserContext);
+export default function HotelList ({itinData, itinID, setItineraryData, setHotelId, setDisplay}) {
 
   const deleteHotel = async (hotelID) => {
     // console.log("hotelID", hotelID, "idinID", itinID);

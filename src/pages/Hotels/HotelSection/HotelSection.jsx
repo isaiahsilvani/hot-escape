@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import HotelSearch from '../HotelSearch/HotelSearch'
 import HotelList from '../HotelList/HotelList'
 import HotelEdit from '../HotelEdit/HotelEdit'

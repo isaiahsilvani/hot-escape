@@ -12,14 +12,9 @@ import ItineraryView from '../Itinerary/ItineraryView/ItineraryView';
 import { UserContext } from '../../components/UserContext'
 import ProtectedRoute from '../../components/ProtectedRoute'
 import WelcomePage from '../WelcomePage/WelcomePage'
-import "./App.css";
 
 export default function App (props) {
   const [user, setUser] = useState(authService.getUser())
-  // state = {
-  //   user: authService.getUser(),
-  // };
-
   const history = useHistory();
 
   const handleLogout = () => {

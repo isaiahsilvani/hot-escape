@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useHistory } from "react-router-dom";
 import { useForm } from "../../../hooks/useForm";
 import * as attractionAPI from "../../../services/attractionService";
 

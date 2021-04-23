@@ -2,7 +2,6 @@ import tokenService from "./tokenService"
 const BASE_URL = '/api/itinerary/'
 
 export function addItinerary(itineraryData) {
-  console.log("service data", itineraryData)
   return fetch(BASE_URL, {
     headers: { 'content-type': 'application/json',
       Authorization: "Bearer " + tokenService.getToken() },
@@ -20,7 +19,6 @@ export function getAll(userId) {
 }
 
 export function getOne(id) {
-  console.log('getting itin', id)
   return fetch(BASE_URL + 'show/' + id, {
     headers: { Authorization: "Bearer " + tokenService.getToken() }
   })
@@ -28,7 +26,6 @@ export function getOne(id) {
 }
 
 export function updateItinerary(itineraryData) {
-  console.log("update data", itineraryData)
   return fetch(`${BASE_URL}${itineraryData.itinID}`, {
     headers: { 'content-type': 'application/json',
       Authorization: "Bearer " + tokenService.getToken() },

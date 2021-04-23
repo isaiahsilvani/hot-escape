@@ -28,8 +28,8 @@ const Join = () => {
             <div className={styles.joinOuter}>
                 <h1>Chat with other travelers</h1>
                 <div className="joinInner">
-                    <div className='input' ><label id='name'>Your Name </label><input placeHolder="Nickname (optional)" value={name} className="joinInput" type="text" onChange={(e)=> setName(e.target.value)}></input></div>
-                    <div className='input'><label>Room Name </label><input required placeHolder="Room" className="joinInput" type="text" id='roomInput' onChange={(e)=> setRoom(e.target.value)}></input></div>
+                    <div className='input' ><label id='name'>Your Name </label><input placeholder="Nickname (optional)" value={name} className="joinInput" type="text" onChange={(e)=> setName(e.target.value)}></input></div>
+                    <div className='input'><label>Room Name </label><input required placeholder="Room" className="joinInput" type="text" id='roomInput' onChange={(e)=> setRoom(e.target.value)}></input></div>
                     <Link 
                     onClick={e => (!name || !room) ? e.preventDefault() : null}
                     to={`/chatroom?name=${name}&room=${room}`}

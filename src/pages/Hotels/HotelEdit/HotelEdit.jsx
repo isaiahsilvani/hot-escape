@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { useHistory } from 'react-router-dom'
 import { useForm } from '../../../hooks/useForm'
 import * as hotelAPI from '../../../services/hotelService'
 
@@ -20,18 +19,18 @@ export default function HotelEdit(props) {
       formRef.current.checkValidity() ? setValidForm(false) : setValidForm(true);
   });
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        try{
-          const hotelData = {hotel: state, itinID: props.itinID, hotelId: hotel._id}
-          const newItin = await hotelAPI.updateHotel(hotelData)
-          console.log("newItin", newItin)
-          props.setItineraryData(newItin)
-          props.setDisplay('list')
-        } catch (err) {
-          console.log(err.message)
-        }
-      }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try{
+      const hotelData = {hotel: state, itinID: props.itinID, hotelId: hotel._id}
+      const newItin = await hotelAPI.updateHotel(hotelData)
+      console.log("newItin", newItin)
+      props.setItineraryData(newItin)
+      props.setDisplay('list')
+    } catch (err) {
+      console.log(err.message)
+    }
+  }
 
   return (
   <>

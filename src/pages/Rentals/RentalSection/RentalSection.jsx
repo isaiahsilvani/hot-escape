@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import RentalSearch from '../RentalSearch/RentalSearch'
 import RentalList from '../RentalList/RentalList'
 import RentalEdit from '../RentalEdit/RentalEdit'
-import { useParams } from 'react-router-dom'
 
 export default function RentalSection(props) {
   const [display, setDisplay] = useState('list');

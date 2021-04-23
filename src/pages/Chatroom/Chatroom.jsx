@@ -8,7 +8,7 @@ import InfoBar from '../../components/InfoBar/InfoBar'
 import Input from '../../components/Input/Input'
 import Messages from '../../components/Messages/Messages'
 import * as chatAPI from '../../services/chatroomService'
-import styles from './Chatroom.css'
+import './Chatroom.css'
 
 //define socket and endpoint outside of component
 let socket;

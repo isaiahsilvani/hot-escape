@@ -1,9 +1,7 @@
-import React, {useState, useContext, useEffect} from 'react';
-import { UserContext } from '../../../components/UserContext'
+import React from 'react';
 import * as rentalsAPI from '../../../services/rentalService'
 
-export default function RentalList ({itinData, rentals, itinID, setItineraryData, setRentalId, setDisplay}) {
-  const user = useContext(UserContext);
+export default function RentalList ({itinData, itinID, setItineraryData, setRentalId, setDisplay}) {
 
   const deleteRental = async (rentalID) => {
     const result = await rentalsAPI.deleteOne(itinID, rentalID);

@@ -1,46 +1,44 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { useHistory } from 'react-router-dom'
 import { useForm } from '../../../hooks/useForm'
 import * as rentalAPI from '../../../services/rentalService'
 
 export default function AddRental({itinID, setItineraryData, setDisplay}) {
-    const history = useHistory();
-	  const [invalidForm, setValidForm] = useState(true);
-    const [state, handleChange] = useForm({
-        company: '',
-        pickupTime: '10:00',
-        dropoffTime: '10:00',
-        pickupDate: getToday(),
-        dropoffDate: getTomorrow(),
-    })
-    
-    const formRef = useRef();
+  const [invalidForm, setValidForm] = useState(true);
+  const [state, handleChange] = useForm({
+      company: '',
+      pickupTime: '10:00',
+      dropoffTime: '10:00',
+      pickupDate: getToday(),
+      dropoffDate: getTomorrow(),
+  })
+  
+  const formRef = useRef();
 
-    useEffect(() => {
-        formRef.current.checkValidity() ? setValidForm(false) : setValidForm(true);
-      });
+  useEffect(() => {
+      formRef.current.checkValidity() ? setValidForm(false) : setValidForm(true);
+    });
 
-      function getToday() {
-        return new Date().toISOString().split('T')[0]
-      }
+  function getToday() {
+    return new Date().toISOString().split('T')[0]
+  }
 
-      function getTomorrow() {
-        const tomorrow = new Date();
-        tomorrow.setDate(tomorrow.getDate() + 1)
-        return tomorrow.toISOString().split('T')[0]
-      }
+  function getTomorrow() {
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1)
+    return tomorrow.toISOString().split('T')[0]
+  }
 
-      const handleSubmit = async (e) => {
-          e.preventDefault();
-          try{
-            const rentalData = {...state, itinID}
-            const newItin = await rentalAPI.addRental(rentalData)
-            setItineraryData(newItin)
-            setDisplay('list')
-          } catch (err) {
-            console.log(err.message)
-          }
-        }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try{
+      const rentalData = {...state, itinID}
+      const newItin = await rentalAPI.addRental(rentalData)
+      setItineraryData(newItin)
+      setDisplay('list')
+    } catch (err) {
+      console.log(err.message)
+    }
+  }
 
     return (
     <>
