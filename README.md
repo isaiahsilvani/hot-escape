@@ -5,7 +5,7 @@ This app was developed in one week during our time at General Assembly as a grou
 
 ## Getting Started
 
-Deployed Site: https://hot-escapes.herokuapp.com/
+Deployed Site: https://www.hotescape.co
 
 Trello board: https://trello.com/b/3qC2inUw/unit-3-group-project
 
