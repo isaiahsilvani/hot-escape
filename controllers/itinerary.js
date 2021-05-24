@@ -15,7 +15,7 @@ function index(req, res) {
       res.json(itineraries)
     })
   } catch (error) {
-    res.status(400).send({'err': err.errmsg});
+    res.status(400).send({'err': error.errmsg});
   }
 }
 
